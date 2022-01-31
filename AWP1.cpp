@@ -2,7 +2,6 @@
 #include <ctime>
 #include <ratio>
 #include <chrono>
-#include <xmmintrin.h>
 #include <immintrin.h>
 
 void VectorizedAdd(int x_matrix, int y_matrix, float** matrixToAdd, float** result);
@@ -13,11 +12,12 @@ void MultiplicationWithoutVectorization(int M, int N, int K, float** A, float** 
 
 void DisplayMatrix(float**** matrix, int x_matrix, int y_matrix);
 void FillMatrix(float**** matrix, int x_matrix, int y_matrix);
+
 void ManualVectorization(int M, int N, int K, float** __restrict A, float** __restrict B, float** __restrict C);
 
 void ClearMatrix(float**** matrix, int x_matrix, int y_matrix);
 
-const int size = 4;
+const int size = 300;
 
 int x_matrix1 = 1;
 int y_matrix1 = 4;
@@ -28,45 +28,6 @@ int y_result = x_matrix2;
 
 int main()
 {
-	//const int g = 100;
-	/*int x_matrix1, y_matrix1, x_matrix2, y_matrix2, x_result, y_result;
-
-	x_matrix1 = 1;
-	y_matrix1 = 4;
-	x_matrix2 = y_matrix1;
-	y_matrix2 = x_matrix1;
-	x_result = y_matrix1;
-	y_result = x_matrix2;
-	float** A = new float* [y_matrix1];
-	float** B = new float* [y_matrix2];
-	float** C = new float* [y_result];
-
-	for (int i = 0; i < y_matrix1; i++)
-	{
-		A[i] = new float[x_matrix2];
-	}
-	for (int i = 0; i < y_matrix2; i++)
-	{
-		B[i] = new float[x_matrix2];
-	}
-	for (int i = 0; i < y_result; i++)
-	{
-		C[i] = new float[x_result];
-	}
-	using namespace std::chrono;
-	high_resolution_clock::time_point t1 = high_resolution_clock::now();
-	MultiplicationWithVectorization(y_matrix1, x_matrix2, x_matrix1, A, B, C);
-	high_resolution_clock::time_point t2 = high_resolution_clock::now();
-	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-	std::cout << "Vectorized method time: " << time_span.count() << " seconds." << std::endl;
-
-	t1 = high_resolution_clock::now();
-	MultiplicationWithoutVectorization(y_matrix1, x_matrix2, x_matrix1, A, B, C);
-	t2 = high_resolution_clock::now();
-	time_span = duration_cast<duration<double>>(t2 - t1);
-	std::cout << "Not vectorized method time: " << time_span.count() << " seconds." << std::endl;*/
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	using namespace std::chrono;
 	float**** matrix1;
 	float**** matrix2;
@@ -134,14 +95,14 @@ int main()
 		temp[i] = new float[y_matrix1];
 	}
 
-	//memory for all matrices has been allocated 
+	//end of memory allocation 
 
 	FillMatrix(matrix1, x_matrix1, y_matrix1);
 	FillMatrix(matrix2, x_matrix2, y_matrix2);
-	std::cout << "Matrix1:" << std::endl;
-	DisplayMatrix(matrix1, x_matrix1, y_matrix1);
-	std::cout << "Matrix2:" << std::endl;
-	DisplayMatrix(matrix2, x_matrix2, y_matrix2);
+	//std::cout << "Matrix1:" << std::endl;
+	//DisplayMatrix(matrix1, x_matrix1, y_matrix1);
+	//std::cout << "Matrix2:" << std::endl;
+	//DisplayMatrix(matrix2, x_matrix2, y_matrix2);
 
 	////////////////////////////////////
 
@@ -160,7 +121,7 @@ int main()
 	high_resolution_clock::time_point t2 = high_resolution_clock::now();
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	DisplayMatrix(result, x_result, y_result);
+	//DisplayMatrix(result, x_result, y_result);
 	ClearMatrix(result, x_result, y_result);
 
 	t1 = high_resolution_clock::now();
@@ -178,7 +139,7 @@ int main()
 	t2 = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Not vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	DisplayMatrix(result, x_result, y_result);
+	//DisplayMatrix(result, x_result, y_result);
 	ClearMatrix(result, x_result, y_result);
 
 	t1 = high_resolution_clock::now();
@@ -196,7 +157,7 @@ int main()
 	t2 = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Manually vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	DisplayMatrix(result, x_result, y_result);
+	//DisplayMatrix(result, x_result, y_result);
 	ClearMatrix(result, x_result, y_result);
 }
 
@@ -245,14 +206,11 @@ void ManualVectorization(int M, int N, int K, float** __restrict A, float** __re
 		for (int k = 0; k < K; ++k)
 		{
 			const float* b = B[k];
-			//float a = A[i][k];
 			__m256 a = _mm256_set1_ps(A[i][k]);
 			for (int j = 0; j < N; j += 8)
-			{//c[j] += a * b[j];
+			{
 				_mm256_storeu_ps(c + j + 0, _mm256_fmadd_ps(a,
 					_mm256_loadu_ps(b + j + 0), _mm256_loadu_ps(c + j + 0)));
-				//_mm256_storeu_ps(c + j + 8, _mm256_fmadd_ps(a,
-				//	_mm256_loadu_ps(b + j + 8), _mm256_loadu_ps(c + j + 8)));
 			}
 		}
 	}
