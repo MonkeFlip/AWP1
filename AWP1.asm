@@ -157,8 +157,8 @@ $pdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagere
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN32
-	DD	imagerel $LN32+146
+$pdata$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN32@ClearMatri
+	DD	imagerel $LN32@ClearMatri+146
 	DD	imagerel $unwind$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -175,20 +175,20 @@ $pdata$?DisplayMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN32@DisplayMat
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN34@ManualVect
-	DD	imagerel $LN34@ManualVect+202
+$pdata$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN34
+	DD	imagerel $LN34+202
 	DD	imagerel $unwind$?ManualVectorization@@YAXHHHPEIAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN37@Multiplica
-	DD	imagerel $LN37@Multiplica+306
+$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN37
+	DD	imagerel $LN37+306
 	DD	imagerel $unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN46@Multiplica
-	DD	imagerel $LN46@Multiplica+497
+$pdata$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN46
+	DD	imagerel $LN46+497
 	DD	imagerel $unwind$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -227,22 +227,30 @@ $unwind$main DD	0a1d01H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
-	DQ	00009541e000a641er		; 1.2973e-308
-	DQ	0f01a321e0008341er		; -1.01674e+232
+$unwind$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DD 0c1e01H
+	DD	0b741eH
+	DD	0a641eH
+	DD	09541eH
+	DD	08341eH
+	DD	0f01a321eH
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
-	DQ	00009541e000a641er		; 1.2973e-308
-	DQ	0f01a321e0008341er		; -1.01674e+232
+$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD 0c1e01H
+	DD	0b741eH
+	DD	0a641eH
+	DD	09541eH
+	DD	08341eH
+	DD	0f01a321eH
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DQ 00004e41400081401r ; 6.80168e-309
-	DQ	00002640a0003740fr		; 3.32479e-309
+$unwind$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DD 081401H
+	DD	04e414H
+	DD	03740fH
+	DD	02640aH
 	DD	013405H
 xdata	ENDS
 ;	COMDAT xdata
@@ -259,12 +267,9 @@ $unwind$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DQ 00002740a00040a01r ; 3.4117e-309
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DD 0a1801H
-	DD	0a6418H
-	DD	095418H
-	DD	083418H
-	DD	0f0143218H
-	DD	07010e012H
+$unwind$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DQ 0000a6418000a1801r ; 1.44505e-308
+	DQ	00008341800095418r		; 1.14084e-308
+	DQ	07010e012f0143218r		; 6.5498e+231
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1692,71 +1697,366 @@ $LN301@main:
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
-;	COMDAT ?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z
+;	COMDAT ?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z
 _TEXT	SEGMENT
-matrix$ = 64
-x_matrix$dead$ = 72
-y_matrix$dead$ = 80
-?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z PROC			; ClearMatrix, COMDAT
+M$dead$ = 64
+N$dead$ = 72
+K$dead$ = 80
+A$ = 88
+B$ = 96
+C$ = 104
+?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z PROC ; MultiplicationWithVectorization, COMDAT
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 321
-$LN32:
+; Line 204
+$LN46:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
 	mov	QWORD PTR [rsp+24], rsi
-	push	rdi
+	mov	QWORD PTR [rsp+32], rdi
+	push	r12
 	push	r14
 	push	r15
 	sub	rsp, 32					; 00000020H
-	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
-	mov	r14, rcx
-; Line 326
-	movsxd	rbp, DWORD PTR ?y_result@@3HA		; y_result
-	mov	r15d, 4
-	npad	1
-$LL4@ClearMatri:
-; Line 324
-	xor	esi, esi
-$LL7@ClearMatri:
-; Line 326
-	xor	ebx, ebx
-	test	rbp, rbp
-	jle	SHORT $LN5@ClearMatri
-	npad	7
-$LL10@ClearMatri:
-; Line 328
-	test	edi, edi
-	jle	SHORT $LN8@ClearMatri
-	mov	rax, QWORD PTR [r14]
-	mov	r8, rdi
-	shl	r8, 2
+; Line 212
+	mov	rax, QWORD PTR B$[rsp]
+	mov	r15, r9
+	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+; Line 214
+	mov	ebp, 4
+	mov	r12, QWORD PTR C$[rsp]
+	mov	rbx, rsi
+	sub	r12, r9
+	mov	r14, QWORD PTR [rax]
+$LL4@Multiplica:
+; Line 208
+	mov	rdi, QWORD PTR [r12+r15]
+	test	esi, esi
+	jle	SHORT $LN6@Multiplica
+; Line 207
+	mov	r8, rbx
 	xor	edx, edx
-	mov	rcx, QWORD PTR [rax+rsi]
-	mov	rcx, QWORD PTR [rcx+rbx*8]
+	shl	r8, 2
+	mov	rcx, rdi
 	call	memset
-$LN8@ClearMatri:
-; Line 326
-	inc	rbx
-	cmp	rbx, rbp
-	jl	SHORT $LL10@ClearMatri
-$LN5@ClearMatri:
-; Line 324
-	add	rsi, 8
-	cmp	rsi, 32					; 00000020H
-	jl	SHORT $LL7@ClearMatri
-; Line 322
-	add	r14, 8
-	sub	r15, 1
-	jne	SHORT $LL4@ClearMatri
-; Line 335
+$LN6@Multiplica:
+; Line 213
+	mov	rax, QWORD PTR [r15]
+	xor	edx, edx
+	movss	xmm3, DWORD PTR [rax]
+	movaps	xmm4, xmm3
+	shufps	xmm4, xmm4, 0
+; Line 214
+	test	esi, esi
+	jle	$LN24@Multiplica
+	cmp	esi, 16
+	jb	$LN24@Multiplica
+; Line 212
+	lea	eax, DWORD PTR [rsi-1]
+	movsxd	rcx, eax
+	lea	rax, QWORD PTR [r14+rcx*4]
+	lea	r8, QWORD PTR [rdi+rcx*4]
+	cmp	rdi, rax
+	ja	SHORT $LN25@Multiplica
+	cmp	r8, r14
+	jae	$LN24@Multiplica
+$LN25@Multiplica:
+	mov	ecx, esi
+	and	ecx, -2147483633			; ffffffff8000000fH
+	jge	SHORT $LN44@Multiplica
+	dec	ecx
+	or	ecx, -16
+	inc	ecx
+$LN44@Multiplica:
+	mov	eax, esi
+	sub	eax, ecx
+	mov	rcx, r14
+; Line 214
+	movsxd	r8, eax
+	sub	rcx, rdi
+	lea	rax, QWORD PTR [rdi+16]
+	npad	8
+$LL13@Multiplica:
+; Line 215
+	movups	xmm0, XMMWORD PTR [rax-16]
+	add	rdx, 16
+	movups	xmm1, XMMWORD PTR [rcx+rax-16]
+	movups	xmm2, XMMWORD PTR [rax+rcx]
+	mulps	xmm1, xmm4
+	mulps	xmm2, xmm4
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax-16], xmm1
+	movups	xmm0, XMMWORD PTR [rax]
+	movups	xmm1, XMMWORD PTR [rcx+rax+16]
+	addps	xmm2, xmm0
+	mulps	xmm1, xmm4
+	movups	XMMWORD PTR [rax], xmm2
+	movups	xmm0, XMMWORD PTR [rax+16]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax+16], xmm1
+	movups	xmm0, XMMWORD PTR [rax+32]
+	movups	xmm1, XMMWORD PTR [rcx+rax+32]
+	mulps	xmm1, xmm4
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax+32], xmm1
+	add	rax, 64					; 00000040H
+	cmp	rdx, r8
+	jl	SHORT $LL13@Multiplica
+$LN24@Multiplica:
+; Line 214
+	cmp	rdx, rbx
+	jge	$LN8@Multiplica
+	mov	rax, rbx
+	mov	r8, r14
+	sub	rax, rdx
+	sub	r8, rdi
+	cmp	rax, 4
+	jl	SHORT $LC35@Multiplica
+	lea	rcx, QWORD PTR [rdx+1]
+	lea	rcx, QWORD PTR [rdi+rcx*4]
+	npad	7
+$LL36@Multiplica:
+; Line 215
+	movaps	xmm0, xmm3
+	lea	rax, QWORD PTR [rsi-3]
+	mulss	xmm0, DWORD PTR [r8+rcx-4]
+	movaps	xmm1, xmm3
+	add	rdx, 4
+	addss	xmm0, DWORD PTR [rcx-4]
+	movss	DWORD PTR [rcx-4], xmm0
+	movaps	xmm0, xmm3
+	mulss	xmm1, DWORD PTR [r8+rcx]
+	addss	xmm1, DWORD PTR [rcx]
+	movss	DWORD PTR [rcx], xmm1
+	movaps	xmm1, xmm3
+	mulss	xmm0, DWORD PTR [r8+rcx+4]
+	addss	xmm0, DWORD PTR [rcx+4]
+	movss	DWORD PTR [rcx+4], xmm0
+	mulss	xmm1, DWORD PTR [r8+rcx+8]
+	addss	xmm1, DWORD PTR [rcx+8]
+	movss	DWORD PTR [rcx+8], xmm1
+	add	rcx, 16
+	cmp	rdx, rax
+	jl	SHORT $LL36@Multiplica
+$LC35@Multiplica:
+; Line 214
+	cmp	rdx, rbx
+	jge	SHORT $LN8@Multiplica
+	lea	rax, QWORD PTR [rdi+rdx*4]
+$LC23@Multiplica:
+; Line 215
+	movaps	xmm0, xmm3
+	inc	rdx
+	mulss	xmm0, DWORD PTR [r8+rax]
+	addss	xmm0, DWORD PTR [rax]
+	movss	DWORD PTR [rax], xmm0
+	add	rax, 4
+	cmp	rdx, rbx
+	jl	SHORT $LC23@Multiplica
+$LN8@Multiplica:
+; Line 205
+	add	r15, 8
+	sub	rbp, 1
+	jne	$LL4@Multiplica
+; Line 218
 	mov	rbx, QWORD PTR [rsp+64]
 	mov	rbp, QWORD PTR [rsp+72]
 	mov	rsi, QWORD PTR [rsp+80]
+	mov	rdi, QWORD PTR [rsp+88]
 	add	rsp, 32					; 00000020H
 	pop	r15
 	pop	r14
-	pop	rdi
+	pop	r12
 	ret	0
-?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z ENDP			; ClearMatrix
+?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z ENDP ; MultiplicationWithVectorization
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
+_TEXT	SEGMENT
+M$dead$ = 64
+N$dead$ = 72
+K$dead$ = 80
+A$ = 88
+B$ = 96
+C$ = 104
+?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z PROC ; MultiplicationWithoutVectorization, COMDAT
+; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
+; Line 221
+$LN37:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rbp
+	mov	QWORD PTR [rsp+24], rsi
+	mov	QWORD PTR [rsp+32], rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 32					; 00000020H
+; Line 229
+	mov	rax, QWORD PTR B$[rsp]
+	mov	rsi, r9
+	movsxd	r12, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+; Line 232
+	mov	ebp, 4
+	mov	r15, QWORD PTR C$[rsp]
+	mov	rbx, r12
+	sub	r15, r9
+	mov	r14, QWORD PTR [rax]
+$LL4@Multiplica:
+; Line 225
+	mov	rdi, QWORD PTR [r15+rsi]
+	test	r12d, r12d
+	jle	SHORT $LN6@Multiplica
+; Line 224
+	mov	r8, rbx
+	xor	edx, edx
+	shl	r8, 2
+	mov	rcx, rdi
+	call	memset
+$LN6@Multiplica:
+; Line 230
+	mov	rax, QWORD PTR [rsi]
+; Line 232
+	mov	r8, r14
+	sub	r8, rdi
+	xor	ecx, ecx
+	movss	xmm2, DWORD PTR [rax]
+	cmp	rbx, 4
+	jl	SHORT $LC28@Multiplica
+; Line 229
+	lea	rdx, QWORD PTR [rdi+4]
+	npad	13
+; Line 232
+$LL29@Multiplica:
+; Line 233
+	movaps	xmm0, xmm2
+	lea	rax, QWORD PTR [r12-3]
+	mulss	xmm0, DWORD PTR [r8+rdx-4]
+	movaps	xmm1, xmm2
+	add	rcx, 4
+	addss	xmm0, DWORD PTR [rdx-4]
+	movss	DWORD PTR [rdx-4], xmm0
+	movaps	xmm0, xmm2
+	mulss	xmm1, DWORD PTR [rdx+r8]
+	addss	xmm1, DWORD PTR [rdx]
+	movss	DWORD PTR [rdx], xmm1
+	movaps	xmm1, xmm2
+	mulss	xmm0, DWORD PTR [r8+rdx+4]
+	addss	xmm0, DWORD PTR [rdx+4]
+	movss	DWORD PTR [rdx+4], xmm0
+	mulss	xmm1, DWORD PTR [r8+rdx+8]
+	addss	xmm1, DWORD PTR [rdx+8]
+	movss	DWORD PTR [rdx+8], xmm1
+	add	rdx, 16
+	cmp	rcx, rax
+	jl	SHORT $LL29@Multiplica
+$LC28@Multiplica:
+; Line 232
+	cmp	rcx, rbx
+	jge	SHORT $LN8@Multiplica
+	lea	rax, QWORD PTR [rdi+rcx*4]
+$LC13@Multiplica:
+; Line 233
+	movaps	xmm0, xmm2
+	inc	rcx
+	mulss	xmm0, DWORD PTR [rax+r8]
+	addss	xmm0, DWORD PTR [rax]
+	movss	DWORD PTR [rax], xmm0
+	add	rax, 4
+	cmp	rcx, rbx
+	jl	SHORT $LC13@Multiplica
+$LN8@Multiplica:
+; Line 222
+	add	rsi, 8
+	sub	rbp, 1
+	jne	$LL4@Multiplica
+; Line 236
+	mov	rbx, QWORD PTR [rsp+64]
+	mov	rbp, QWORD PTR [rsp+72]
+	mov	rsi, QWORD PTR [rsp+80]
+	mov	rdi, QWORD PTR [rsp+88]
+	add	rsp, 32					; 00000020H
+	pop	r15
+	pop	r14
+	pop	r12
+	ret	0
+?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z ENDP ; MultiplicationWithoutVectorization
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?ManualVectorization@@YAXHHHPEIAPEAM00@Z
+_TEXT	SEGMENT
+M$dead$ = 8
+N$dead$ = 16
+K$dead$ = 24
+A$ = 32
+B$ = 40
+C$ = 48
+?ManualVectorization@@YAXHHHPEIAPEAM00@Z PROC		; ManualVectorization, COMDAT
+; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
+; Line 239
+$LN34:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rsi
+	mov	QWORD PTR [rsp+24], rdi
+	mov	QWORD PTR [rsp+32], r14
+; Line 247
+	mov	rax, QWORD PTR B$[rsp]
+	mov	r10, r9
+	mov	rdi, QWORD PTR C$[rsp]
+	mov	r11d, 4
+	mov	ebx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	sub	rdi, r9
+	mov	r14, QWORD PTR [rax]
+	npad	13
+$LL4@ManualVect:
+; Line 242
+	mov	rdx, QWORD PTR [rdi+r10]
+	lea	r9d, DWORD PTR [rbx-1]
+	shr	r9d, 3
+; Line 243
+	test	ebx, ebx
+	jle	SHORT $LN32@ManualVect
+; Line 242
+	vxorps	xmm0, xmm0, xmm0
+	mov	rcx, rdx
+	lea	r8d, DWORD PTR [r9+1]
+	npad	5
+$LL7@ManualVect:
+; Line 244
+	vmovups	YMMWORD PTR [rcx], ymm0
+	lea	rcx, QWORD PTR [rcx+32]
+	sub	r8, 1
+	jne	SHORT $LL7@ManualVect
+$LN32@ManualVect:
+; Line 249
+	mov	rax, QWORD PTR [r10]
+	vbroadcastss ymm2, DWORD PTR [rax]
+; Line 250
+	test	ebx, ebx
+	jle	SHORT $LN8@ManualVect
+; Line 247
+	mov	r8, r14
+	lea	ecx, DWORD PTR [r9+1]
+	sub	r8, rdx
+	npad	12
+$LL13@ManualVect:
+; Line 252
+	vmovups	ymm1, YMMWORD PTR [rdx]
+	vfmadd231ps ymm1, ymm2, YMMWORD PTR [r8+rdx]
+	vmovups	YMMWORD PTR [rdx], ymm1
+	lea	rdx, QWORD PTR [rdx+32]
+	sub	rcx, 1
+	jne	SHORT $LL13@ManualVect
+$LN8@ManualVect:
+; Line 240
+	add	r10, 8
+	sub	r11, 1
+	vzeroupper
+	jne	SHORT $LL4@ManualVect
+; Line 259
+	mov	rbx, QWORD PTR [rsp+8]
+	mov	rsi, QWORD PTR [rsp+16]
+	mov	rdi, QWORD PTR [rsp+24]
+	mov	r14, QWORD PTR [rsp+32]
+	ret	0
+?ManualVectorization@@YAXHHHPEIAPEAM00@Z ENDP		; ManualVectorization
 _TEXT	ENDS
 END
