@@ -17,10 +17,10 @@ void ManualVectorization(int M, int N, int K, float** __restrict A, float** __re
 
 void ClearMatrix(float**** matrix, int x_matrix, int y_matrix);
 
-const int size = 300;
+const int size = 10;
 
-int x_matrix1 = 1;
-int y_matrix1 = 4;
+int x_matrix1 = 10;
+int y_matrix1 = 40;
 int x_matrix2 = y_matrix1;
 int y_matrix2 = x_matrix1;
 int x_result = y_matrix1;
