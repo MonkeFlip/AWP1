@@ -4,20 +4,20 @@
 #include <chrono>
 #include <immintrin.h>
 
-void VectorizedAdd(int x_matrix, int y_matrix, float** matrixToAdd, float** result);
-void NonVectorizedAdd(int x_matrix, int y_matrix, float** matrixToAdd, float** result);
+void VectorizedAdd(int x_matrix_size, int y_matrix_size, float** matrixToAdd, float** result);
+void NonVectorizedAdd(int x_matrix_size, int y_matrix_size, float** matrixToAdd, float** result);
 
-void MultiplicationWithVectorization(int M, int N, int K, float** __restrict A, float** __restrict B, float** __restrict C);
-void MultiplicationWithoutVectorization(int M, int N, int K, float** A, float** B, float** C);
+void MultiplicationWithVectorization(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float**  A, float**  B, float**  C);
+void MultiplicationWithoutVectorization(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float** A, float** B, float** C);
 
-void DisplayMatrix(float**** matrix, int x_matrix, int y_matrix);
-void FillMatrix(float**** matrix, int x_matrix, int y_matrix);
+void DisplayMatrix(float**** matrix, int x_matrix_size, int y_matrix_size);
+void FillMatrix(float**** matrix, int x_matrix_size, int y_matrix_size);
 
-void ManualVectorization(int M, int N, int K, float** __restrict A, float** __restrict B, float** __restrict C);
+void ManuallyVectorizedMultiplication(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float**  A, float**  B, float**  C);
 
-void ClearMatrix(float**** matrix, int x_matrix, int y_matrix);
+void ClearMatrix(float**** matrix, int x_matrix_size, int y_matrix_size);
 
-const int size = 200;
+const int size = 300;
 
 int x_matrix1 = 1;
 int y_matrix1 = 4;
@@ -99,12 +99,6 @@ int main()
 
 	FillMatrix(matrix1, x_matrix1, y_matrix1);
 	FillMatrix(matrix2, x_matrix2, y_matrix2);
-	//std::cout << "Matrix1:" << std::endl;
-	//DisplayMatrix(matrix1, x_matrix1, y_matrix1);
-	//std::cout << "Matrix2:" << std::endl;
-	//DisplayMatrix(matrix2, x_matrix2, y_matrix2);
-
-	////////////////////////////////////
 
 	high_resolution_clock::time_point t1 = high_resolution_clock::now();
 	for (int i = 0; i < size; i++)
@@ -149,7 +143,7 @@ int main()
 		{
 			for (int r = 0; r < size; r++)
 			{
-				ManualVectorization(y_matrix1, x_matrix2, x_matrix1, matrix1[i][r], matrix2[r][j], temp);
+				ManuallyVectorizedMultiplication(y_matrix1, x_matrix2, x_matrix1, matrix1[i][r], matrix2[r][j], temp);
 				NonVectorizedAdd(y_matrix1, x_matrix2, temp, result[i][j]);
 			}
 		}
@@ -161,53 +155,53 @@ int main()
 	ClearMatrix(result, x_result, y_result);
 }
 
-void MultiplicationWithVectorization(int M, int N, int K, float** __restrict A, float** __restrict B, float** __restrict C)
+void MultiplicationWithVectorization(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float**  A, float**  B, float**  C)
 {
-	for (int i = 0; i < M; ++i)
+	for (int i = 0; i < y_matrix1_size; ++i)
 	{
 		float* c = C[i];
-		for (int j = 0; j < N; ++j)
+		for (int j = 0; j < x_matrix2_size; ++j)
 			c[j] = 0;
-		for (int k = 0; k < K; ++k)
+		for (int k = 0; k < x_matrix1_size; ++k)
 		{
 			const float* b = B[k];
 			float a = A[i][k];
-			for (int j = 0; j < N; ++j)
+			for (int j = 0; j < x_matrix2_size; ++j)
 				c[j] += a * b[j];
 		}
 	}
 }
 
-void MultiplicationWithoutVectorization(int M, int N, int K, float** A, float** B, float** C)
+void MultiplicationWithoutVectorization(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float** A, float** B, float** C)
 {
-	for (int i = 0; i < M; ++i)
+	for (int i = 0; i < y_matrix1_size; ++i)
 	{
 		float* c = C[i];
-		for (int j = 0; j < N; ++j)
+		for (int j = 0; j < x_matrix2_size; ++j)
 			c[j] = 0;
-		for (int k = 0; k < K; ++k)
+		for (int k = 0; k < x_matrix1_size; ++k)
 		{
 			const float* b = B[k];
 			float a = A[i][k];
 #pragma loop(no_vector)
-			for (int j = 0; j < N; ++j)
+			for (int j = 0; j < x_matrix2_size; ++j)
 				c[j] += a * b[j];
 		}
 	}
 }
 
-void ManualVectorization(int M, int N, int K, float** __restrict A, float** __restrict B, float** __restrict C)
+void ManuallyVectorizedMultiplication(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float**  A, float**  B, float**  C)
 {
-	for (int i = 0; i < M; ++i)
+	for (int i = 0; i < y_matrix1_size; ++i)
 	{
 		float* c = C[i];
-		for (int j = 0; j < N; j += 8)
+		for (int j = 0; j < x_matrix2_size; j += 8)
 			_mm256_storeu_ps(c + j + 0, _mm256_setzero_ps());
-		for (int k = 0; k < K; ++k)
+		for (int k = 0; k < x_matrix1_size; ++k)
 		{
 			const float* b = B[k];
 			__m256 a = _mm256_set1_ps(A[i][k]);
-			for (int j = 0; j < N; j += 8)
+			for (int j = 0; j < x_matrix2_size; j += 8)
 			{
 				_mm256_storeu_ps(c + j + 0, _mm256_fmadd_ps(a,
 					_mm256_loadu_ps(b + j + 0), _mm256_loadu_ps(c + j + 0)));
@@ -239,7 +233,7 @@ void NonVectorizedAdd(int x_matrix, int y_matrix, float** matrixToAdd, float** r
 	}
 }
 
-void DisplayMatrix(float**** matrix, int x_matrix, int y_matrix)
+void DisplayMatrix(float**** matrix, int x_matrix_size, int y_matrix)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -247,7 +241,7 @@ void DisplayMatrix(float**** matrix, int x_matrix, int y_matrix)
 		{
 			for (int r = 0; r < y_matrix; r++)
 			{
-				for (int k = 0; k < x_matrix; k++)
+				for (int k = 0; k < x_matrix_size; k++)
 				{
 					std::cout << matrix[i][j][r][k]<<" ";
 				}
@@ -257,16 +251,16 @@ void DisplayMatrix(float**** matrix, int x_matrix, int y_matrix)
 	std::cout << std::endl;
 }
 
-void FillMatrix(float**** matrix, int x_matrix, int y_matrix)
+void FillMatrix(float**** matrix, int x_matrix_size, int y_matrix_size)
 {
 	int counter = 0;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			for (int r = 0; r < y_matrix; r++)
+			for (int r = 0; r < y_matrix_size; r++)
 			{
-				for (int k = 0; k < x_matrix; k++)
+				for (int k = 0; k < x_matrix_size; k++)
 				{
 					matrix[i][j][r][k] = counter++;
 				}
@@ -275,15 +269,15 @@ void FillMatrix(float**** matrix, int x_matrix, int y_matrix)
 	}
 }
 
-void ClearMatrix(float**** matrix, int x_matrix, int y_matrix)
+void ClearMatrix(float**** matrix, int x_matrix_size, int y_matrix_size)
 {
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			for (int r = 0; r < y_matrix; r++)
+			for (int r = 0; r < y_matrix_size; r++)
 			{
-				for (int k = 0; k < x_matrix; k++)
+				for (int k = 0; k < x_matrix_size; k++)
 				{
 					matrix[i][j][r][k] = 0;
 				}

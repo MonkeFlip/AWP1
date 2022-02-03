@@ -83,9 +83,9 @@ PUBLIC	?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z		; ClearMatrix
 PUBLIC	?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z		; FillMatrix
 PUBLIC	?NonVectorizedAdd@@YAXHHPEAPEAM0@Z		; NonVectorizedAdd
 PUBLIC	?VectorizedAdd@@YAXHHPEAPEAM0@Z			; VectorizedAdd
-PUBLIC	?ManualVectorization@@YAXHHHPEIAPEAM00@Z	; ManualVectorization
+PUBLIC	?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z ; ManuallyVectorizedMultiplication
 PUBLIC	?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z ; MultiplicationWithoutVectorization
-PUBLIC	?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z ; MultiplicationWithVectorization
+PUBLIC	?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z ; MultiplicationWithVectorization
 PUBLIC	main
 PUBLIC	?count@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEBANXZ ; std::chrono::duration<double,std::ratio<1,1> >::count
 PUBLIC	??$?0N$0A@@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEAA@AEBN@Z ; std::chrono::duration<double,std::ratio<1,1> >::duration<double,std::ratio<1,1> ><double,0>
@@ -158,26 +158,26 @@ $pdata$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN34
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN34
-	DD	imagerel $LN34+202
-	DD	imagerel $unwind$?ManualVectorization@@YAXHHHPEIAPEAM00@Z
+$pdata$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DD imagerel $LN34@ManuallyVe
+	DD	imagerel $LN34@ManuallyVe+186
+	DD	imagerel $unwind$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN37
-	DD	imagerel $LN37+306
+$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN37@Multiplica
+	DD	imagerel $LN37@Multiplica+306
 	DD	imagerel $unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DD imagerel $LN46
-	DD	imagerel $LN46+497
-	DD	imagerel $unwind$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z
+$pdata$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN46@Multiplica
+	DD	imagerel $LN46@Multiplica+497
+	DD	imagerel $unwind$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$main DD	imagerel $LN644
-	DD	imagerel $LN644+4004
+	DD	imagerel $LN644+4020
 	DD	imagerel $unwind$main
 pdata	ENDS
 ;	COMDAT pdata
@@ -211,30 +211,22 @@ $unwind$main DD	0b2001H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z DD 0c1e01H
-	DD	0b741eH
-	DD	0a641eH
-	DD	09541eH
-	DD	08341eH
-	DD	0f01a321eH
+$unwind$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
+	DQ	00009541e000a641er		; 1.2973e-308
+	DQ	0f01a321e0008341er		; -1.01674e+232
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD 0c1e01H
-	DD	0b741eH
-	DD	0a641eH
-	DD	09541eH
-	DD	08341eH
-	DD	0f01a321eH
+$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
+	DQ	00009541e000a641er		; 1.2973e-308
+	DQ	0f01a321e0008341er		; -1.01674e+232
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?ManualVectorization@@YAXHHHPEIAPEAM00@Z DD 081401H
-	DD	04e414H
-	DD	03740fH
-	DD	02640aH
+$unwind$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DQ 00004e41400081401r ; 6.80168e-309
+	DQ	00002640a0003740fr		; 3.32479e-309
 	DD	013405H
 xdata	ENDS
 ;	COMDAT xdata
@@ -405,20 +397,20 @@ $LN644:
 	push	r15
 	sub	rsp, 144				; 00000090H
 ; Line 36
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	movaps	XMMWORD PTR [rsp+128], xmm6
 	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 37
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	mov	QWORD PTR $T89[rsp], rax
 	mov	r13, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 38
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	mov	QWORD PTR $T87[rsp], rax
 	mov	r12, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	r15d, 200				; 000000c8H
+	mov	r15d, 300				; 0000012cH
 	mov	QWORD PTR $T86[rsp], rax
 	mov	rsi, r13
 	mov	QWORD PTR tv9440[rsp], r15
@@ -429,14 +421,14 @@ $LN644:
 	mov	edi, r15d
 $LL4@main:
 ; Line 43
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 44
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	mov	QWORD PTR [rsi+rbx], rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 45
-	mov	ecx, 1600				; 00000640H
+	mov	ecx, 2400				; 00000960H
 	mov	QWORD PTR [rbx], rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 	mov	QWORD PTR [r14+rbx], rax
@@ -474,7 +466,7 @@ $LL10@main:
 	mov	rcx, QWORD PTR [rdi+r14]
 	mov	QWORD PTR [rbx+rcx], rax
 	add	rbx, 8
-	cmp	rbx, 1600				; 00000640H
+	cmp	rbx, 2400				; 00000960H
 	jl	SHORT $LL10@main
 ; Line 49
 	add	rdi, 8
@@ -483,7 +475,7 @@ $LL10@main:
 ; Line 59
 	mov	r12, QWORD PTR $T87[rsp]
 	mov	rsi, r13
-	mov	r14d, 200				; 000000c8H
+	mov	r14d, 300				; 0000012cH
 $LL13@main:
 ; Line 61
 	xor	edi, edi
@@ -502,7 +494,7 @@ $LL19@main:
 	jl	SHORT $LL19@main
 ; Line 61
 	add	rdi, 8
-	cmp	rdi, 1600				; 00000640H
+	cmp	rdi, 2400				; 00000960H
 	jl	SHORT $LL16@main
 ; Line 59
 	add	rsi, 8
@@ -511,7 +503,7 @@ $LL19@main:
 ; Line 70
 	mov	eax, DWORD PTR ?y_matrix2@@3HA		; y_matrix2
 	mov	r14, r12
-	mov	r12d, 200				; 000000c8H
+	mov	r12d, 300				; 0000012cH
 	mov	r15d, r12d
 	npad	2
 $LL22@main:
@@ -544,7 +536,7 @@ $LL28@main:
 $LN23@main:
 ; Line 72
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL25@main
 ; Line 70
 	add	r14, 8
@@ -584,7 +576,7 @@ $LL37@main:
 $LN32@main:
 ; Line 83
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL34@main
 ; Line 81
 	add	r14, 8
@@ -607,23 +599,23 @@ $LL40@main:
 	inc	rbx
 	cmp	rbx, 4
 	jl	SHORT $LL40@main
-; Line 262
+; Line 256
 	xor	edx, edx
-; Line 263
+; Line 257
 	xor	r11d, r11d
 	npad	4
 $LL72@main:
 	mov	r9, QWORD PTR [r13+r11*8]
-; Line 265
+; Line 259
 	mov	r10, r12
 	npad	8
 $LL75@main:
-; Line 267
+; Line 261
 	mov	rcx, QWORD PTR [r9]
 	mov	r8d, 4
 	npad	7
 $LL78@main:
-; Line 271
+; Line 265
 	mov	rax, QWORD PTR [rcx]
 	lea	rcx, QWORD PTR [rcx+8]
 	movd	xmm0, edx
@@ -632,15 +624,15 @@ $LL78@main:
 	movss	DWORD PTR [rax], xmm0
 	sub	r8, 1
 	jne	SHORT $LL78@main
-; Line 265
+; Line 259
 	add	r9, 8
 	sub	r10, 1
 	jne	SHORT $LL75@main
-; Line 263
+; Line 257
 	inc	r11
 	cmp	r11, r12
 	jl	SHORT $LL72@main
-; Line 269
+; Line 263
 	mov	rsi, QWORD PTR $T87[rsp]
 	xor	edx, edx
 	movsxd	r9, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
@@ -649,44 +641,44 @@ $LL78@main:
 	mov	rdi, r12
 	npad	6
 $LL86@main:
-; Line 265
+; Line 259
 	xor	r10d, r10d
 $LL89@main:
-; Line 267
+; Line 261
 	xor	r8d, r8d
 	test	r11, r11
 	jle	SHORT $LN87@main
 	npad	5
 $LL92@main:
-; Line 269
+; Line 263
 	test	r9, r9
 	jle	SHORT $LN90@main
-; Line 271
+; Line 265
 	mov	rax, QWORD PTR [rbx]
 	mov	rcx, QWORD PTR [rax+r10]
 	mov	rax, QWORD PTR [rcx+r8*8]
 	mov	rcx, r9
 $LL95@main:
 	movd	xmm0, edx
-; Line 269
+; Line 263
 	lea	rax, QWORD PTR [rax+4]
-; Line 271
+; Line 265
 	cvtdq2ps xmm0, xmm0
 	inc	edx
 	movss	DWORD PTR [rax-4], xmm0
 	sub	rcx, 1
 	jne	SHORT $LL95@main
 $LN90@main:
-; Line 267
+; Line 261
 	inc	r8
 	cmp	r8, r11
 	jl	SHORT $LL92@main
 $LN87@main:
-; Line 265
+; Line 259
 	add	r10, 8
-	cmp	r10, 1600				; 00000640H
+	cmp	r10, 2400				; 00000960H
 	jl	SHORT $LL89@main
-; Line 263
+; Line 257
 	add	rbx, 8
 	sub	rdi, 1
 	jne	SHORT $LL86@main
@@ -702,7 +694,6 @@ $LN87@main:
 ; Line 700
 	cdq
 	idiv	rdi
-	mov	QWORD PTR tv9635[rsp], 200		; 000000c8H
 	imul	rax, rdx, 1000000000			; 3b9aca00H
 	cdq
 	idiv	rdi
@@ -718,36 +709,39 @@ $LN87@main:
 	mov	rbx, QWORD PTR $T88[rsp]
 ; Line 691
 	mov	QWORD PTR $T89[rsp], r13
+	mov	r13d, 300				; 0000012cH
+	mov	QWORD PTR tv9635[rsp], r13
+	npad	12
 $LL43@main:
 	mov	r13, QWORD PTR $T89[rsp]
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 112
+; Line 106
 	xor	r15d, r15d
-	npad	3
+	npad	5
 $LL46@main:
-; Line 114
+; Line 108
 	xor	edi, edi
 $LL49@main:
-; Line 116
+; Line 110
 	mov	rax, QWORD PTR [rdi+rsi]
 	mov	r9, QWORD PTR [r12+r13]
 	mov	QWORD PTR [rsp+40], rbx
 	mov	rax, QWORD PTR [rax+r15]
 	mov	r9, QWORD PTR [rdi+r9]
 	mov	QWORD PTR [rsp+32], rax
-	call	?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z ; MultiplicationWithVectorization
-; Line 117
+	call	?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z ; MultiplicationWithVectorization
+; Line 111
 	mov	rax, QWORD PTR [r12]
-; Line 221
+; Line 215
 	xor	r11d, r11d
-; Line 117
+; Line 111
 	mov	rsi, QWORD PTR [r15+rax]
-; Line 221
+; Line 215
 	mov	r9, rsi
 	neg	r9
 	cmp	r14, 4
 	jl	$LN636@main
-; Line 116
+; Line 110
 	lea	r8, QWORD PTR [r14-4]
 	shr	r8, 2
 	lea	rdx, QWORD PTR [rsi+8]
@@ -755,9 +749,9 @@ $LL49@main:
 	lea	r10, QWORD PTR [r9+rbx]
 	lea	r11, QWORD PTR [r8*4]
 	npad	9
-; Line 221
+; Line 215
 $LL510@main:
-; Line 225
+; Line 219
 	mov	rcx, QWORD PTR [rdx-8]
 	mov	rax, QWORD PTR [rdx+r10-8]
 	movss	xmm0, DWORD PTR [rcx]
@@ -818,7 +812,7 @@ $LL510@main:
 	sub	r8, 1
 	jne	$LL510@main
 $LN636@main:
-; Line 221
+; Line 215
 	cmp	r11, r14
 	jge	SHORT $LN47@main
 	mov	r8, r14
@@ -826,7 +820,7 @@ $LN636@main:
 	sub	r8, r11
 	lea	r10, QWORD PTR [r9+rbx]
 $LC106@main:
-; Line 225
+; Line 219
 	mov	rcx, QWORD PTR [rdx]
 	mov	rax, QWORD PTR [rdx+r10]
 	add	rdx, 8
@@ -845,16 +839,16 @@ $LC106@main:
 	sub	r8, 1
 	jne	SHORT $LC106@main
 $LN47@main:
-; Line 114
+; Line 108
 	mov	rsi, QWORD PTR $T87[rsp]
 	add	rdi, 8
-	cmp	rdi, 1600				; 00000640H
+	cmp	rdi, 2400				; 00000960H
 	jl	$LL49@main
-; Line 112
+; Line 106
 	add	r15, 8
-	cmp	r15, 1600				; 00000640H
+	cmp	r15, 2400				; 00000960H
 	jl	$LL46@main
-; Line 110
+; Line 104
 	add	r12, 8
 	sub	QWORD PTR tv9635[rsp], 1
 	jne	$LL43@main
@@ -875,14 +869,14 @@ $LN47@main:
 	mov	r8, rax
 	mov	rax, rcx
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 123
+; Line 117
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 123
+; Line 117
 	lea	rdx, OFFSET FLAT:??_C@_0BJ@BFBCKOOG@Vectorized?5method?5time?3?5@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -895,7 +889,7 @@ $LN47@main:
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 123
+; Line 117
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -909,30 +903,30 @@ $LN47@main:
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	mov	r13, QWORD PTR $T86[rsp]
-	mov	r12d, 200				; 000000c8H
+	mov	r12d, 300				; 0000012cH
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 286
+; Line 280
 	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	mov	r15, r13
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 286
+; Line 280
 	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
 $LL148@main:
-; Line 282
+; Line 276
 	xor	esi, esi
 $LL151@main:
-; Line 284
+; Line 278
 	xor	ebx, ebx
 	test	r14, r14
 	jle	SHORT $LN149@main
 	npad	2
 $LL154@main:
-; Line 286
+; Line 280
 	test	rdi, rdi
 	jle	SHORT $LN152@main
-; Line 288
+; Line 282
 	mov	rax, QWORD PTR [r15]
 	mov	r8, rdi
 	shl	r8, 2
@@ -941,16 +935,16 @@ $LL154@main:
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	memset
 $LN152@main:
-; Line 284
+; Line 278
 	inc	rbx
 	cmp	rbx, r14
 	jl	SHORT $LL154@main
 $LN149@main:
-; Line 282
+; Line 276
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL151@main
-; Line 280
+; Line 274
 	add	r15, 8
 	sub	r12, 1
 	jne	SHORT $LL148@main
@@ -961,7 +955,7 @@ $LN149@main:
 ; Line 692
 	call	QWORD PTR __imp__Query_perf_counter
 	mov	rcx, rax
-	mov	QWORD PTR tv9481[rsp], 200		; 000000c8H
+	mov	QWORD PTR tv9481[rsp], 300		; 0000012cH
 ; Line 700
 	cdq
 	idiv	rdi
@@ -988,62 +982,62 @@ $LL52@main:
 	mov	rax, QWORD PTR [rax]
 	sub	rbx, rcx
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 130
+; Line 124
 	xor	r11d, r11d
 	mov	QWORD PTR tv9587[rsp], rcx
 	mov	QWORD PTR tv9482[rsp], r11
 	mov	QWORD PTR tv9586[rsp], rax
 	npad	4
 $LL55@main:
-; Line 132
+; Line 126
 	mov	rsi, QWORD PTR $T88[rsp]
 	mov	rdx, rcx
 	mov	QWORD PTR tv9485[rsp], rcx
-	mov	QWORD PTR tv9486[rsp], 200		; 000000c8H
+	mov	QWORD PTR tv9486[rsp], 300		; 0000012cH
 	npad	7
 $LL58@main:
-; Line 134
+; Line 128
 	mov	rax, QWORD PTR [rbx+rdx]
 	mov	r13, rsi
 	mov	r14, QWORD PTR [rdx]
 	mov	r15d, 4
 	sub	r13, r14
 	mov	rcx, QWORD PTR [r11+rax]
-; Line 190
+; Line 184
 	mov	r12, QWORD PTR [rcx]
 	npad	6
 $LL168@main:
-; Line 185
+; Line 179
 	mov	rsi, QWORD PTR [r14+r13]
-; Line 186
+; Line 180
 	test	rdi, rdi
 	jle	SHORT $LN171@main
-; Line 185
+; Line 179
 	mov	r8, rdi
 	xor	edx, edx
 	shl	r8, 2
 	mov	rcx, rsi
 	call	memset
 $LN171@main:
-; Line 191
+; Line 185
 	mov	rax, QWORD PTR [r14]
-; Line 193
+; Line 187
 	mov	rcx, r12
 	sub	rcx, rsi
 	xor	r8d, r8d
 	movss	xmm2, DWORD PTR [rax]
 	cmp	rdi, 4
 	jl	SHORT $LC512@main
-; Line 190
+; Line 184
 	lea	rdx, QWORD PTR [rdi-4]
 	shr	rdx, 2
 	lea	rax, QWORD PTR [rsi+4]
 	inc	rdx
 	lea	r8, QWORD PTR [rdx*4]
 	npad	9
-; Line 193
+; Line 187
 $LL513@main:
-; Line 194
+; Line 188
 	movaps	xmm0, xmm2
 	movaps	xmm1, xmm2
 	mulss	xmm0, DWORD PTR [rcx+rax-4]
@@ -1064,14 +1058,14 @@ $LL513@main:
 	sub	rdx, 1
 	jne	SHORT $LL513@main
 $LC512@main:
-; Line 193
+; Line 187
 	cmp	r8, rdi
 	jge	SHORT $LN172@main
 	mov	rdx, rdi
 	lea	rax, QWORD PTR [rsi+r8*4]
 	sub	rdx, r8
 $LC177@main:
-; Line 194
+; Line 188
 	movaps	xmm0, xmm2
 	mulss	xmm0, DWORD PTR [rcx+rax]
 	addss	xmm0, DWORD PTR [rax]
@@ -1080,11 +1074,11 @@ $LC177@main:
 	sub	rdx, 1
 	jne	SHORT $LC177@main
 $LN172@main:
-; Line 183
+; Line 177
 	add	r14, 8
 	sub	r15, 1
 	jne	$LL168@main
-; Line 232
+; Line 226
 	mov	r11, QWORD PTR tv9482[rsp]
 	xor	r10d, r10d
 	mov	rax, QWORD PTR tv9586[rsp]
@@ -1100,7 +1094,7 @@ $LN172@main:
 	lea	r10, QWORD PTR [rdx*4]
 	npad	9
 $LL545@main:
-; Line 237
+; Line 231
 	mov	rcx, QWORD PTR [r8+r9-8]
 	mov	rax, QWORD PTR [r9-8]
 	movss	xmm0, DWORD PTR [rcx]
@@ -1161,14 +1155,14 @@ $LL545@main:
 	sub	rdx, 1
 	jne	$LL545@main
 $LC520@main:
-; Line 232
+; Line 226
 	cmp	r10, rdi
 	jge	SHORT $LN56@main
 	mov	r9, rdi
 	lea	rdx, QWORD PTR [rsi+r10*8]
 	sub	r9, r10
 $LC182@main:
-; Line 237
+; Line 231
 	mov	rcx, QWORD PTR [r8+rdx]
 	mov	rax, QWORD PTR [rdx]
 	add	rdx, 8
@@ -1187,19 +1181,19 @@ $LC182@main:
 	sub	r9, 1
 	jne	SHORT $LC182@main
 $LN56@main:
-; Line 132
+; Line 126
 	mov	rdx, QWORD PTR tv9485[rsp]
 	add	rdx, 8
 	sub	QWORD PTR tv9486[rsp], 1
 	mov	QWORD PTR tv9485[rsp], rdx
 	jne	$LL58@main
-; Line 130
+; Line 124
 	mov	rcx, QWORD PTR tv9587[rsp]
 	add	r11, 8
 	mov	QWORD PTR tv9482[rsp], r11
-	cmp	r11, 1600				; 00000640H
+	cmp	r11, 2400				; 00000960H
 	jl	$LL55@main
-; Line 128
+; Line 122
 	mov	rax, QWORD PTR tv9480[rsp]
 	add	rax, 8
 	sub	QWORD PTR tv9481[rsp], 1
@@ -1222,14 +1216,14 @@ $LN56@main:
 	mov	r8, rax
 	mov	rax, rcx
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 141
+; Line 135
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 141
+; Line 135
 	lea	rdx, OFFSET FLAT:??_C@_0BN@PCGHHCDK@Not?5vectorized?5method?5time?3?5@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -1242,7 +1236,7 @@ $LN56@main:
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 141
+; Line 135
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -1253,32 +1247,32 @@ $LN56@main:
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 286
+; Line 280
 	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
-	mov	r12d, 200				; 000000c8H
+	mov	r12d, 300				; 0000012cH
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 286
+; Line 280
 	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	mov	r15, QWORD PTR $T86[rsp]
 $LL224@main:
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 282
+; Line 276
 	xor	esi, esi
 $LL227@main:
-; Line 284
+; Line 278
 	xor	ebx, ebx
 	test	r14, r14
 	jle	SHORT $LN225@main
 	npad	4
 $LL230@main:
-; Line 286
+; Line 280
 	test	rdi, rdi
 	jle	SHORT $LN228@main
-; Line 288
+; Line 282
 	mov	rax, QWORD PTR [r15]
 	mov	r8, rdi
 	shl	r8, 2
@@ -1287,16 +1281,16 @@ $LL230@main:
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	memset
 $LN228@main:
-; Line 284
+; Line 278
 	inc	rbx
 	cmp	rbx, r14
 	jl	SHORT $LL230@main
 $LN225@main:
-; Line 282
+; Line 276
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL227@main
-; Line 280
+; Line 274
 	add	r15, 8
 	sub	r12, 1
 	jne	SHORT $LL224@main
@@ -1307,14 +1301,14 @@ $LN225@main:
 ; Line 692
 	call	QWORD PTR __imp__Query_perf_counter
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 152
+; Line 146
 	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 692
 	mov	rcx, rax
 ; Line 700
 	cdq
-	mov	QWORD PTR tv9447[rsp], 200		; 000000c8H
+	mov	QWORD PTR tv9447[rsp], 300		; 0000012cH
 	idiv	rdi
 	imul	rax, rdx, 1000000000			; 3b9aca00H
 	cdq
@@ -1332,15 +1326,15 @@ $LN225@main:
 	npad	9
 $LL61@main:
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 148
+; Line 142
 	xor	ebx, ebx
 $LL64@main:
 	mov	r14, QWORD PTR $T88[rsp]
-; Line 150
+; Line 144
 	xor	r12d, r12d
 	npad	3
 $LL67@main:
-; Line 152
+; Line 146
 	mov	rax, QWORD PTR $T87[rsp]
 	mov	r11d, 4
 	mov	rax, QWORD PTR [r12+rax]
@@ -1352,38 +1346,38 @@ $LL67@main:
 	sub	rdi, r10
 	npad	4
 $LL244@main:
-; Line 203
+; Line 197
 	mov	rcx, QWORD PTR [r10+rdi]
 	lea	r9d, DWORD PTR [rsi-1]
 	shr	r9d, 3
-; Line 204
+; Line 198
 	test	esi, esi
 	jle	SHORT $LN640@main
 	vxorps	xmm0, xmm0, xmm0
-; Line 203
+; Line 197
 	mov	rdx, rcx
 	lea	r8d, DWORD PTR [r9+1]
 	npad	5
 $LL247@main:
-; Line 205
+; Line 199
 	vmovups	YMMWORD PTR [rdx], ymm0
 	lea	rdx, QWORD PTR [rdx+32]
 	sub	r8, 1
 	jne	SHORT $LL247@main
 $LN640@main:
-; Line 209
+; Line 203
 	mov	rax, QWORD PTR [r10]
 	mov	r8, QWORD PTR [r15]
 	vbroadcastss ymm2, DWORD PTR [rax]
-; Line 210
+; Line 204
 	test	esi, esi
 	jle	SHORT $LN248@main
-; Line 208
+; Line 202
 	sub	r8, rcx
 	lea	edx, DWORD PTR [r9+1]
 	npad	12
 $LL253@main:
-; Line 212
+; Line 206
 	vmovups	ymm1, YMMWORD PTR [rcx]
 	vfmadd231ps ymm1, ymm2, YMMWORD PTR [r8+rcx]
 	vmovups	YMMWORD PTR [rcx], ymm1
@@ -1391,25 +1385,25 @@ $LL253@main:
 	sub	rdx, 1
 	jne	SHORT $LL253@main
 $LN248@main:
-; Line 201
+; Line 195
 	add	r10, 8
 	sub	r11, 1
 	vzeroupper
 	jne	SHORT $LL244@main
-; Line 153
+; Line 147
 	mov	rdi, QWORD PTR tv9568[rsp]
-; Line 232
+; Line 226
 	xor	r10d, r10d
 	mov	r14, QWORD PTR $T88[rsp]
-; Line 153
+; Line 147
 	mov	rax, QWORD PTR [rdi]
 	mov	r11, QWORD PTR [rbx+rax]
-; Line 232
+; Line 226
 	mov	r8, r11
 	neg	r8
 	cmp	rsi, 4
 	jl	$LC552@main
-; Line 153
+; Line 147
 	lea	rdx, QWORD PTR [rsi-4]
 	shr	rdx, 2
 	lea	r9, QWORD PTR [r11+8]
@@ -1417,9 +1411,9 @@ $LN248@main:
 	lea	rdi, QWORD PTR [r8+r14]
 	lea	r10, QWORD PTR [rdx*4]
 	npad	9
-; Line 232
+; Line 226
 $LL577@main:
-; Line 237
+; Line 231
 	mov	rcx, QWORD PTR [r9-8]
 	mov	rax, QWORD PTR [r9+rdi-8]
 	movss	xmm0, DWORD PTR [rcx]
@@ -1481,7 +1475,7 @@ $LL577@main:
 	jne	$LL577@main
 	mov	rdi, QWORD PTR tv9568[rsp]
 $LC552@main:
-; Line 232
+; Line 226
 	cmp	r10, rsi
 	jge	SHORT $LN65@main
 	lea	r9, QWORD PTR [r8+r14]
@@ -1489,7 +1483,7 @@ $LC552@main:
 	sub	r8, r10
 	lea	rdx, QWORD PTR [r11+r10*8]
 $LC258@main:
-; Line 237
+; Line 231
 	mov	rcx, QWORD PTR [rdx]
 	mov	rax, QWORD PTR [r9+rdx]
 	add	rdx, 8
@@ -1508,15 +1502,15 @@ $LC258@main:
 	sub	r8, 1
 	jne	SHORT $LC258@main
 $LN65@main:
-; Line 150
+; Line 144
 	add	r12, 8
-	cmp	r12, 1600				; 00000640H
+	cmp	r12, 2400				; 00000960H
 	jl	$LL67@main
-; Line 148
+; Line 142
 	add	rbx, 8
-	cmp	rbx, 1600				; 00000640H
+	cmp	rbx, 2400				; 00000960H
 	jl	$LL64@main
-; Line 146
+; Line 140
 	add	rdi, 8
 	sub	QWORD PTR tv9447[rsp], 1
 	mov	QWORD PTR tv9568[rsp], rdi
@@ -1538,14 +1532,14 @@ $LN65@main:
 	mov	r8, rax
 	mov	rax, rcx
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 159
+; Line 153
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 159
+; Line 153
 	lea	rdx, OFFSET FLAT:??_C@_0CC@MELAHBON@Manually?5vectorized?5method?5time@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -1558,7 +1552,7 @@ $LN65@main:
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 159
+; Line 153
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -1570,24 +1564,24 @@ $LN65@main:
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
 	mov	rax, QWORD PTR $T86[rsp]
-; Line 286
+; Line 280
 	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
 	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
 	npad	2
 $LL300@main:
-; Line 282
+; Line 276
 	xor	esi, esi
 $LL303@main:
-; Line 284
+; Line 278
 	xor	ebx, ebx
 	test	r14, r14
 	jle	SHORT $LN301@main
 	npad	7
 $LL306@main:
-; Line 286
+; Line 280
 	test	rdi, rdi
 	jle	SHORT $LN304@main
-; Line 288
+; Line 282
 	mov	rax, QWORD PTR [rax]
 	mov	r8, rdi
 	shl	r8, 2
@@ -1596,23 +1590,23 @@ $LL306@main:
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	memset
 $LN304@main:
-; Line 284
+; Line 278
 	mov	rax, QWORD PTR $T86[rsp]
 	inc	rbx
 	cmp	rbx, r14
 	jl	SHORT $LL306@main
 $LN301@main:
-; Line 282
+; Line 276
 	mov	rax, QWORD PTR $T86[rsp]
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL303@main
-; Line 280
+; Line 274
 	add	rax, 8
 	sub	QWORD PTR tv9440[rsp], 1
 	mov	QWORD PTR $T86[rsp], rax
 	jne	SHORT $LL300@main
-; Line 162
+; Line 156
 	movaps	xmm6, XMMWORD PTR [rsp+128]
 	xor	eax, eax
 	add	rsp, 144				; 00000090H
@@ -1627,509 +1621,68 @@ $LN301@main:
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
-;	COMDAT ?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z
-_TEXT	SEGMENT
-M$dead$ = 64
-N$dead$ = 72
-K$dead$ = 80
-A$ = 88
-B$ = 96
-C$ = 104
-?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z PROC ; MultiplicationWithVectorization, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 165
-$LN46:
-	mov	QWORD PTR [rsp+8], rbx
-	mov	QWORD PTR [rsp+16], rbp
-	mov	QWORD PTR [rsp+24], rsi
-	mov	QWORD PTR [rsp+32], rdi
-	push	r12
-	push	r14
-	push	r15
-	sub	rsp, 32					; 00000020H
-; Line 173
-	mov	rax, QWORD PTR B$[rsp]
-	mov	r15, r9
-	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-; Line 175
-	mov	ebp, 4
-	mov	r12, QWORD PTR C$[rsp]
-	mov	rbx, rsi
-	sub	r12, r9
-	mov	r14, QWORD PTR [rax]
-$LL4@Multiplica:
-; Line 169
-	mov	rdi, QWORD PTR [r12+r15]
-	test	esi, esi
-	jle	SHORT $LN6@Multiplica
-; Line 168
-	mov	r8, rbx
-	xor	edx, edx
-	shl	r8, 2
-	mov	rcx, rdi
-	call	memset
-$LN6@Multiplica:
-; Line 174
-	mov	rax, QWORD PTR [r15]
-	xor	edx, edx
-	movss	xmm3, DWORD PTR [rax]
-	movaps	xmm4, xmm3
-	shufps	xmm4, xmm4, 0
-; Line 175
-	test	esi, esi
-	jle	$LN24@Multiplica
-	cmp	esi, 16
-	jb	$LN24@Multiplica
-; Line 173
-	lea	eax, DWORD PTR [rsi-1]
-	movsxd	rcx, eax
-	lea	rax, QWORD PTR [r14+rcx*4]
-	lea	r8, QWORD PTR [rdi+rcx*4]
-	cmp	rdi, rax
-	ja	SHORT $LN25@Multiplica
-	cmp	r8, r14
-	jae	$LN24@Multiplica
-$LN25@Multiplica:
-	mov	ecx, esi
-	and	ecx, -2147483633			; ffffffff8000000fH
-	jge	SHORT $LN44@Multiplica
-	dec	ecx
-	or	ecx, -16
-	inc	ecx
-$LN44@Multiplica:
-	mov	eax, esi
-	sub	eax, ecx
-	mov	rcx, r14
-; Line 175
-	movsxd	r8, eax
-	sub	rcx, rdi
-	lea	rax, QWORD PTR [rdi+16]
-	npad	8
-$LL13@Multiplica:
-; Line 176
-	movups	xmm0, XMMWORD PTR [rax-16]
-	add	rdx, 16
-	movups	xmm1, XMMWORD PTR [rcx+rax-16]
-	movups	xmm2, XMMWORD PTR [rax+rcx]
-	mulps	xmm1, xmm4
-	mulps	xmm2, xmm4
-	addps	xmm1, xmm0
-	movups	XMMWORD PTR [rax-16], xmm1
-	movups	xmm0, XMMWORD PTR [rax]
-	movups	xmm1, XMMWORD PTR [rcx+rax+16]
-	addps	xmm2, xmm0
-	mulps	xmm1, xmm4
-	movups	XMMWORD PTR [rax], xmm2
-	movups	xmm0, XMMWORD PTR [rax+16]
-	addps	xmm1, xmm0
-	movups	XMMWORD PTR [rax+16], xmm1
-	movups	xmm0, XMMWORD PTR [rax+32]
-	movups	xmm1, XMMWORD PTR [rcx+rax+32]
-	mulps	xmm1, xmm4
-	addps	xmm1, xmm0
-	movups	XMMWORD PTR [rax+32], xmm1
-	add	rax, 64					; 00000040H
-	cmp	rdx, r8
-	jl	SHORT $LL13@Multiplica
-$LN24@Multiplica:
-; Line 175
-	cmp	rdx, rbx
-	jge	$LN8@Multiplica
-	mov	rax, rbx
-	mov	r8, r14
-	sub	rax, rdx
-	sub	r8, rdi
-	cmp	rax, 4
-	jl	SHORT $LC35@Multiplica
-	lea	rcx, QWORD PTR [rdx+1]
-	lea	rcx, QWORD PTR [rdi+rcx*4]
-	npad	7
-$LL36@Multiplica:
-; Line 176
-	movaps	xmm0, xmm3
-	lea	rax, QWORD PTR [rsi-3]
-	mulss	xmm0, DWORD PTR [r8+rcx-4]
-	movaps	xmm1, xmm3
-	add	rdx, 4
-	addss	xmm0, DWORD PTR [rcx-4]
-	movss	DWORD PTR [rcx-4], xmm0
-	movaps	xmm0, xmm3
-	mulss	xmm1, DWORD PTR [r8+rcx]
-	addss	xmm1, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm1
-	movaps	xmm1, xmm3
-	mulss	xmm0, DWORD PTR [r8+rcx+4]
-	addss	xmm0, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm0
-	mulss	xmm1, DWORD PTR [r8+rcx+8]
-	addss	xmm1, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm1
-	add	rcx, 16
-	cmp	rdx, rax
-	jl	SHORT $LL36@Multiplica
-$LC35@Multiplica:
-; Line 175
-	cmp	rdx, rbx
-	jge	SHORT $LN8@Multiplica
-	lea	rax, QWORD PTR [rdi+rdx*4]
-$LC23@Multiplica:
-; Line 176
-	movaps	xmm0, xmm3
-	inc	rdx
-	mulss	xmm0, DWORD PTR [r8+rax]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rax], xmm0
-	add	rax, 4
-	cmp	rdx, rbx
-	jl	SHORT $LC23@Multiplica
-$LN8@Multiplica:
-; Line 166
-	add	r15, 8
-	sub	rbp, 1
-	jne	$LL4@Multiplica
-; Line 179
-	mov	rbx, QWORD PTR [rsp+64]
-	mov	rbp, QWORD PTR [rsp+72]
-	mov	rsi, QWORD PTR [rsp+80]
-	mov	rdi, QWORD PTR [rsp+88]
-	add	rsp, 32					; 00000020H
-	pop	r15
-	pop	r14
-	pop	r12
-	ret	0
-?MultiplicationWithVectorization@@YAXHHHPEIAPEAM00@Z ENDP ; MultiplicationWithVectorization
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT ?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
-_TEXT	SEGMENT
-M$dead$ = 64
-N$dead$ = 72
-K$dead$ = 80
-A$ = 88
-B$ = 96
-C$ = 104
-?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z PROC ; MultiplicationWithoutVectorization, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 182
-$LN37:
-	mov	QWORD PTR [rsp+8], rbx
-	mov	QWORD PTR [rsp+16], rbp
-	mov	QWORD PTR [rsp+24], rsi
-	mov	QWORD PTR [rsp+32], rdi
-	push	r12
-	push	r14
-	push	r15
-	sub	rsp, 32					; 00000020H
-; Line 190
-	mov	rax, QWORD PTR B$[rsp]
-	mov	rsi, r9
-	movsxd	r12, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-; Line 193
-	mov	ebp, 4
-	mov	r15, QWORD PTR C$[rsp]
-	mov	rbx, r12
-	sub	r15, r9
-	mov	r14, QWORD PTR [rax]
-$LL4@Multiplica:
-; Line 186
-	mov	rdi, QWORD PTR [r15+rsi]
-	test	r12d, r12d
-	jle	SHORT $LN6@Multiplica
-; Line 185
-	mov	r8, rbx
-	xor	edx, edx
-	shl	r8, 2
-	mov	rcx, rdi
-	call	memset
-$LN6@Multiplica:
-; Line 191
-	mov	rax, QWORD PTR [rsi]
-; Line 193
-	mov	r8, r14
-	sub	r8, rdi
-	xor	ecx, ecx
-	movss	xmm2, DWORD PTR [rax]
-	cmp	rbx, 4
-	jl	SHORT $LC28@Multiplica
-; Line 190
-	lea	rdx, QWORD PTR [rdi+4]
-	npad	13
-; Line 193
-$LL29@Multiplica:
-; Line 194
-	movaps	xmm0, xmm2
-	lea	rax, QWORD PTR [r12-3]
-	mulss	xmm0, DWORD PTR [r8+rdx-4]
-	movaps	xmm1, xmm2
-	add	rcx, 4
-	addss	xmm0, DWORD PTR [rdx-4]
-	movss	DWORD PTR [rdx-4], xmm0
-	movaps	xmm0, xmm2
-	mulss	xmm1, DWORD PTR [rdx+r8]
-	addss	xmm1, DWORD PTR [rdx]
-	movss	DWORD PTR [rdx], xmm1
-	movaps	xmm1, xmm2
-	mulss	xmm0, DWORD PTR [r8+rdx+4]
-	addss	xmm0, DWORD PTR [rdx+4]
-	movss	DWORD PTR [rdx+4], xmm0
-	mulss	xmm1, DWORD PTR [r8+rdx+8]
-	addss	xmm1, DWORD PTR [rdx+8]
-	movss	DWORD PTR [rdx+8], xmm1
-	add	rdx, 16
-	cmp	rcx, rax
-	jl	SHORT $LL29@Multiplica
-$LC28@Multiplica:
-; Line 193
-	cmp	rcx, rbx
-	jge	SHORT $LN8@Multiplica
-	lea	rax, QWORD PTR [rdi+rcx*4]
-$LC13@Multiplica:
-; Line 194
-	movaps	xmm0, xmm2
-	inc	rcx
-	mulss	xmm0, DWORD PTR [rax+r8]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rax], xmm0
-	add	rax, 4
-	cmp	rcx, rbx
-	jl	SHORT $LC13@Multiplica
-$LN8@Multiplica:
-; Line 183
-	add	rsi, 8
-	sub	rbp, 1
-	jne	$LL4@Multiplica
-; Line 197
-	mov	rbx, QWORD PTR [rsp+64]
-	mov	rbp, QWORD PTR [rsp+72]
-	mov	rsi, QWORD PTR [rsp+80]
-	mov	rdi, QWORD PTR [rsp+88]
-	add	rsp, 32					; 00000020H
-	pop	r15
-	pop	r14
-	pop	r12
-	ret	0
-?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z ENDP ; MultiplicationWithoutVectorization
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT ?ManualVectorization@@YAXHHHPEIAPEAM00@Z
-_TEXT	SEGMENT
-M$dead$ = 8
-N$dead$ = 16
-K$dead$ = 24
-A$ = 32
-B$ = 40
-C$ = 48
-?ManualVectorization@@YAXHHHPEIAPEAM00@Z PROC		; ManualVectorization, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 200
-$LN34:
-	mov	QWORD PTR [rsp+8], rbx
-	mov	QWORD PTR [rsp+16], rsi
-	mov	QWORD PTR [rsp+24], rdi
-	mov	QWORD PTR [rsp+32], r14
-; Line 208
-	mov	rax, QWORD PTR B$[rsp]
-	mov	r10, r9
-	mov	rdi, QWORD PTR C$[rsp]
-	mov	r11d, 4
-	mov	ebx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-	sub	rdi, r9
-	mov	r14, QWORD PTR [rax]
-	npad	13
-$LL4@ManualVect:
-; Line 203
-	mov	rdx, QWORD PTR [rdi+r10]
-	lea	r9d, DWORD PTR [rbx-1]
-	shr	r9d, 3
-; Line 204
-	test	ebx, ebx
-	jle	SHORT $LN32@ManualVect
-; Line 203
-	vxorps	xmm0, xmm0, xmm0
-	mov	rcx, rdx
-	lea	r8d, DWORD PTR [r9+1]
-	npad	5
-$LL7@ManualVect:
-; Line 205
-	vmovups	YMMWORD PTR [rcx], ymm0
-	lea	rcx, QWORD PTR [rcx+32]
-	sub	r8, 1
-	jne	SHORT $LL7@ManualVect
-$LN32@ManualVect:
-; Line 209
-	mov	rax, QWORD PTR [r10]
-	vbroadcastss ymm2, DWORD PTR [rax]
-; Line 210
-	test	ebx, ebx
-	jle	SHORT $LN8@ManualVect
-; Line 208
-	mov	r8, r14
-	lea	ecx, DWORD PTR [r9+1]
-	sub	r8, rdx
-	npad	12
-$LL13@ManualVect:
-; Line 212
-	vmovups	ymm1, YMMWORD PTR [rdx]
-	vfmadd231ps ymm1, ymm2, YMMWORD PTR [r8+rdx]
-	vmovups	YMMWORD PTR [rdx], ymm1
-	lea	rdx, QWORD PTR [rdx+32]
-	sub	rcx, 1
-	jne	SHORT $LL13@ManualVect
-$LN8@ManualVect:
-; Line 201
-	add	r10, 8
-	sub	r11, 1
-	vzeroupper
-	jne	SHORT $LL4@ManualVect
-; Line 217
-	mov	rbx, QWORD PTR [rsp+8]
-	mov	rsi, QWORD PTR [rsp+16]
-	mov	rdi, QWORD PTR [rsp+24]
-	mov	r14, QWORD PTR [rsp+32]
-	ret	0
-?ManualVectorization@@YAXHHHPEIAPEAM00@Z ENDP		; ManualVectorization
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT ?VectorizedAdd@@YAXHHPEAPEAM0@Z
-_TEXT	SEGMENT
-x_matrix$dead$ = 8
-y_matrix$dead$ = 16
-matrixToAdd$ = 24
-result$ = 32
-?VectorizedAdd@@YAXHHPEAPEAM0@Z PROC			; VectorizedAdd, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 221
-	movsxd	rdx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-	test	rdx, rdx
-	jle	SHORT $LN3@Vectorized
-	sub	r8, r9
-	npad	1
-$LL4@Vectorized:
-; Line 225
-	mov	rcx, QWORD PTR [r9]
-	mov	rax, QWORD PTR [r8+r9]
-	add	r9, 8
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	rdx, 1
-	jne	SHORT $LL4@Vectorized
-$LN3@Vectorized:
-; Line 228
-	ret	0
-?VectorizedAdd@@YAXHHPEAPEAM0@Z ENDP			; VectorizedAdd
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT ?NonVectorizedAdd@@YAXHHPEAPEAM0@Z
-_TEXT	SEGMENT
-x_matrix$dead$ = 8
-y_matrix$dead$ = 16
-matrixToAdd$ = 24
-result$ = 32
-?NonVectorizedAdd@@YAXHHPEAPEAM0@Z PROC			; NonVectorizedAdd, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 232
-	movsxd	rdx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-	test	rdx, rdx
-	jle	SHORT $LN3@NonVectori
-	sub	r8, r9
-	npad	1
-$LL4@NonVectori:
-; Line 237
-	mov	rcx, QWORD PTR [r9]
-	mov	rax, QWORD PTR [r8+r9]
-	add	r9, 8
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	rdx, 1
-	jne	SHORT $LL4@NonVectori
-$LN3@NonVectori:
-; Line 240
-	ret	0
-?NonVectorizedAdd@@YAXHHPEAPEAM0@Z ENDP			; NonVectorizedAdd
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
 ;	COMDAT ?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z
 _TEXT	SEGMENT
 matrix$ = 8
-x_matrix$ = 16
-y_matrix$ = 24
+x_matrix_size$ = 16
+y_matrix_size$ = 24
 ?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z PROC			; FillMatrix, COMDAT
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 261
+; Line 255
 $LN34:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rdi
 	mov	rbx, rcx
-; Line 269
+; Line 263
 	movsxd	r10, edx
 	xor	r9d, r9d
 	movsxd	r11, r8d
-	mov	edi, 200				; 000000c8H
+	mov	edi, 300				; 0000012cH
 	npad	5
 $LL4@FillMatrix:
-; Line 265
+; Line 259
 	xor	r8d, r8d
 $LL7@FillMatrix:
-; Line 267
+; Line 261
 	xor	edx, edx
 	test	r11, r11
 	jle	SHORT $LN5@FillMatrix
 	npad	6
 $LL10@FillMatrix:
-; Line 269
+; Line 263
 	test	r10, r10
 	jle	SHORT $LN8@FillMatrix
-; Line 271
+; Line 265
 	mov	rax, QWORD PTR [rbx]
 	mov	rcx, QWORD PTR [r8+rax]
 	mov	rax, QWORD PTR [rcx+rdx*8]
 	mov	rcx, r10
 	npad	13
 $LL23@FillMatrix:
-; Line 269
+; Line 263
 	movd	xmm0, r9d
 	lea	rax, QWORD PTR [rax+4]
-; Line 271
+; Line 265
 	cvtdq2ps xmm0, xmm0
 	inc	r9d
 	movss	DWORD PTR [rax-4], xmm0
 	sub	rcx, 1
 	jne	SHORT $LL23@FillMatrix
 $LN8@FillMatrix:
-; Line 267
+; Line 261
 	inc	rdx
 	cmp	rdx, r11
 	jl	SHORT $LL10@FillMatrix
 $LN5@FillMatrix:
-; Line 265
+; Line 259
 	add	r8, 8
-	cmp	r8, 1600				; 00000640H
+	cmp	r8, 2400				; 00000960H
 	jl	SHORT $LL7@FillMatrix
-; Line 263
+; Line 257
 	add	rbx, 8
 	sub	rdi, 1
 	jne	SHORT $LL4@FillMatrix
-; Line 276
+; Line 270
 	mov	rbx, QWORD PTR [rsp+8]
 	mov	rdi, QWORD PTR [rsp+16]
 	ret	0
@@ -2139,11 +1692,11 @@ _TEXT	ENDS
 ;	COMDAT ?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z
 _TEXT	SEGMENT
 matrix$ = 64
-x_matrix$dead$ = 72
-y_matrix$dead$ = 80
+x_matrix_size$dead$ = 72
+y_matrix_size$dead$ = 80
 ?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z PROC			; ClearMatrix, COMDAT
 ; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 279
+; Line 273
 $LN32:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
@@ -2154,21 +1707,21 @@ $LN32:
 	sub	rsp, 32					; 00000020H
 	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
 	mov	r14, rcx
-; Line 284
+; Line 278
 	movsxd	rbp, DWORD PTR ?y_result@@3HA		; y_result
-	mov	r15d, 200				; 000000c8H
+	mov	r15d, 300				; 0000012cH
 	npad	1
 $LL4@ClearMatri:
-; Line 282
+; Line 276
 	xor	esi, esi
 $LL7@ClearMatri:
-; Line 284
+; Line 278
 	xor	ebx, ebx
 	test	rbp, rbp
 	jle	SHORT $LN5@ClearMatri
 	npad	7
 $LL10@ClearMatri:
-; Line 286
+; Line 280
 	test	edi, edi
 	jle	SHORT $LN8@ClearMatri
 	mov	rax, QWORD PTR [r14]
@@ -2179,20 +1732,20 @@ $LL10@ClearMatri:
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	memset
 $LN8@ClearMatri:
-; Line 284
+; Line 278
 	inc	rbx
 	cmp	rbx, rbp
 	jl	SHORT $LL10@ClearMatri
 $LN5@ClearMatri:
-; Line 282
+; Line 276
 	add	rsi, 8
-	cmp	rsi, 1600				; 00000640H
+	cmp	rsi, 2400				; 00000960H
 	jl	SHORT $LL7@ClearMatri
-; Line 280
+; Line 274
 	add	r14, 8
 	sub	r15, 1
 	jne	SHORT $LL4@ClearMatri
-; Line 293
+; Line 287
 	mov	rbx, QWORD PTR [rsp+64]
 	mov	rbp, QWORD PTR [rsp+72]
 	mov	rsi, QWORD PTR [rsp+80]
