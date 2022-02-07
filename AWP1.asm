@@ -8,7 +8,16 @@ PUBLIC	??_C@_09IOAHFIDM@?5seconds?4@			; `string'
 PUBLIC	??_C@_0BJ@BFBCKOOG@Vectorized?5method?5time?3?5@ ; `string'
 PUBLIC	??_C@_0BN@PCGHHCDK@Not?5vectorized?5method?5time?3?5@ ; `string'
 PUBLIC	??_C@_0CC@MELAHBON@Manually?5vectorized?5method?5time@ ; `string'
+PUBLIC	??_C@_0BE@HAFLIABF@Matrices?5are?5equal?4@	; `string'
+PUBLIC	??_C@_0BH@FJGDEMMH@Matrices?5aren?8t?5equal?4@	; `string'
 PUBLIC	??_C@_01CLKCMJKC@?5@				; `string'
+PUBLIC	??_C@_04IFFCALBF@?5r?3?5@			; `string'
+PUBLIC	??_C@_04KIEDBDAA@?5k?3?5@			; `string'
+PUBLIC	??_C@_04BAPPHEGF@?5j?3?5@			; `string'
+PUBLIC	??_C@_03CEONNMIO@i?3?5@				; `string'
+PUBLIC	??_C@_04KMJAGADO@m1?3?5@			; `string'
+PUBLIC	??_C@_04LOCFMPNA@m2?3?5@			; `string'
+PUBLIC	??_C@_04GJJKILF@m3?3?5@				; `string'
 PUBLIC	?x_matrix1@@3HA					; x_matrix1
 PUBLIC	?y_matrix1@@3HA					; y_matrix1
 EXTRN	__imp_?rdstate@ios_base@std@@QEBAHXZ:PROC
@@ -18,6 +27,7 @@ EXTRN	__imp_?width@ios_base@std@@QEBA_JXZ:PROC
 EXTRN	__imp_?width@ios_base@std@@QEAA_J_J@Z:PROC
 EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@N@Z:PROC
 EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z:PROC
+EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z:PROC
 EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z:PROC
 EXTRN	__imp_?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ:PROC
 EXTRN	__imp_?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ:PROC
@@ -37,14 +47,51 @@ EXTRN	__imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A:BYTE
 EXTRN	__imp__Query_perf_frequency:PROC
 EXTRN	__security_check_cookie:PROC
 EXTRN	__imp___CxxFrameHandler4:PROC
-?x_matrix1@@3HA DD 01H					; x_matrix1
+?x_matrix1@@3HA DD 0aH					; x_matrix1
 ?_Fake_alloc@std@@3U_Fake_allocator@1@B	ORG $+1		; std::_Fake_alloc
 	ORG $+3
-?y_matrix1@@3HA DD 04H					; y_matrix1
+?y_matrix1@@3HA DD 028H					; y_matrix1
+CONST	ENDS
+;	COMDAT ??_C@_04GJJKILF@m3?3?5@
+CONST	SEGMENT
+??_C@_04GJJKILF@m3?3?5@ DB 'm3: ', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04LOCFMPNA@m2?3?5@
+CONST	SEGMENT
+??_C@_04LOCFMPNA@m2?3?5@ DB 'm2: ', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04KMJAGADO@m1?3?5@
+CONST	SEGMENT
+??_C@_04KMJAGADO@m1?3?5@ DB 'm1: ', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_03CEONNMIO@i?3?5@
+CONST	SEGMENT
+??_C@_03CEONNMIO@i?3?5@ DB 'i: ', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04BAPPHEGF@?5j?3?5@
+CONST	SEGMENT
+??_C@_04BAPPHEGF@?5j?3?5@ DB ' j: ', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04KIEDBDAA@?5k?3?5@
+CONST	SEGMENT
+??_C@_04KIEDBDAA@?5k?3?5@ DB ' k: ', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04IFFCALBF@?5r?3?5@
+CONST	SEGMENT
+??_C@_04IFFCALBF@?5r?3?5@ DB ' r: ', 00H		; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_01CLKCMJKC@?5@
 CONST	SEGMENT
 ??_C@_01CLKCMJKC@?5@ DB ' ', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BH@FJGDEMMH@Matrices?5aren?8t?5equal?4@
+CONST	SEGMENT
+??_C@_0BH@FJGDEMMH@Matrices?5aren?8t?5equal?4@ DB 'Matrices aren''t equal'
+	DB	'.', 00H					; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BE@HAFLIABF@Matrices?5are?5equal?4@
+CONST	SEGMENT
+??_C@_0BE@HAFLIABF@Matrices?5are?5equal?4@ DB 'Matrices are equal.', 00H ; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_0CC@MELAHBON@Manually?5vectorized?5method?5time@
 CONST	SEGMENT
@@ -81,6 +128,7 @@ PUBLIC	??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ ; std::ba
 PUBLIC	??0?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEAA@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@@Z ; std::chrono::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >
 PUBLIC	?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z		; ClearMatrix
 PUBLIC	?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z		; FillMatrix
+PUBLIC	?Compare@@YA_NPEAPEAPEAPEAM00H@Z		; Compare
 PUBLIC	?NonVectorizedAdd@@YAXHHPEAPEAM0@Z		; NonVectorizedAdd
 PUBLIC	?VectorizedAdd@@YAXHHPEAPEAM0@Z			; VectorizedAdd
 PUBLIC	?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z ; ManuallyVectorizedMultiplication
@@ -97,21 +145,22 @@ PUBLIC	?x_result@@3HA					; x_result
 PUBLIC	?y_result@@3HA					; y_result
 PUBLIC	?x_matrix2@@3HA					; x_matrix2
 PUBLIC	?y_matrix2@@3HA					; y_matrix2
+PUBLIC	__real@3fb999999999999a
 PUBLIC	__real@41cdcd6500000000
-EXTRN	__CxxFrameHandler4:PROC
 EXTRN	__std_terminate:PROC
+EXTRN	__CxxFrameHandler4:PROC
 EXTRN	memset:PROC
 EXTRN	_fltused:DWORD
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z DD imagerel $LN4@endl
-	DD	imagerel $LN4@endl+57
+$pdata$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z DD imagerel $LN4
+	DD	imagerel $LN4+57
 	DD	imagerel $unwind$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD imagerel $LN99@operator
-	DD	imagerel $LN99@operator+452
+$pdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD imagerel $LN99
+	DD	imagerel $LN99+452
 	DD	imagerel $unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -122,117 +171,199 @@ $pdata$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$ch
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN8@Sentry_bas
-	DD	imagerel $LN8@Sentry_bas+44
+$pdata$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN8
+	DD	imagerel $LN8+44
 	DD	imagerel $unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN8@Sentry_bas
-	DD	imagerel $LN8@Sentry_bas+36
+$pdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN8
+	DD	imagerel $LN8+36
 	DD	imagerel $unwind$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN24@sentry
-	DD	imagerel $LN24@sentry+123
+$pdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN24
+	DD	imagerel $LN24+123
 	DD	imagerel $unwind$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN13@sentry
-	DD	imagerel $LN13@sentry+62
+$pdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN13
+	DD	imagerel $LN13+62
 	DD	imagerel $unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN32
-	DD	imagerel $LN32+149
+	DD	imagerel $LN32+139
 	DD	imagerel $unwind$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN34
-	DD	imagerel $LN34+148
+$pdata$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DD imagerel $LN32
+	DD	imagerel $LN32+143
 	DD	imagerel $unwind$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DD imagerel $LN34@ManuallyVe
-	DD	imagerel $LN34@ManuallyVe+186
+$pdata$?Compare@@YA_NPEAPEAPEAPEAM00H@Z DD imagerel $LN40
+	DD	imagerel $LN40+354
+	DD	imagerel $unwind$?Compare@@YA_NPEAPEAPEAPEAM00H@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$?Compare@@YA_NPEAPEAPEAPEAM00H@Z DD imagerel $LN40+354
+	DD	imagerel $LN40+755
+	DD	imagerel $chain$0$?Compare@@YA_NPEAPEAPEAPEAM00H@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD imagerel $LN38
+	DD	imagerel $LN38+34
+	DD	imagerel $unwind$?VectorizedAdd@@YAXHHPEAPEAM0@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD imagerel $LN38+34
+	DD	imagerel $LN38+390
+	DD	imagerel $chain$0$?VectorizedAdd@@YAXHHPEAPEAM0@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD imagerel $LN38+390
+	DD	imagerel $LN38+403
+	DD	imagerel $chain$1$?VectorizedAdd@@YAXHHPEAPEAM0@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DD imagerel $LN34
+	DD	imagerel $LN34+242
 	DD	imagerel $unwind$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN37@Multiplica
-	DD	imagerel $LN37@Multiplica+306
+$pdata$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN38
+	DD	imagerel $LN38+330
 	DD	imagerel $unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN46@Multiplica
-	DD	imagerel $LN46@Multiplica+497
+$pdata$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DD imagerel $LN46
+	DD	imagerel $LN46+514
 	DD	imagerel $unwind$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$main DD	imagerel $LN644
-	DD	imagerel $LN644+4020
+$pdata$main DD	imagerel $LN509
+	DD	imagerel $LN509+3325
 	DD	imagerel $unwind$main
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ DD imagerel $LN9@now
-	DD	imagerel $LN9@now+86
+$pdata$?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ DD imagerel $LN9
+	DD	imagerel $LN9+86
 	DD	imagerel $unwind$?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ
 pdata	ENDS
 ;	COMDAT __real@41cdcd6500000000
 CONST	SEGMENT
 __real@41cdcd6500000000 DQ 041cdcd6500000000r	; 1e+09
-?x_result@@3HA DD 04H					; x_result
-?y_result@@3HA DD 04H					; y_result
-?x_matrix2@@3HA DD 04H					; x_matrix2
-?y_matrix2@@3HA DD 01H					; y_matrix2
+CONST	ENDS
+;	COMDAT __real@3fb999999999999a
+CONST	SEGMENT
+__real@3fb999999999999a DQ 03fb999999999999ar	; 0.1
+?x_result@@3HA DD 028H					; x_result
+?y_result@@3HA DD 028H					; y_result
+?x_matrix2@@3HA DD 028H					; x_matrix2
+?y_matrix2@@3HA DD 0aH					; y_matrix2
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ DQ 00006340a00040a01r ; 8.62672e-309
+$unwind$?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ DD 040a01H
+	DD	06340aH
 	DD	07006320aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$main DD	0b2001H
-	DD	086820H
-	DD	0120113H
-	DD	0e00af00cH
-	DD	0c006d008H
-	DD	060037004H
-	DD	03002H
+$unwind$main DD	0a1d01H
+	DD	07681dH
+	DD	0f00cf213H
+	DD	0d008e00aH
+	DD	07004c006H
+	DD	030026003H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
-	DQ	00009541e000a641er		; 1.2973e-308
-	DQ	0f01a321e0008341er		; -1.01674e+232
+$unwind$?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z DD 0c1e01H
+	DD	0b741eH
+	DD	0a641eH
+	DD	09541eH
+	DD	08341eH
+	DD	0f01a321eH
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DQ 0000b741e000c1e01r ; 1.59282e-308
-	DQ	00009541e000a641er		; 1.2973e-308
-	DQ	0f01a321e0008341er		; -1.01674e+232
+$unwind$?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z DD 0c1e01H
+	DD	0b741eH
+	DD	0a641eH
+	DD	09541eH
+	DD	08341eH
+	DD	0f01a321eH
 	DD	0c016e018H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DQ 00004e41400081401r ; 6.80168e-309
-	DQ	00002640a0003740fr		; 3.32479e-309
-	DD	013405H
+$unwind$?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z DD 0b1a01H
+	DD	07c41aH
+	DD	06741aH
+	DD	05641aH
+	DD	04341aH
+	DD	0e018f01aH
+	DD	0d016H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DD 040a01H
-	DD	02740aH
+$chain$1$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD 021H
+	DD	imagerel $LN38
+	DD	imagerel $LN38+34
+	DD	imagerel $unwind$?VectorizedAdd@@YAXHHPEAPEAM0@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD 020521H
+	DD	027405H
+	DD	imagerel $LN38
+	DD	imagerel $LN38+34
+	DD	imagerel $unwind$?VectorizedAdd@@YAXHHPEAPEAM0@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?VectorizedAdd@@YAXHHPEAPEAM0@Z DD 050c01H
+	DD	04640cH
+	DD	03340cH
+	DD	0e00cH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$?Compare@@YA_NPEAPEAPEAPEAM00H@Z DD 020521H
+	DD	046805H
+	DD	imagerel $LN40
+	DD	imagerel $LN40+354
+	DD	imagerel $unwind$?Compare@@YA_NPEAPEAPEAPEAM00H@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?Compare@@YA_NPEAPEAPEAPEAM00H@Z DD 092401H
+	DD	0f020a224H
+	DD	0d01ce01eH
+	DD	07018c01aH
+	DD	050166017H
+	DD	03015H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z DD 020501H
 	DD	013405H
 xdata	ENDS
 ;	COMDAT xdata
@@ -246,13 +377,17 @@ $unwind$?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z DD 0a1801H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD 03c002c04H
+$ip2state$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 04H
+	DB	','
+	DB	00H
+	DB	'<'
 	DB	02H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DW 0e02H
-	DD	imagerel __std_terminate
+$stateUnwindMap$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 02H
+	DB	0eH
+	DD	imagerel __imp___std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -262,18 +397,23 @@ $cppxdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 068H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DQ 03002320600020619r ; 1.96423e-77
+$unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD 020619H
+	DD	030023206H
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD 04a005804H
+$ip2state$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DB 04H
+	DB	'X'
+	DB	00H
+	DB	'J'
 	DB	02H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DW 0c02H
+$stateUnwindMap$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DB 02H
+	DB	0cH
 	DD	imagerel ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 	DB	060H
 xdata	ENDS
@@ -285,14 +425,16 @@ $cppxdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z 
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DQ 00007340f00040f11r ; 1.00175e-308
+$unwind$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD 040f11H
+	DD	07340fH
 	DD	0700b320fH
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DW 03602H
+$ip2state$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 02H
+	DB	'6'
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
@@ -302,47 +444,70 @@ $cppxdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ D
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DQ 00000420400010419r ; 3.58617e-310
+$unwind$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD 010419H
+	DD	04204H
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DQ 03002320600020601r ; 1.96423e-77
+$unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD 020601H
+	DD	030023206H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA DQ 05006320a00020a01r ; 3.21257e+77
+$unwind$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA DD 020a01H
+	DD	05006320aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DQ 0ec06a8025000d60er ; -2.3835e+212
-	DD	0280a4c04H
-	DW	0300cH
+$ip2state$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 0eH
+	DB	0d6H
+	DB	00H
+	DB	'P'
+	DB	02H
+	DB	0a8H
+	DB	06H
+	DB	0ecH
+	DB	04H
+	DB	'L'
+	DB	0aH
+	DB	'('
+	DB	0cH
+	DB	'0'
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$handlerMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DW 01102H
+$handlerMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 02H
+	DB	011H
 	DB	080H
 	DD	imagerel ?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA
-	DW	057dH
+	DB	'}', 05H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$tryMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD 06040402H
+$tryMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 02H
+	DB	04H
+	DB	04H
+	DB	06H
 	DD	imagerel $handlerMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DW 0a0cH
+$stateUnwindMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 0cH
+	DB	0aH
 	DD	imagerel ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
-	DW	03a40H
+	DB	040H
+	DB	03aH
 	DD	imagerel ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
-	DD	07e383040H
-	DD	imagerel __std_terminate
+	DB	040H
+	DB	030H
+	DB	038H
+	DB	07eH
+	DD	imagerel __imp___std_terminate
 	DB	02eH
-	DD	imagerel __std_terminate
+	DD	imagerel __imp___std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -353,41 +518,158 @@ $cppxdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DQ 0000d341600081619r ; 1.83617e-308
-	DQ	0c00ee010f0125216r		; -3.85941
+$unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD 081619H
+	DD	0d3416H
+	DD	0f0125216H
+	DD	0c00ee010H
 	DD	0600b700cH
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z DQ 03002320600020601r ; 1.96423e-77
+$unwind$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z DD 020601H
+	DD	030023206H
 xdata	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ
+_TEXT	SEGMENT
+__$ReturnUdt$ = 48
+?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ PROC ; std::chrono::steady_clock::now, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 690
+$LN9:
+	mov	QWORD PTR [rsp+8], rbx
+	push	rdi
+	sub	rsp, 32					; 00000020H
+	mov	rdi, rcx
+; Line 691
+	call	QWORD PTR __imp__Query_perf_frequency
+	mov	rbx, rax
+; Line 692
+	call	QWORD PTR __imp__Query_perf_counter
+	mov	r9, rax
+; Line 700
+	cdq
+	idiv	rbx
+	imul	rax, rdx, 1000000000			; 3b9aca00H
+	cdq
+	idiv	rbx
+	mov	r8, rax
+	mov	rax, r9
+	cdq
+	idiv	rbx
+; Line 702
+	mov	rbx, QWORD PTR [rsp+48]
+	imul	rcx, rax, 1000000000			; 3b9aca00H
+	mov	rax, rdi
+	add	r8, rcx
+; Line 227
+	mov	QWORD PTR [rdi], r8
+; Line 702
+	add	rsp, 32					; 00000020H
+	pop	rdi
+	ret	0
+?now@steady_clock@chrono@std@@SA?AV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@23@XZ ENDP ; std::chrono::steady_clock::now
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?0_J$0A@@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEAA@AEB_J@Z
+_TEXT	SEGMENT
+this$ = 8
+_Val$ = 16
+??$?0_J$0A@@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEAA@AEB_J@Z PROC ; std::chrono::duration<__int64,std::ratio<1,1000000000> >::duration<__int64,std::ratio<1,1000000000> ><__int64,0>, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 121
+	mov	rax, QWORD PTR [rdx]
+	mov	QWORD PTR [rcx], rax
+	mov	rax, rcx
+	ret	0
+??$?0_J$0A@@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEAA@AEB_J@Z ENDP ; std::chrono::duration<__int64,std::ratio<1,1000000000> >::duration<__int64,std::ratio<1,1000000000> ><__int64,0>
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?count@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEBA_JXZ
+_TEXT	SEGMENT
+this$ = 8
+?count@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEBA_JXZ PROC ; std::chrono::duration<__int64,std::ratio<1,1000000000> >::count, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 133
+	mov	rax, QWORD PTR [rcx]
+; Line 134
+	ret	0
+?count@?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@chrono@std@@QEBA_JXZ ENDP ; std::chrono::duration<__int64,std::ratio<1,1000000000> >::count
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$duration_cast@V?$duration@NU?$ratio@$00$00@std@@@chrono@std@@_JU?$ratio@$00$0DLJKMKAA@@3@$0A@@chrono@std@@YA?AV?$duration@NU?$ratio@$00$00@std@@@01@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@@Z
+_TEXT	SEGMENT
+__$ReturnUdt$ = 8
+_Dur$ = 16
+??$duration_cast@V?$duration@NU?$ratio@$00$00@std@@@chrono@std@@_JU?$ratio@$00$0DLJKMKAA@@3@$0A@@chrono@std@@YA?AV?$duration@NU?$ratio@$00$00@std@@@01@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@@Z PROC ; std::chrono::duration_cast<std::chrono::duration<double,std::ratio<1,1> >,__int64,std::ratio<1,1000000000>,0>, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 447
+	xorps	xmm0, xmm0
+; Line 466
+	mov	rax, rcx
+	cvtsi2sd xmm0, QWORD PTR [rdx]
+	divsd	xmm0, QWORD PTR __real@41cdcd6500000000
+; Line 121
+	movsd	QWORD PTR [rcx], xmm0
+; Line 473
+	ret	0
+??$duration_cast@V?$duration@NU?$ratio@$00$00@std@@@chrono@std@@_JU?$ratio@$00$0DLJKMKAA@@3@$0A@@chrono@std@@YA?AV?$duration@NU?$ratio@$00$00@std@@@01@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@@Z ENDP ; std::chrono::duration_cast<std::chrono::duration<double,std::ratio<1,1> >,__int64,std::ratio<1,1000000000>,0>
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?0N$0A@@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEAA@AEBN@Z
+_TEXT	SEGMENT
+this$ = 8
+_Val$ = 16
+??$?0N$0A@@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEAA@AEBN@Z PROC ; std::chrono::duration<double,std::ratio<1,1> >::duration<double,std::ratio<1,1> ><double,0>, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 121
+	mov	rax, QWORD PTR [rdx]
+	mov	QWORD PTR [rcx], rax
+	mov	rax, rcx
+	ret	0
+??$?0N$0A@@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEAA@AEBN@Z ENDP ; std::chrono::duration<double,std::ratio<1,1> >::duration<double,std::ratio<1,1> ><double,0>
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?count@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEBANXZ
+_TEXT	SEGMENT
+this$ = 8
+?count@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEBANXZ PROC ; std::chrono::duration<double,std::ratio<1,1> >::count, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 133
+	movsd	xmm0, QWORD PTR [rcx]
+; Line 134
+	ret	0
+?count@?$duration@NU?$ratio@$00$00@std@@@chrono@std@@QEBANXZ ENDP ; std::chrono::duration<double,std::ratio<1,1> >::count
+_TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT main
 _TEXT	SEGMENT
-tv9635 = 48
-tv9586 = 48
-tv9568 = 48
-t1$1$ = 56
-tv9481 = 56
-tv9447 = 56
-tv9482 = 64
-t1$3$ = 72
-t1$2$ = 72
-tv9485 = 80
-tv9486 = 88
-tv9480 = 96
-tv9440 = 104
-tv9587 = 112
-$T86 = 208
-$T87 = 216
-$T88 = 224
-$T89 = 232
+$T95 = 48
+$T96 = 56
+t1$3$ = 64
+tv5057 = 64
+tv5118 = 72
+tv5063 = 72
+tv5060 = 80
+tv5044 = 80
+t1$1$ = 88
+tv5059 = 88
+tv5046 = 88
+tv5043 = 96
+t1$2$ = 104
+$T97 = 192
+$T98 = 200
+$T99 = 208
+tv5149 = 208
+tv5147 = 208
+tv5146 = 208
+$T100 = 216
 main	PROC						; COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 30
-$LN644:
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 33
+$LN509:
 	push	rbx
 	push	rsi
 	push	rdi
@@ -395,134 +677,175 @@ $LN644:
 	push	r13
 	push	r14
 	push	r15
-	sub	rsp, 144				; 00000090H
-; Line 36
-	mov	ecx, 2400				; 00000960H
-	movaps	XMMWORD PTR [rsp+128], xmm6
+	sub	rsp, 128				; 00000080H
+; Line 41
+	mov	ecx, 800				; 00000320H
+	movaps	XMMWORD PTR [rsp+112], xmm6
 	call	??_U@YAPEAX_K@Z				; operator new[]
-; Line 37
-	mov	ecx, 2400				; 00000960H
-	mov	QWORD PTR $T89[rsp], rax
+; Line 42
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR $T97[rsp], rax
+	mov	rdi, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 43
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR $T98[rsp], rax
 	mov	r13, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
-; Line 38
-	mov	ecx, 2400				; 00000960H
-	mov	QWORD PTR $T87[rsp], rax
-	mov	r12, rax
-	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	r15d, 300				; 0000012cH
-	mov	QWORD PTR $T86[rsp], rax
-	mov	rsi, r13
-	mov	QWORD PTR tv9440[rsp], r15
-	sub	rsi, r12
-	mov	r14, rax
-	sub	r14, r12
-	mov	rbx, r12
-	mov	edi, r15d
-$LL4@main:
-; Line 43
-	mov	ecx, 2400				; 00000960H
-	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 44
-	mov	ecx, 2400				; 00000960H
-	mov	QWORD PTR [rsi+rbx], rax
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR $T100[rsp], rax
+	mov	r14, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 ; Line 45
-	mov	ecx, 2400				; 00000960H
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR $T96[rsp], rax
+	mov	r15, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	rsi, rdi
+	mov	QWORD PTR $T95[rsp], rax
+	mov	r12, rax
+	sub	rsi, r13
+	mov	eax, 100				; 00000064H
+	sub	r14, r13
+	sub	r15, r13
+	mov	QWORD PTR tv5043[rsp], rax
+	sub	r12, r13
+	mov	edi, eax
+	mov	rbx, r13
+	npad	7
+$LL4@main:
+; Line 50
+	mov	ecx, 800				; 00000320H
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 51
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR [rsi+rbx], rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 52
+	mov	ecx, 800				; 00000320H
 	mov	QWORD PTR [rbx], rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 53
+	mov	ecx, 800				; 00000320H
 	mov	QWORD PTR [r14+rbx], rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 54
+	mov	ecx, 800				; 00000320H
+	mov	QWORD PTR [r15+rbx], rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	QWORD PTR [r12+rbx], rax
 	lea	rbx, QWORD PTR [rbx+8]
 	sub	rdi, 1
 	jne	SHORT $LL4@main
-; Line 49
-	mov	rdi, r12
-	mov	r12, -1
+; Line 58
+	mov	rdi, r13
+	mov	QWORD PTR tv5147[rsp], 100		; 00000064H
+	npad	2
 $LL7@main:
-; Line 51
+; Line 60
 	xor	ebx, ebx
+	lea	r13, QWORD PTR [rbx-1]
 $LL10@main:
-; Line 53
-	mov	ecx, 32					; 00000020H
+; Line 62
+	mov	ecx, 320				; 00000140H
 	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	rcx, QWORD PTR [rdi+rsi]
+	mov	rcx, QWORD PTR [rsi+rdi]
 	mov	QWORD PTR [rbx+rcx], rax
-; Line 54
+; Line 63
 	mov	eax, 8
 	movsxd	rcx, DWORD PTR ?y_matrix2@@3HA		; y_matrix2
 	mul	rcx
-	cmovo	rax, r12
+	cmovo	rax, r13
 	mov	rcx, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 	mov	rcx, QWORD PTR [rdi]
 	mov	QWORD PTR [rbx+rcx], rax
-; Line 55
+; Line 64
 	mov	eax, 8
 	movsxd	rcx, DWORD PTR ?y_result@@3HA		; y_result
 	mul	rcx
-	cmovo	rax, r12
+	cmovo	rax, r13
 	mov	rcx, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	rcx, QWORD PTR [rdi+r14]
+	mov	rcx, QWORD PTR [r14+rdi]
+	mov	QWORD PTR [rbx+rcx], rax
+; Line 65
+	mov	eax, 8
+	movsxd	rcx, DWORD PTR ?y_result@@3HA		; y_result
+	mul	rcx
+	cmovo	rax, r13
+	mov	rcx, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	rcx, QWORD PTR [r15+rdi]
+	mov	QWORD PTR [rbx+rcx], rax
+; Line 66
+	mov	eax, 8
+	movsxd	rcx, DWORD PTR ?y_result@@3HA		; y_result
+	mul	rcx
+	cmovo	rax, r13
+	mov	rcx, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	rcx, QWORD PTR [r12+rdi]
 	mov	QWORD PTR [rbx+rcx], rax
 	add	rbx, 8
-	cmp	rbx, 2400				; 00000960H
-	jl	SHORT $LL10@main
-; Line 49
+	cmp	rbx, 800				; 00000320H
+	jl	$LL10@main
+; Line 58
 	add	rdi, 8
-	sub	r15, 1
-	jne	SHORT $LL7@main
-; Line 59
-	mov	r12, QWORD PTR $T87[rsp]
-	mov	rsi, r13
-	mov	r14d, 300				; 0000012cH
+	sub	QWORD PTR tv5147[rsp], 1
+	jne	$LL7@main
+; Line 70
+	mov	rsi, QWORD PTR $T97[rsp]
+	mov	r13d, 100				; 00000064H
+	mov	r14d, r13d
+	npad	8
 $LL13@main:
-; Line 61
+; Line 72
 	xor	edi, edi
 $LL16@main:
-; Line 63
+; Line 74
 	xor	ebx, ebx
 $LL19@main:
-; Line 65
-	mov	ecx, 4
+; Line 76
+	mov	ecx, 40					; 00000028H
 	call	??_U@YAPEAX_K@Z				; operator new[]
 	mov	rcx, QWORD PTR [rsi]
-	mov	rdx, QWORD PTR [rdi+rcx]
+	mov	rdx, QWORD PTR [rcx+rdi]
 	mov	QWORD PTR [rbx+rdx], rax
 	add	rbx, 8
-	cmp	rbx, 32					; 00000020H
+	cmp	rbx, 320				; 00000140H
 	jl	SHORT $LL19@main
-; Line 61
+; Line 72
 	add	rdi, 8
-	cmp	rdi, 2400				; 00000960H
+	cmp	rdi, 800				; 00000320H
 	jl	SHORT $LL16@main
-; Line 59
+; Line 70
 	add	rsi, 8
 	sub	r14, 1
 	jne	SHORT $LL13@main
-; Line 70
+; Line 81
+	mov	r14, QWORD PTR $T98[rsp]
 	mov	eax, DWORD PTR ?y_matrix2@@3HA		; y_matrix2
-	mov	r14, r12
-	mov	r12d, 300				; 0000012cH
-	mov	r15d, r12d
-	npad	2
+	mov	QWORD PTR tv5146[rsp], r13
 $LL22@main:
-; Line 72
+; Line 83
 	xor	esi, esi
-	lea	r13, QWORD PTR [rsi-1]
+	lea	r15, QWORD PTR [rsi-1]
+	npad	7
 $LL25@main:
-; Line 74
+; Line 85
 	xor	edi, edi
 	test	eax, eax
 	jle	SHORT $LN23@main
 	xor	ebx, ebx
-	npad	2
+	npad	8
 $LL28@main:
-; Line 76
+; Line 87
 	movsxd	rcx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 	mov	eax, 4
 	mul	rcx
-	cmovo	rax, r13
+	cmovo	rax, r15
 	mov	rcx, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
 	mov	rcx, QWORD PTR [r14]
@@ -534,163 +857,339 @@ $LL28@main:
 	cmp	edi, eax
 	jl	SHORT $LL28@main
 $LN23@main:
-; Line 72
-	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
-	jl	SHORT $LL25@main
-; Line 70
-	add	r14, 8
-	sub	r15, 1
-	jne	SHORT $LL22@main
-; Line 81
-	mov	r14, QWORD PTR $T86[rsp]
-	mov	r15, r12
-	mov	eax, DWORD PTR ?y_result@@3HA		; y_result
-	npad	1
-$LL31@main:
 ; Line 83
-	xor	esi, esi
-$LL34@main:
-; Line 85
+	add	rsi, 8
+	cmp	rsi, 800				; 00000320H
+	jl	SHORT $LL25@main
+; Line 81
+	add	r14, 8
+	sub	QWORD PTR tv5146[rsp], 1
+	jne	SHORT $LL22@main
+; Line 92
+	mov	rax, QWORD PTR $T96[rsp]
+	mov	r15, QWORD PTR $T100[rsp]
+	mov	r14, rax
+	mov	r12, QWORD PTR $T95[rsp]
+	sub	r15, rax
+	sub	r12, rax
+	mov	QWORD PTR tv5149[rsp], r13
+	mov	eax, DWORD PTR ?y_result@@3HA		; y_result
+	npad	4
+$LL31@main:
+; Line 94
 	xor	edi, edi
+	lea	r13, QWORD PTR [rdi-1]
+$LL34@main:
+; Line 96
+	xor	esi, esi
 	test	eax, eax
-	jle	SHORT $LN32@main
+	jle	$LN32@main
 	xor	ebx, ebx
-	npad	6
+	npad	14
 $LL37@main:
-; Line 87
+; Line 98
 	movsxd	rcx, DWORD PTR ?x_result@@3HA		; x_result
 	mov	eax, 4
 	mul	rcx
 	cmovo	rax, r13
 	mov	rcx, rax
 	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	rcx, QWORD PTR [r15+r14]
+	mov	rdx, QWORD PTR [rcx+rdi]
+; Line 99
+	movsxd	rcx, DWORD PTR ?x_result@@3HA		; x_result
+	mov	QWORD PTR [rbx+rdx], rax
+	mov	eax, 4
+	mul	rcx
+	cmovo	rax, r13
+	mov	rcx, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
 	mov	rcx, QWORD PTR [r14]
+	mov	rdx, QWORD PTR [rdi+rcx]
+; Line 100
+	movsxd	rcx, DWORD PTR ?x_result@@3HA		; x_result
+	mov	QWORD PTR [rbx+rdx], rax
+	mov	eax, 4
+	mul	rcx
+	cmovo	rax, r13
+	mov	rcx, rax
+	call	??_U@YAPEAX_K@Z				; operator new[]
+	mov	rcx, QWORD PTR [r12+r14]
 	lea	rbx, QWORD PTR [rbx+8]
-	inc	edi
-	mov	rdx, QWORD PTR [rsi+rcx]
+	inc	esi
+	mov	rdx, QWORD PTR [rcx+rdi]
 	mov	QWORD PTR [rbx+rdx-8], rax
 	mov	eax, DWORD PTR ?y_result@@3HA		; y_result
-	cmp	edi, eax
-	jl	SHORT $LL37@main
+	cmp	esi, eax
+	jl	$LL37@main
 $LN32@main:
-; Line 83
-	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
-	jl	SHORT $LL34@main
-; Line 81
-	add	r14, 8
-	sub	r15, 1
-	jne	SHORT $LL31@main
+; Line 94
+	add	rdi, 8
+	cmp	rdi, 800				; 00000320H
+	jl	$LL34@main
 ; Line 92
-	lea	ecx, QWORD PTR [r15+32]
+	add	r14, 8
+	sub	QWORD PTR tv5149[rsp], 1
+	jne	$LL31@main
+; Line 105
+	mov	ecx, 320				; 00000140H
 	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	r13, QWORD PTR $T89[rsp]
-	mov	rdi, rax
-	mov	QWORD PTR $T88[rsp], rax
-; Line 93
+	mov	r13, rax
+	mov	QWORD PTR $T99[rsp], rax
+; Line 106
 	xor	ebx, ebx
-	npad	4
 $LL40@main:
-; Line 95
-	mov	ecx, 16
+; Line 108
+	mov	ecx, 160				; 000000a0H
 	call	??_U@YAPEAX_K@Z				; operator new[]
-	mov	QWORD PTR [rdi+rbx*8], rax
+	mov	QWORD PTR [r13+rbx*8], rax
 	inc	rbx
-	cmp	rbx, 4
+	cmp	rbx, 40					; 00000028H
 	jl	SHORT $LL40@main
-; Line 256
-	xor	edx, edx
-; Line 257
-	xor	r11d, r11d
-	npad	4
-$LL72@main:
-	mov	r9, QWORD PTR [r13+r11*8]
-; Line 259
-	mov	r10, r12
-	npad	8
-$LL75@main:
-; Line 261
-	mov	rcx, QWORD PTR [r9]
-	mov	r8d, 4
-	npad	7
-$LL78@main:
-; Line 265
-	mov	rax, QWORD PTR [rcx]
-	lea	rcx, QWORD PTR [rcx+8]
-	movd	xmm0, edx
-	inc	edx
-	cvtdq2ps xmm0, xmm0
-	movss	DWORD PTR [rax], xmm0
-	sub	r8, 1
-	jne	SHORT $LL78@main
-; Line 259
-	add	r9, 8
-	sub	r10, 1
-	jne	SHORT $LL75@main
-; Line 257
-	inc	r11
-	cmp	r11, r12
-	jl	SHORT $LL72@main
-; Line 263
-	mov	rsi, QWORD PTR $T87[rsp]
-	xor	edx, edx
-	movsxd	r9, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
-	mov	rbx, rsi
-	movsxd	r11, DWORD PTR ?y_matrix2@@3HA		; y_matrix2
-	mov	rdi, r12
-	npad	6
-$LL86@main:
-; Line 259
+; Line 316
+	movsd	xmm4, QWORD PTR __real@3fb999999999999a
+	xorps	xmm3, xmm3
+	mov	r13, QWORD PTR $T97[rsp]
+	xorps	xmm0, xmm0
 	xor	r10d, r10d
-$LL89@main:
-; Line 261
-	xor	r8d, r8d
-	test	r11, r11
-	jle	SHORT $LN87@main
+	mov	esi, 100				; 00000064H
+	npad	6
+$LL74@main:
+	mov	r8, QWORD PTR [r13+r10*8]
+; Line 319
+	mov	r9, rsi
+	npad	8
+$LL77@main:
+; Line 321
+	mov	rcx, QWORD PTR [r8]
+	mov	edx, 40					; 00000028H
+	npad	8
+$LL80@main:
+; Line 325
+	mov	rax, QWORD PTR [rcx]
+	add	rcx, 8
+	movss	DWORD PTR [rax], xmm0
+; Line 326
+	cvtps2pd xmm0, xmm0
+	addsd	xmm0, xmm4
+	cvtpd2ps xmm1, xmm0
+	movss	DWORD PTR [rax+4], xmm1
+	cvtps2pd xmm2, xmm1
+	addsd	xmm2, xmm4
+	cvtpd2ps xmm0, xmm2
+	movss	DWORD PTR [rax+8], xmm0
+	cvtps2pd xmm1, xmm0
+	addsd	xmm1, xmm4
+	cvtpd2ps xmm2, xmm1
+	movss	DWORD PTR [rax+12], xmm2
+	cvtps2pd xmm0, xmm2
+	addsd	xmm0, xmm4
+	cvtpd2ps xmm1, xmm0
+	movss	DWORD PTR [rax+16], xmm1
+	cvtps2pd xmm2, xmm1
+	addsd	xmm2, xmm4
+	cvtpd2ps xmm0, xmm2
+	movss	DWORD PTR [rax+20], xmm0
+	cvtps2pd xmm1, xmm0
+	addsd	xmm1, xmm4
+	cvtpd2ps xmm2, xmm1
+	movss	DWORD PTR [rax+24], xmm2
+	cvtps2pd xmm0, xmm2
+	addsd	xmm0, xmm4
+	cvtpd2ps xmm1, xmm0
+	movss	DWORD PTR [rax+28], xmm1
+	cvtps2pd xmm2, xmm1
+	addsd	xmm2, xmm4
+	cvtpd2ps xmm0, xmm2
+	movss	DWORD PTR [rax+32], xmm0
+	cvtps2pd xmm1, xmm0
+	addsd	xmm1, xmm4
+	cvtpd2ps xmm2, xmm1
+	movss	DWORD PTR [rax+36], xmm2
+	cvtps2pd xmm0, xmm2
+	addsd	xmm0, xmm4
+	cvtpd2ps xmm0, xmm0
+	sub	rdx, 1
+	jne	$LL80@main
+; Line 319
+	add	r8, 8
+	sub	r9, 1
+	jne	$LL77@main
+; Line 317
+	inc	r10
+	cmp	r10, rsi
+	jl	$LL74@main
+; Line 323
+	movsxd	rbx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	mov	r11, rsi
+	movsxd	r9, DWORD PTR ?y_matrix2@@3HA		; y_matrix2
+	mov	r10, QWORD PTR $T98[rsp]
+	mov	r13, QWORD PTR $T99[rsp]
 	npad	5
-$LL92@main:
-; Line 263
+$LL88@main:
+; Line 319
+	xor	r8d, r8d
+$LL91@main:
+; Line 321
+	xor	edx, edx
 	test	r9, r9
-	jle	SHORT $LN90@main
-; Line 265
-	mov	rax, QWORD PTR [rbx]
-	mov	rcx, QWORD PTR [rax+r10]
-	mov	rax, QWORD PTR [rcx+r8*8]
-	mov	rcx, r9
-$LL95@main:
-	movd	xmm0, edx
-; Line 263
-	lea	rax, QWORD PTR [rax+4]
-; Line 265
-	cvtdq2ps xmm0, xmm0
-	inc	edx
-	movss	DWORD PTR [rax-4], xmm0
+	jle	SHORT $LN89@main
+	npad	6
+$LL94@main:
+; Line 323
+	test	ebx, ebx
+	jle	SHORT $LN92@main
+; Line 325
+	mov	rax, QWORD PTR [r10]
+	mov	rcx, QWORD PTR [rax+r8]
+	mov	rax, QWORD PTR [rcx+rdx*8]
+	mov	rcx, rbx
+	npad	14
+$LL97@main:
+; Line 326
+	xorps	xmm0, xmm0
+	movss	DWORD PTR [rax], xmm3
+	cvtss2sd xmm0, xmm3
+	add	rax, 4
+	addsd	xmm0, xmm4
+	cvtpd2ps xmm3, xmm0
 	sub	rcx, 1
-	jne	SHORT $LL95@main
-$LN90@main:
-; Line 261
-	inc	r8
-	cmp	r8, r11
-	jl	SHORT $LL92@main
-$LN87@main:
-; Line 259
+	jne	SHORT $LL97@main
+$LN92@main:
+; Line 321
+	inc	rdx
+	cmp	rdx, r9
+	jl	SHORT $LL94@main
+$LN89@main:
+; Line 319
+	add	r8, 8
+	cmp	r8, 800					; 00000320H
+	jl	SHORT $LL91@main
+; Line 317
 	add	r10, 8
-	cmp	r10, 2400				; 00000960H
-	jl	SHORT $LL89@main
-; Line 257
-	add	rbx, 8
-	sub	rdi, 1
-	jne	SHORT $LL86@main
+	sub	r11, 1
+	jne	SHORT $LL88@main
+; Line 339
+	mov	r15, QWORD PTR $T96[rsp]
+	mov	r12, rsi
+$LL102@main:
+; Line 337
+	xor	r14d, r14d
+$LL105@main:
+; Line 339
+	xor	esi, esi
+	test	ebx, ebx
+	jle	SHORT $LN103@main
+	npad	3
+$LL108@main:
+; Line 341
+	test	ebx, ebx
+	jle	SHORT $LN106@main
+	mov	rax, QWORD PTR [r15]
+	mov	r8, rbx
+	shl	r8, 2
+	xor	edx, edx
+	mov	rcx, QWORD PTR [r14+rax]
+	mov	rcx, QWORD PTR [rcx+rsi*8]
+	call	memset
+$LN106@main:
+; Line 339
+	inc	rsi
+	cmp	rsi, rbx
+	jl	SHORT $LL108@main
+$LN103@main:
+; Line 337
+	add	r14, 8
+	cmp	r14, 800				; 00000320H
+	jl	SHORT $LL105@main
+; Line 335
+	add	r15, 8
+	sub	r12, 1
+	jne	SHORT $LL102@main
+; Line 339
+	mov	r15, QWORD PTR $T95[rsp]
+	mov	r12d, 100				; 00000064H
+$LL116@main:
+; Line 337
+	xor	r14d, r14d
+	npad	6
+$LL119@main:
+; Line 339
+	xor	esi, esi
+	test	ebx, ebx
+	jle	SHORT $LN117@main
+$LL122@main:
+; Line 341
+	test	ebx, ebx
+	jle	SHORT $LN120@main
+	mov	rax, QWORD PTR [r15]
+	mov	r8, rbx
+	shl	r8, 2
+	xor	edx, edx
+	mov	rcx, QWORD PTR [r14+rax]
+	mov	rcx, QWORD PTR [rcx+rsi*8]
+	call	memset
+$LN120@main:
+; Line 339
+	inc	rsi
+	cmp	rsi, rbx
+	jl	SHORT $LL122@main
+$LN117@main:
+; Line 337
+	add	r14, 8
+	cmp	r14, 800				; 00000320H
+	jl	SHORT $LL119@main
+; Line 335
+	add	r15, 8
+	sub	r12, 1
+	jne	SHORT $LL116@main
+; Line 339
+	mov	r15, QWORD PTR $T100[rsp]
+	mov	r12d, 100				; 00000064H
+$LL130@main:
+; Line 337
+	xor	r14d, r14d
+$LL133@main:
+; Line 339
+	xor	esi, esi
+	test	ebx, ebx
+	jle	SHORT $LN131@main
+	npad	7
+$LL136@main:
+; Line 341
+	test	ebx, ebx
+	jle	SHORT $LN134@main
+	mov	rax, QWORD PTR [r15]
+	mov	r8, rbx
+	shl	r8, 2
+	xor	edx, edx
+	mov	rcx, QWORD PTR [r14+rax]
+	mov	rcx, QWORD PTR [rcx+rsi*8]
+	call	memset
+$LN134@main:
+; Line 339
+	inc	rsi
+	cmp	rsi, rbx
+	jl	SHORT $LL136@main
+$LN131@main:
+; Line 337
+	add	r14, 8
+	cmp	r14, 800				; 00000320H
+	jl	SHORT $LL133@main
+; Line 335
+	add	r15, 8
+	sub	r12, 1
+	jne	SHORT $LL130@main
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	call	QWORD PTR __imp__Query_perf_frequency
 	mov	rdi, rax
 ; Line 692
 	call	QWORD PTR __imp__Query_perf_counter
-	mov	r12, QWORD PTR $T86[rsp]
+	mov	r14, QWORD PTR $T96[rsp]
+	mov	r12d, 100				; 00000064H
+	mov	r15, QWORD PTR $T97[rsp]
 	mov	rcx, rax
-	movsxd	r14, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 ; Line 700
 	cdq
 	idiv	rdi
@@ -704,154 +1203,43 @@ $LN87@main:
 	imul	rcx, rax, 1000000000			; 3b9aca00H
 ; Line 701
 	add	rbx, rcx
-	sub	r13, r12
 	mov	QWORD PTR t1$1$[rsp], rbx
-	mov	rbx, QWORD PTR $T88[rsp]
-; Line 691
-	mov	QWORD PTR $T89[rsp], r13
-	mov	r13d, 300				; 0000012cH
-	mov	QWORD PTR tv9635[rsp], r13
-	npad	12
+	sub	r15, r14
+	mov	rbx, QWORD PTR $T98[rsp]
+	npad	9
 $LL43@main:
-	mov	r13, QWORD PTR $T89[rsp]
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 106
-	xor	r15d, r15d
-	npad	5
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 121
+	xor	esi, esi
+	npad	14
 $LL46@main:
-; Line 108
+; Line 123
 	xor	edi, edi
 $LL49@main:
-; Line 110
-	mov	rax, QWORD PTR [rdi+rsi]
-	mov	r9, QWORD PTR [r12+r13]
-	mov	QWORD PTR [rsp+40], rbx
-	mov	rax, QWORD PTR [rax+r15]
+; Line 125
+	mov	rax, QWORD PTR [rdi+rbx]
+	mov	r9, QWORD PTR [r15+r14]
+	mov	QWORD PTR [rsp+40], r13
+	mov	rax, QWORD PTR [rax+rsi]
 	mov	r9, QWORD PTR [rdi+r9]
 	mov	QWORD PTR [rsp+32], rax
 	call	?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z ; MultiplicationWithVectorization
-; Line 111
-	mov	rax, QWORD PTR [r12]
-; Line 215
-	xor	r11d, r11d
-; Line 111
-	mov	rsi, QWORD PTR [r15+rax]
-; Line 215
-	mov	r9, rsi
-	neg	r9
-	cmp	r14, 4
-	jl	$LN636@main
-; Line 110
-	lea	r8, QWORD PTR [r14-4]
-	shr	r8, 2
-	lea	rdx, QWORD PTR [rsi+8]
-	inc	r8
-	lea	r10, QWORD PTR [r9+rbx]
-	lea	r11, QWORD PTR [r8*4]
-	npad	9
-; Line 215
-$LL510@main:
-; Line 219
-	mov	rcx, QWORD PTR [rdx-8]
-	mov	rax, QWORD PTR [rdx+r10-8]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r10+rdx]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [rdx]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [rdx+r10+8]
-	movss	DWORD PTR [rcx+12], xmm1
-	movss	xmm0, DWORD PTR [rax]
-	mov	rcx, QWORD PTR [rdx+8]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [rdx+r10+16]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [rdx+16]
-	add	rdx, 32					; 00000020H
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	r8, 1
-	jne	$LL510@main
-$LN636@main:
-; Line 215
-	cmp	r11, r14
-	jge	SHORT $LN47@main
-	mov	r8, r14
-	lea	rdx, QWORD PTR [rsi+r11*8]
-	sub	r8, r11
-	lea	r10, QWORD PTR [r9+rbx]
-$LC106@main:
-; Line 219
-	mov	rcx, QWORD PTR [rdx]
-	mov	rax, QWORD PTR [rdx+r10]
-	add	rdx, 8
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	r8, 1
-	jne	SHORT $LC106@main
-$LN47@main:
-; Line 108
-	mov	rsi, QWORD PTR $T87[rsp]
+; Line 126
+	mov	r9, QWORD PTR [r14]
+	mov	r8, r13
+	mov	r9, QWORD PTR [rsi+r9]
+	call	?VectorizedAdd@@YAXHHPEAPEAM0@Z		; VectorizedAdd
 	add	rdi, 8
-	cmp	rdi, 2400				; 00000960H
-	jl	$LL49@main
-; Line 106
-	add	r15, 8
-	cmp	r15, 2400				; 00000960H
-	jl	$LL46@main
-; Line 104
-	add	r12, 8
-	sub	QWORD PTR tv9635[rsp], 1
-	jne	$LL43@main
+	cmp	rdi, 800				; 00000320H
+	jl	SHORT $LL49@main
+; Line 121
+	add	rsi, 8
+	cmp	rsi, 800				; 00000320H
+	jl	SHORT $LL46@main
+; Line 119
+	add	r14, 8
+	sub	r12, 1
+	jne	SHORT $LL43@main
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	call	QWORD PTR __imp__Query_perf_frequency
@@ -868,15 +1256,15 @@ $LN47@main:
 	idiv	rdi
 	mov	r8, rax
 	mov	rax, rcx
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 117
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 132
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 117
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 132
 	lea	rdx, OFFSET FLAT:??_C@_0BJ@BFBCKOOG@Vectorized?5method?5time?3?5@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -888,8 +1276,8 @@ $LN47@main:
 ; Line 466
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 117
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 132
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -902,62 +1290,19 @@ $LN47@main:
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
-	mov	r13, QWORD PTR $T86[rsp]
-	mov	r12d, 300				; 0000012cH
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 280
-	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
-; Line 691
-	mov	r15, r13
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 280
-	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
-$LL148@main:
-; Line 276
-	xor	esi, esi
-$LL151@main:
-; Line 278
-	xor	ebx, ebx
-	test	r14, r14
-	jle	SHORT $LN149@main
-	npad	2
-$LL154@main:
-; Line 280
-	test	rdi, rdi
-	jle	SHORT $LN152@main
-; Line 282
-	mov	rax, QWORD PTR [r15]
-	mov	r8, rdi
-	shl	r8, 2
-	xor	edx, edx
-	mov	rcx, QWORD PTR [rsi+rax]
-	mov	rcx, QWORD PTR [rcx+rbx*8]
-	call	memset
-$LN152@main:
-; Line 278
-	inc	rbx
-	cmp	rbx, r14
-	jl	SHORT $LL154@main
-$LN149@main:
-; Line 276
-	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
-	jl	SHORT $LL151@main
-; Line 274
-	add	r15, 8
-	sub	r12, 1
-	jne	SHORT $LL148@main
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
-; Line 691
 	call	QWORD PTR __imp__Query_perf_frequency
 	mov	rdi, rax
 ; Line 692
 	call	QWORD PTR __imp__Query_perf_counter
+; Line 691
+	mov	r8, QWORD PTR $T97[rsp]
+; Line 692
 	mov	rcx, rax
-	mov	QWORD PTR tv9481[rsp], 300		; 0000012cH
 ; Line 700
 	cdq
+; Line 691
+	mov	QWORD PTR tv5059[rsp], 100		; 00000064H
+; Line 700
 	idiv	rdi
 	imul	rax, rdx, 1000000000			; 3b9aca00H
 	cdq
@@ -966,78 +1311,77 @@ $LN149@main:
 	mov	rax, rcx
 	cdq
 	idiv	rdi
-	movsxd	rdi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 144
+	movsxd	rdx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	imul	rcx, rax, 1000000000			; 3b9aca00H
-	mov	rax, r13
+	mov	rsi, rdx
 ; Line 701
 	add	rbx, rcx
-	mov	QWORD PTR tv9480[rsp], rax
 	mov	QWORD PTR t1$2$[rsp], rbx
-	npad	14
+; Line 691
+	mov	rbx, QWORD PTR $T95[rsp]
+	sub	r8, rbx
+	mov	QWORD PTR tv5057[rsp], r8
+	npad	12
 $LL52@main:
-	mov	rcx, QWORD PTR $T89[rsp]
-	mov	rbx, QWORD PTR $T87[rsp]
-	mov	rcx, QWORD PTR [rax+rcx]
-	mov	rax, QWORD PTR [rax]
-	sub	rbx, rcx
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 124
-	xor	r11d, r11d
-	mov	QWORD PTR tv9587[rsp], rcx
-	mov	QWORD PTR tv9482[rsp], r11
-	mov	QWORD PTR tv9586[rsp], rax
-	npad	4
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 140
+	xor	edi, edi
+	mov	QWORD PTR tv5060[rsp], rdi
+	npad	9
 $LL55@main:
-; Line 126
-	mov	rsi, QWORD PTR $T88[rsp]
-	mov	rdx, rcx
-	mov	QWORD PTR tv9485[rsp], rcx
-	mov	QWORD PTR tv9486[rsp], 300		; 0000012cH
-	npad	7
+; Line 142
+	xor	ecx, ecx
+	mov	QWORD PTR tv5063[rsp], rcx
+	npad	9
 $LL58@main:
-; Line 128
-	mov	rax, QWORD PTR [rbx+rdx]
-	mov	r13, rsi
-	mov	r14, QWORD PTR [rdx]
-	mov	r15d, 4
+; Line 144
+	mov	rax, QWORD PTR $T98[rsp]
+	mov	r12d, 40				; 00000028H
+	mov	rax, QWORD PTR [rcx+rax]
+	mov	r15, QWORD PTR [rdi+rax]
+	mov	rax, QWORD PTR [r8+rbx]
+	mov	r14, QWORD PTR [rcx+rax]
 	sub	r13, r14
-	mov	rcx, QWORD PTR [r11+rax]
-; Line 184
-	mov	r12, QWORD PTR [rcx]
-	npad	6
-$LL168@main:
-; Line 179
-	mov	rsi, QWORD PTR [r14+r13]
-; Line 180
-	test	rdi, rdi
-	jle	SHORT $LN171@main
-; Line 179
-	mov	r8, rdi
+$LL190@main:
+; Line 202
+	mov	rdi, QWORD PTR [r14+r13]
+; Line 203
+	test	edx, edx
+	jle	SHORT $LN192@main
+; Line 202
+	mov	r8, rsi
 	xor	edx, edx
 	shl	r8, 2
-	mov	rcx, rsi
+	mov	rcx, rdi
 	call	memset
-$LN171@main:
-; Line 185
-	mov	rax, QWORD PTR [r14]
-; Line 187
-	mov	rcx, r12
-	sub	rcx, rsi
+$LN192@main:
+; Line 205
+	mov	r10, QWORD PTR [r14]
+	xor	r9d, r9d
+$LL196@main:
+; Line 207
+	mov	rcx, QWORD PTR [r15+r9*8]
 	xor	r8d, r8d
-	movss	xmm2, DWORD PTR [rax]
-	cmp	rdi, 4
-	jl	SHORT $LC512@main
-; Line 184
-	lea	rdx, QWORD PTR [rdi-4]
+; Line 208
+	movss	xmm2, DWORD PTR [r10]
+; Line 210
+	sub	rcx, rdi
+	cmp	rsi, 4
+	jl	SHORT $LC449@main
+; Line 207
+	lea	rdx, QWORD PTR [rsi-4]
 	shr	rdx, 2
-	lea	rax, QWORD PTR [rsi+4]
+	lea	rax, QWORD PTR [rdi+4]
 	inc	rdx
 	lea	r8, QWORD PTR [rdx*4]
-	npad	9
-; Line 187
-$LL513@main:
-; Line 188
+	npad	4
+; Line 210
+$LL450@main:
+; Line 211
 	movaps	xmm0, xmm2
 	movaps	xmm1, xmm2
 	mulss	xmm0, DWORD PTR [rcx+rax-4]
@@ -1056,148 +1400,56 @@ $LL513@main:
 	movss	DWORD PTR [rax+8], xmm1
 	add	rax, 16
 	sub	rdx, 1
-	jne	SHORT $LL513@main
-$LC512@main:
-; Line 187
-	cmp	r8, rdi
-	jge	SHORT $LN172@main
-	mov	rdx, rdi
-	lea	rax, QWORD PTR [rsi+r8*4]
+	jne	SHORT $LL450@main
+$LC449@main:
+; Line 210
+	cmp	r8, rsi
+	jge	SHORT $LN194@main
+	mov	rdx, rsi
+	lea	rax, QWORD PTR [rdi+r8*4]
 	sub	rdx, r8
-$LC177@main:
-; Line 188
+$LC199@main:
+; Line 211
 	movaps	xmm0, xmm2
-	mulss	xmm0, DWORD PTR [rcx+rax]
+	mulss	xmm0, DWORD PTR [rax+rcx]
 	addss	xmm0, DWORD PTR [rax]
 	movss	DWORD PTR [rax], xmm0
 	add	rax, 4
 	sub	rdx, 1
-	jne	SHORT $LC177@main
-$LN172@main:
-; Line 177
+	jne	SHORT $LC199@main
+$LN194@main:
+; Line 205
+	inc	r9
+	add	r10, 4
+	cmp	r9, 10
+	jl	$LL196@main
+; Line 200
+	mov	edx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 	add	r14, 8
-	sub	r15, 1
-	jne	$LL168@main
-; Line 226
-	mov	r11, QWORD PTR tv9482[rsp]
-	xor	r10d, r10d
-	mov	rax, QWORD PTR tv9586[rsp]
-	mov	rsi, QWORD PTR $T88[rsp]
-	mov	r8, QWORD PTR [r11+rax]
-	sub	r8, rsi
-	cmp	rdi, 4
-	jl	$LC520@main
-	lea	rdx, QWORD PTR [rdi-4]
-	shr	rdx, 2
-	lea	r9, QWORD PTR [rsi+8]
-	inc	rdx
-	lea	r10, QWORD PTR [rdx*4]
-	npad	9
-$LL545@main:
-; Line 231
-	mov	rcx, QWORD PTR [r8+r9-8]
-	mov	rax, QWORD PTR [r9-8]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r9]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r8+r9]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r9+8]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r8+r9+8]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r9+16]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r8+r9+16]
-	add	r9, 32					; 00000020H
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	rdx, 1
-	jne	$LL545@main
-$LC520@main:
-; Line 226
-	cmp	r10, rdi
-	jge	SHORT $LN56@main
-	mov	r9, rdi
-	lea	rdx, QWORD PTR [rsi+r10*8]
-	sub	r9, r10
-$LC182@main:
-; Line 231
-	mov	rcx, QWORD PTR [r8+rdx]
-	mov	rax, QWORD PTR [rdx]
-	add	rdx, 8
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	r9, 1
-	jne	SHORT $LC182@main
-$LN56@main:
-; Line 126
-	mov	rdx, QWORD PTR tv9485[rsp]
-	add	rdx, 8
-	sub	QWORD PTR tv9486[rsp], 1
-	mov	QWORD PTR tv9485[rsp], rdx
-	jne	$LL58@main
-; Line 124
-	mov	rcx, QWORD PTR tv9587[rsp]
-	add	r11, 8
-	mov	QWORD PTR tv9482[rsp], r11
-	cmp	r11, 2400				; 00000960H
+	sub	r12, 1
+	jne	$LL190@main
+; Line 145
+	mov	r9, QWORD PTR [rbx]
+	mov	rdi, QWORD PTR tv5060[rsp]
+	mov	r13, QWORD PTR $T99[rsp]
+	mov	r8, r13
+	mov	r9, QWORD PTR [rdi+r9]
+	call	?NonVectorizedAdd@@YAXHHPEAPEAM0@Z	; NonVectorizedAdd
+	mov	rcx, QWORD PTR tv5063[rsp]
+	mov	edx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	add	rcx, 8
+	mov	r8, QWORD PTR tv5057[rsp]
+	mov	QWORD PTR tv5063[rsp], rcx
+	cmp	rcx, 800				; 00000320H
+	jl	$LL58@main
+; Line 140
+	add	rdi, 8
+	mov	QWORD PTR tv5060[rsp], rdi
+	cmp	rdi, 800				; 00000320H
 	jl	$LL55@main
-; Line 122
-	mov	rax, QWORD PTR tv9480[rsp]
-	add	rax, 8
-	sub	QWORD PTR tv9481[rsp], 1
-	mov	QWORD PTR tv9480[rsp], rax
+; Line 138
+	add	rbx, 8
+	sub	QWORD PTR tv5059[rsp], 1
 	jne	$LL52@main
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
@@ -1215,15 +1467,15 @@ $LN56@main:
 	idiv	rdi
 	mov	r8, rax
 	mov	rax, rcx
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 135
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 151
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 135
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 151
 	lea	rdx, OFFSET FLAT:??_C@_0BN@PCGHHCDK@Not?5vectorized?5method?5time?3?5@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -1235,8 +1487,8 @@ $LN56@main:
 ; Line 466
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 135
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 151
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -1247,68 +1499,20 @@ $LN56@main:
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 280
-	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
-; Line 691
-	mov	r12d, 300				; 0000012cH
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 280
-	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
-; Line 691
-	mov	r15, QWORD PTR $T86[rsp]
-$LL224@main:
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 276
-	xor	esi, esi
-$LL227@main:
-; Line 278
-	xor	ebx, ebx
-	test	r14, r14
-	jle	SHORT $LN225@main
-	npad	4
-$LL230@main:
-; Line 280
-	test	rdi, rdi
-	jle	SHORT $LN228@main
-; Line 282
-	mov	rax, QWORD PTR [r15]
-	mov	r8, rdi
-	shl	r8, 2
-	xor	edx, edx
-	mov	rcx, QWORD PTR [rsi+rax]
-	mov	rcx, QWORD PTR [rcx+rbx*8]
-	call	memset
-$LN228@main:
-; Line 278
-	inc	rbx
-	cmp	rbx, r14
-	jl	SHORT $LL230@main
-$LN225@main:
-; Line 276
-	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
-	jl	SHORT $LL227@main
-; Line 274
-	add	r15, 8
-	sub	r12, 1
-	jne	SHORT $LL224@main
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
 	call	QWORD PTR __imp__Query_perf_frequency
 	mov	rdi, rax
 ; Line 692
 	call	QWORD PTR __imp__Query_perf_counter
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 146
-	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 162
+	mov	r14d, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 692
 	mov	rcx, rax
 ; Line 700
 	cdq
-	mov	QWORD PTR tv9447[rsp], 300		; 0000012cH
 	idiv	rdi
 	imul	rax, rdx, 1000000000			; 3b9aca00H
 	cdq
@@ -1317,203 +1521,126 @@ $LN225@main:
 	mov	rax, rcx
 	cdq
 	idiv	rdi
-	mov	rdi, QWORD PTR $T86[rsp]
+; Line 691
+	mov	rdx, QWORD PTR $T97[rsp]
+; Line 699
 	imul	rcx, rax, 1000000000			; 3b9aca00H
-	mov	QWORD PTR tv9568[rsp], rdi
+; Line 691
+	mov	rax, QWORD PTR $T100[rsp]
 ; Line 701
 	add	rbx, rcx
+; Line 691
+	mov	QWORD PTR tv5118[rsp], rax
+	sub	rdx, rax
+; Line 701
 	mov	QWORD PTR t1$3$[rsp], rbx
-	npad	9
+; Line 691
+	mov	QWORD PTR $T97[rsp], rdx
+	mov	rdi, rax
+	npad	5
 $LL61@main:
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 142
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 158
 	xor	ebx, ebx
+	mov	QWORD PTR tv5044[rsp], rbx
+	npad	9
 $LL64@main:
-	mov	r14, QWORD PTR $T88[rsp]
-; Line 144
-	xor	r12d, r12d
-	npad	3
+; Line 160
+	xor	r13d, r13d
+	mov	QWORD PTR tv5046[rsp], r13
+	npad	8
 $LL67@main:
-; Line 146
-	mov	rax, QWORD PTR $T87[rsp]
-	mov	r11d, 4
-	mov	rax, QWORD PTR [r12+rax]
-	mov	r15, QWORD PTR [rbx+rax]
-	mov	rax, QWORD PTR $T89[rsp]
-	mov	rax, QWORD PTR [rax+rdi]
-	mov	rdi, r14
-	mov	r10, QWORD PTR [r12+rax]
-	sub	rdi, r10
+; Line 162
+	mov	rax, QWORD PTR $T98[rsp]
+	mov	r15d, 40				; 00000028H
+	mov	r12, QWORD PTR $T99[rsp]
+	mov	rax, QWORD PTR [rax+r13]
+	mov	rcx, QWORD PTR [rbx+rax]
+	mov	rax, QWORD PTR [rdx+rdi]
+	mov	rsi, QWORD PTR [rax+r13]
+	mov	r13, rcx
+	sub	r12, rsi
 	npad	4
 $LL244@main:
-; Line 197
-	mov	rcx, QWORD PTR [r10+rdi]
-	lea	r9d, DWORD PTR [rsi-1]
-	shr	r9d, 3
-; Line 198
-	test	esi, esi
-	jle	SHORT $LN640@main
+; Line 220
+	mov	rdi, QWORD PTR [r12+rsi]
+	lea	r11d, DWORD PTR [r14-1]
+	shr	r11d, 3
+; Line 221
+	test	r14d, r14d
+	jle	SHORT $LN505@main
 	vxorps	xmm0, xmm0, xmm0
-; Line 197
-	mov	rdx, rcx
-	lea	r8d, DWORD PTR [r9+1]
-	npad	5
+; Line 220
+	mov	rcx, rdi
+	lea	edx, DWORD PTR [r11+1]
+	npad	4
 $LL247@main:
-; Line 199
-	vmovups	YMMWORD PTR [rdx], ymm0
-	lea	rdx, QWORD PTR [rdx+32]
-	sub	r8, 1
-	jne	SHORT $LL247@main
-$LN640@main:
-; Line 203
-	mov	rax, QWORD PTR [r10]
-	mov	r8, QWORD PTR [r15]
-	vbroadcastss ymm2, DWORD PTR [rax]
-; Line 204
-	test	esi, esi
-	jle	SHORT $LN248@main
-; Line 202
-	sub	r8, rcx
-	lea	edx, DWORD PTR [r9+1]
-	npad	12
-$LL253@main:
-; Line 206
-	vmovups	ymm1, YMMWORD PTR [rcx]
-	vfmadd231ps ymm1, ymm2, YMMWORD PTR [r8+rcx]
-	vmovups	YMMWORD PTR [rcx], ymm1
+; Line 222
+	vmovups	YMMWORD PTR [rcx], ymm0
 	lea	rcx, QWORD PTR [rcx+32]
 	sub	rdx, 1
+	jne	SHORT $LL247@main
+	vzeroupper
+$LN505@main:
+; Line 223
+	xor	edx, edx
+	mov	r9, r13
+	npad	10
+$LL250@main:
+; Line 226
+	mov	rax, QWORD PTR [rsi]
+	mov	r8, QWORD PTR [r9]
+	vbroadcastss ymm1, DWORD PTR [rax+rdx]
+; Line 227
+	test	r14d, r14d
+	jle	SHORT $LN248@main
+; Line 225
+	mov	rcx, rdi
+	lea	r10d, DWORD PTR [r11+1]
+	sub	r8, rdi
+	npad	5
+$LL253@main:
+; Line 232
+	vmulps	ymm0, ymm1, YMMWORD PTR [r8+rcx]
+; Line 233
+	vaddps	ymm0, ymm0, YMMWORD PTR [rcx]
+	vmovups	YMMWORD PTR [rcx], ymm0
+	lea	rcx, QWORD PTR [rcx+32]
+	sub	r10, 1
 	jne	SHORT $LL253@main
 $LN248@main:
-; Line 195
-	add	r10, 8
-	sub	r11, 1
+; Line 223
+	add	r9, 8
+	add	rdx, 4
+	cmp	rdx, 40					; 00000028H
+	jl	SHORT $LL250@main
+; Line 218
+	add	rsi, 8
+	sub	r15, 1
 	vzeroupper
-	jne	SHORT $LL244@main
-; Line 147
-	mov	rdi, QWORD PTR tv9568[rsp]
-; Line 226
-	xor	r10d, r10d
-	mov	r14, QWORD PTR $T88[rsp]
-; Line 147
-	mov	rax, QWORD PTR [rdi]
-	mov	r11, QWORD PTR [rbx+rax]
-; Line 226
-	mov	r8, r11
-	neg	r8
-	cmp	rsi, 4
-	jl	$LC552@main
-; Line 147
-	lea	rdx, QWORD PTR [rsi-4]
-	shr	rdx, 2
-	lea	r9, QWORD PTR [r11+8]
-	inc	rdx
-	lea	rdi, QWORD PTR [r8+r14]
-	lea	r10, QWORD PTR [rdx*4]
-	npad	9
-; Line 226
-$LL577@main:
-; Line 231
-	mov	rcx, QWORD PTR [r9-8]
-	mov	rax, QWORD PTR [r9+rdi-8]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [rdi+r9]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r9]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r9+rdi+8]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r9+8]
-	movss	xmm0, DWORD PTR [rcx]
-	addss	xmm0, DWORD PTR [rax]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	mov	rax, QWORD PTR [r9+rdi+16]
-	movss	DWORD PTR [rcx+12], xmm1
-	mov	rcx, QWORD PTR [r9+16]
-	add	r9, 32					; 00000020H
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	rdx, 1
-	jne	$LL577@main
-	mov	rdi, QWORD PTR tv9568[rsp]
-$LC552@main:
-; Line 226
-	cmp	r10, rsi
-	jge	SHORT $LN65@main
-	lea	r9, QWORD PTR [r8+r14]
-	mov	r8, rsi
-	sub	r8, r10
-	lea	rdx, QWORD PTR [r11+r10*8]
-$LC258@main:
-; Line 231
-	mov	rcx, QWORD PTR [rdx]
-	mov	rax, QWORD PTR [r9+rdx]
-	add	rdx, 8
-	movss	xmm0, DWORD PTR [rax]
-	addss	xmm0, DWORD PTR [rcx]
-	movss	DWORD PTR [rcx], xmm0
-	movss	xmm1, DWORD PTR [rax+4]
-	addss	xmm1, DWORD PTR [rcx+4]
-	movss	DWORD PTR [rcx+4], xmm1
-	movss	xmm0, DWORD PTR [rax+8]
-	addss	xmm0, DWORD PTR [rcx+8]
-	movss	DWORD PTR [rcx+8], xmm0
-	movss	xmm1, DWORD PTR [rax+12]
-	addss	xmm1, DWORD PTR [rcx+12]
-	movss	DWORD PTR [rcx+12], xmm1
-	sub	r8, 1
-	jne	SHORT $LC258@main
-$LN65@main:
-; Line 144
-	add	r12, 8
-	cmp	r12, 2400				; 00000960H
+	jne	$LL244@main
+; Line 163
+	mov	rdi, QWORD PTR tv5118[rsp]
+	mov	rbx, QWORD PTR tv5044[rsp]
+	mov	r8, QWORD PTR $T99[rsp]
+	mov	r9, QWORD PTR [rdi]
+	mov	r9, QWORD PTR [rbx+r9]
+	call	?NonVectorizedAdd@@YAXHHPEAPEAM0@Z	; NonVectorizedAdd
+	mov	r13, QWORD PTR tv5046[rsp]
+	mov	rdx, QWORD PTR $T97[rsp]
+	add	r13, 8
+	mov	QWORD PTR tv5046[rsp], r13
+	cmp	r13, 800				; 00000320H
 	jl	$LL67@main
-; Line 142
+; Line 158
 	add	rbx, 8
-	cmp	rbx, 2400				; 00000960H
+	mov	QWORD PTR tv5044[rsp], rbx
+	cmp	rbx, 800				; 00000320H
 	jl	$LL64@main
-; Line 140
+; Line 156
 	add	rdi, 8
-	sub	QWORD PTR tv9447[rsp], 1
-	mov	QWORD PTR tv9568[rsp], rdi
+	sub	QWORD PTR tv5043[rsp], 1
+	mov	QWORD PTR tv5118[rsp], rdi
 	jne	$LL61@main
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 691
@@ -1531,15 +1658,15 @@ $LN65@main:
 	idiv	rdi
 	mov	r8, rax
 	mov	rax, rcx
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 153
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 169
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
 	cdq
 	idiv	rdi
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 153
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 169
 	lea	rdx, OFFSET FLAT:??_C@_0CC@MELAHBON@Manually?5vectorized?5method?5time@
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
 ; Line 699
@@ -1551,8 +1678,8 @@ $LN65@main:
 ; Line 466
 	cvtsi2sd xmm6, rax
 	divsd	xmm6, QWORD PTR __real@41cdcd6500000000
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 153
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 169
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 	mov	rcx, rax
 	movaps	xmm1, xmm6
@@ -1563,53 +1690,27 @@ $LN65@main:
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-	mov	rax, QWORD PTR $T86[rsp]
-; Line 280
-	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
-	movsxd	r14, DWORD PTR ?y_result@@3HA		; y_result
-	npad	2
-$LL300@main:
-; Line 276
-	xor	esi, esi
-$LL303@main:
-; Line 278
-	xor	ebx, ebx
-	test	r14, r14
-	jle	SHORT $LN301@main
-	npad	7
-$LL306@main:
-; Line 280
-	test	rdi, rdi
-	jle	SHORT $LN304@main
-; Line 282
-	mov	rax, QWORD PTR [rax]
-	mov	r8, rdi
-	shl	r8, 2
-	xor	edx, edx
-	mov	rcx, QWORD PTR [rsi+rax]
-	mov	rcx, QWORD PTR [rcx+rbx*8]
-	call	memset
-$LN304@main:
-; Line 278
-	mov	rax, QWORD PTR $T86[rsp]
-	inc	rbx
-	cmp	rbx, r14
-	jl	SHORT $LL306@main
-$LN301@main:
-; Line 276
-	mov	rax, QWORD PTR $T86[rsp]
-	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
-	jl	SHORT $LL303@main
-; Line 274
-	add	rax, 8
-	sub	QWORD PTR tv9440[rsp], 1
-	mov	QWORD PTR $T86[rsp], rax
-	jne	SHORT $LL300@main
-; Line 156
-	movaps	xmm6, XMMWORD PTR [rsp+128]
+; Line 171
+	mov	r8, QWORD PTR $T100[rsp]
+	mov	rdx, QWORD PTR $T95[rsp]
+	mov	rcx, QWORD PTR $T96[rsp]
+	call	?Compare@@YA_NPEAPEAPEAPEAM00H@Z	; Compare
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+; Line 173
+	lea	rdx, OFFSET FLAT:??_C@_0BE@HAFLIABF@Matrices?5are?5equal?4@
+	test	al, al
+	jne	SHORT $LN506@main
+; Line 177
+	lea	rdx, OFFSET FLAT:??_C@_0BH@FJGDEMMH@Matrices?5aren?8t?5equal?4@
+$LN506@main:
+; Line 179
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+	movaps	xmm6, XMMWORD PTR [rsp+112]
 	xor	eax, eax
-	add	rsp, 144				; 00000090H
+	add	rsp, 128				; 00000080H
 	pop	r15
 	pop	r14
 	pop	r13
@@ -1621,70 +1722,959 @@ $LN301@main:
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
+;	COMDAT ?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z
+_TEXT	SEGMENT
+y_matrix1_size$dead$ = 64
+x_matrix2_size$dead$ = 72
+x_matrix1_size$dead$ = 80
+A$ = 88
+B$ = 96
+C$ = 104
+?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z PROC ; MultiplicationWithVectorization, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 182
+$LN46:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rbp
+	mov	QWORD PTR [rsp+24], rsi
+	mov	QWORD PTR [rsp+32], rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 32					; 00000020H
+	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	mov	r14, r9
+; Line 192
+	mov	r12, QWORD PTR C$[rsp]
+	mov	rbx, rsi
+	mov	r15, QWORD PTR B$[rsp]
+	sub	r12, r9
+	mov	ebp, 40					; 00000028H
+	npad	3
+$LL4@Multiplica:
+; Line 186
+	mov	rdi, QWORD PTR [r12+r14]
+	test	esi, esi
+	jle	SHORT $LN6@Multiplica
+; Line 185
+	mov	r8, rbx
+	xor	edx, edx
+	shl	r8, 2
+	mov	rcx, rdi
+	call	memset
+$LN6@Multiplica:
+; Line 188
+	mov	r11, QWORD PTR [r14]
+	xor	r9d, r9d
+	npad	1
+$LL10@Multiplica:
+; Line 191
+	movss	xmm3, DWORD PTR [r11]
+	xor	edx, edx
+	mov	r8, QWORD PTR [r15+r9*8]
+	movaps	xmm4, xmm3
+	shufps	xmm4, xmm4, 0
+; Line 192
+	test	esi, esi
+	jle	$LN24@Multiplica
+	cmp	esi, 16
+	jb	$LN24@Multiplica
+; Line 190
+	lea	eax, DWORD PTR [rsi-1]
+	movsxd	rcx, eax
+	lea	rax, QWORD PTR [r8+rcx*4]
+	lea	r10, QWORD PTR [rdi+rcx*4]
+	cmp	rdi, rax
+	ja	SHORT $LN25@Multiplica
+	cmp	r10, r8
+	jae	$LN24@Multiplica
+$LN25@Multiplica:
+	mov	ecx, esi
+	and	ecx, -2147483633			; ffffffff8000000fH
+	jge	SHORT $LN44@Multiplica
+	dec	ecx
+	or	ecx, -16
+	inc	ecx
+$LN44@Multiplica:
+	mov	eax, esi
+	sub	eax, ecx
+	mov	rcx, r8
+; Line 192
+	movsxd	r10, eax
+	sub	rcx, rdi
+	lea	rax, QWORD PTR [rdi+16]
+$LL13@Multiplica:
+; Line 193
+	movups	xmm0, XMMWORD PTR [rax-16]
+	add	rdx, 16
+	movups	xmm1, XMMWORD PTR [rcx+rax-16]
+	movups	xmm2, XMMWORD PTR [rax+rcx]
+	mulps	xmm1, xmm4
+	mulps	xmm2, xmm4
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax-16], xmm1
+	movups	xmm0, XMMWORD PTR [rax]
+	movups	xmm1, XMMWORD PTR [rcx+rax+16]
+	addps	xmm2, xmm0
+	mulps	xmm1, xmm4
+	movups	XMMWORD PTR [rax], xmm2
+	movups	xmm0, XMMWORD PTR [rax+16]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax+16], xmm1
+	movups	xmm0, XMMWORD PTR [rax+32]
+	movups	xmm1, XMMWORD PTR [rcx+rax+32]
+	mulps	xmm1, xmm4
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rax+32], xmm1
+	add	rax, 64					; 00000040H
+	cmp	rdx, r10
+	jl	SHORT $LL13@Multiplica
+$LN24@Multiplica:
+; Line 192
+	cmp	rdx, rbx
+	jge	$LN8@Multiplica
+	mov	rax, rbx
+	sub	r8, rdi
+	sub	rax, rdx
+	cmp	rax, 4
+	jl	SHORT $LC35@Multiplica
+	lea	rcx, QWORD PTR [rdx+1]
+	lea	rcx, QWORD PTR [rdi+rcx*4]
+	npad	9
+$LL36@Multiplica:
+; Line 193
+	movaps	xmm0, xmm3
+	lea	rax, QWORD PTR [rsi-3]
+	mulss	xmm0, DWORD PTR [r8+rcx-4]
+	movaps	xmm1, xmm3
+	add	rdx, 4
+	addss	xmm0, DWORD PTR [rcx-4]
+	movss	DWORD PTR [rcx-4], xmm0
+	movaps	xmm0, xmm3
+	mulss	xmm1, DWORD PTR [r8+rcx]
+	addss	xmm1, DWORD PTR [rcx]
+	movss	DWORD PTR [rcx], xmm1
+	movaps	xmm1, xmm3
+	mulss	xmm0, DWORD PTR [r8+rcx+4]
+	addss	xmm0, DWORD PTR [rcx+4]
+	movss	DWORD PTR [rcx+4], xmm0
+	mulss	xmm1, DWORD PTR [r8+rcx+8]
+	addss	xmm1, DWORD PTR [rcx+8]
+	movss	DWORD PTR [rcx+8], xmm1
+	add	rcx, 16
+	cmp	rdx, rax
+	jl	SHORT $LL36@Multiplica
+$LC35@Multiplica:
+; Line 192
+	cmp	rdx, rbx
+	jge	SHORT $LN8@Multiplica
+	lea	rax, QWORD PTR [rdi+rdx*4]
+$LC23@Multiplica:
+; Line 193
+	movaps	xmm0, xmm3
+	inc	rdx
+	mulss	xmm0, DWORD PTR [r8+rax]
+	addss	xmm0, DWORD PTR [rax]
+	movss	DWORD PTR [rax], xmm0
+	add	rax, 4
+	cmp	rdx, rbx
+	jl	SHORT $LC23@Multiplica
+$LN8@Multiplica:
+; Line 188
+	inc	r9
+	add	r11, 4
+	cmp	r9, 10
+	jl	$LL10@Multiplica
+; Line 183
+	add	r14, 8
+	sub	rbp, 1
+	jne	$LL4@Multiplica
+; Line 196
+	mov	rbx, QWORD PTR [rsp+64]
+	mov	rbp, QWORD PTR [rsp+72]
+	mov	rsi, QWORD PTR [rsp+80]
+	mov	rdi, QWORD PTR [rsp+88]
+	add	rsp, 32					; 00000020H
+	pop	r15
+	pop	r14
+	pop	r12
+	ret	0
+?MultiplicationWithVectorization@@YAXHHHPEAPEAM00@Z ENDP ; MultiplicationWithVectorization
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z
+_TEXT	SEGMENT
+y_matrix1_size$dead$ = 64
+x_matrix2_size$dead$ = 72
+x_matrix1_size$dead$ = 80
+A$ = 88
+B$ = 96
+C$ = 104
+?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z PROC ; MultiplicationWithoutVectorization, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 199
+$LN38:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rbp
+	mov	QWORD PTR [rsp+24], rsi
+	mov	QWORD PTR [rsp+32], rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 32					; 00000020H
+	movsxd	r12, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	mov	rsi, r9
+; Line 210
+	mov	r15, QWORD PTR C$[rsp]
+	mov	rbx, r12
+	mov	r14, QWORD PTR B$[rsp]
+	sub	r15, r9
+	mov	ebp, 40					; 00000028H
+	npad	3
+$LL4@Multiplica:
+; Line 203
+	mov	rdi, QWORD PTR [r15+rsi]
+	test	r12d, r12d
+	jle	SHORT $LN6@Multiplica
+; Line 202
+	mov	r8, rbx
+	xor	edx, edx
+	shl	r8, 2
+	mov	rcx, rdi
+	call	memset
+$LN6@Multiplica:
+; Line 205
+	mov	r10, QWORD PTR [rsi]
+	xor	r9d, r9d
+$LL10@Multiplica:
+; Line 207
+	mov	rdx, QWORD PTR [r14+r9*8]
+	xor	ecx, ecx
+; Line 208
+	movss	xmm2, DWORD PTR [r10]
+; Line 210
+	sub	rdx, rdi
+	cmp	rbx, 4
+	jl	SHORT $LC28@Multiplica
+; Line 207
+	lea	r8, QWORD PTR [rdi+4]
+	npad	8
+; Line 210
+$LL29@Multiplica:
+; Line 211
+	movaps	xmm0, xmm2
+	lea	rax, QWORD PTR [r12-3]
+	mulss	xmm0, DWORD PTR [rdx+r8-4]
+	movaps	xmm1, xmm2
+	add	rcx, 4
+	addss	xmm0, DWORD PTR [r8-4]
+	movss	DWORD PTR [r8-4], xmm0
+	movaps	xmm0, xmm2
+	mulss	xmm1, DWORD PTR [r8+rdx]
+	addss	xmm1, DWORD PTR [r8]
+	movss	DWORD PTR [r8], xmm1
+	movaps	xmm1, xmm2
+	mulss	xmm0, DWORD PTR [rdx+r8+4]
+	addss	xmm0, DWORD PTR [r8+4]
+	movss	DWORD PTR [r8+4], xmm0
+	mulss	xmm1, DWORD PTR [rdx+r8+8]
+	addss	xmm1, DWORD PTR [r8+8]
+	movss	DWORD PTR [r8+8], xmm1
+	add	r8, 16
+	cmp	rcx, rax
+	jl	SHORT $LL29@Multiplica
+$LC28@Multiplica:
+; Line 210
+	cmp	rcx, rbx
+	jge	SHORT $LN8@Multiplica
+	lea	rax, QWORD PTR [rdi+rcx*4]
+$LC13@Multiplica:
+; Line 211
+	movaps	xmm0, xmm2
+	inc	rcx
+	mulss	xmm0, DWORD PTR [rax+rdx]
+	addss	xmm0, DWORD PTR [rax]
+	movss	DWORD PTR [rax], xmm0
+	add	rax, 4
+	cmp	rcx, rbx
+	jl	SHORT $LC13@Multiplica
+$LN8@Multiplica:
+; Line 205
+	inc	r9
+	add	r10, 4
+	cmp	r9, 10
+	jl	$LL10@Multiplica
+; Line 200
+	add	rsi, 8
+	sub	rbp, 1
+	jne	$LL4@Multiplica
+; Line 214
+	mov	rbx, QWORD PTR [rsp+64]
+	mov	rbp, QWORD PTR [rsp+72]
+	mov	rsi, QWORD PTR [rsp+80]
+	mov	rdi, QWORD PTR [rsp+88]
+	add	rsp, 32					; 00000020H
+	pop	r15
+	pop	r14
+	pop	r12
+	ret	0
+?MultiplicationWithoutVectorization@@YAXHHHPEAPEAM00@Z ENDP ; MultiplicationWithoutVectorization
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z
+_TEXT	SEGMENT
+y_matrix1_size$dead$ = 32
+x_matrix2_size$dead$ = 40
+x_matrix1_size$dead$ = 48
+A$ = 56
+B$ = 64
+C$ = 72
+?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z PROC ; ManuallyVectorizedMultiplication, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 217
+$LN34:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rsi
+	mov	QWORD PTR [rsp+24], rdi
+	mov	QWORD PTR [rsp+32], r12
+	push	r13
+	push	r14
+	push	r15
+	mov	r15, QWORD PTR C$[rsp]
+	mov	rbx, r9
+	mov	esi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	sub	r15, r9
+	mov	r13, QWORD PTR B$[rsp]
+	mov	r14d, 40				; 00000028H
+	npad	10
+$LL4@ManuallyVe:
+; Line 220
+	mov	rdi, QWORD PTR [r15+rbx]
+	lea	r11d, DWORD PTR [rsi-1]
+	shr	r11d, 3
+; Line 221
+	test	esi, esi
+	jle	SHORT $LN32@ManuallyVe
+; Line 220
+	vxorps	xmm0, xmm0, xmm0
+	mov	rcx, rdi
+	lea	edx, DWORD PTR [r11+1]
+	npad	5
+$LL7@ManuallyVe:
+; Line 222
+	vmovups	YMMWORD PTR [rcx], ymm0
+	lea	rcx, QWORD PTR [rcx+32]
+	sub	rdx, 1
+	jne	SHORT $LL7@ManuallyVe
+	vzeroupper
+$LN32@ManuallyVe:
+; Line 223
+	xor	edx, edx
+	mov	r10, r13
+	npad	10
+$LL10@ManuallyVe:
+; Line 226
+	mov	rax, QWORD PTR [rbx]
+	mov	r8, QWORD PTR [r10]
+	vbroadcastss ymm1, DWORD PTR [rdx+rax]
+; Line 227
+	test	esi, esi
+	jle	SHORT $LN8@ManuallyVe
+; Line 225
+	mov	rcx, rdi
+	lea	r9d, DWORD PTR [r11+1]
+	sub	r8, rdi
+	npad	6
+$LL13@ManuallyVe:
+; Line 232
+	vmulps	ymm0, ymm1, YMMWORD PTR [r8+rcx]
+; Line 233
+	vaddps	ymm0, ymm0, YMMWORD PTR [rcx]
+	vmovups	YMMWORD PTR [rcx], ymm0
+	lea	rcx, QWORD PTR [rcx+32]
+	sub	r9, 1
+	jne	SHORT $LL13@ManuallyVe
+$LN8@ManuallyVe:
+; Line 223
+	add	r10, 8
+	add	rdx, 4
+	cmp	rdx, 40					; 00000028H
+	jl	SHORT $LL10@ManuallyVe
+; Line 218
+	add	rbx, 8
+	sub	r14, 1
+	vzeroupper
+	jne	$LL4@ManuallyVe
+; Line 237
+	mov	rbx, QWORD PTR [rsp+32]
+	mov	rsi, QWORD PTR [rsp+40]
+	mov	rdi, QWORD PTR [rsp+48]
+	mov	r12, QWORD PTR [rsp+56]
+	pop	r15
+	pop	r14
+	pop	r13
+	ret	0
+?ManuallyVectorizedMultiplication@@YAXHHHPEAPEAM00@Z ENDP ; ManuallyVectorizedMultiplication
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?VectorizedAdd@@YAXHHPEAPEAM0@Z
+_TEXT	SEGMENT
+x_matrix$dead$ = 16
+y_matrix$dead$ = 24
+matrixToAdd$ = 32
+result$ = 40
+?VectorizedAdd@@YAXHHPEAPEAM0@Z PROC			; VectorizedAdd, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 240
+$LN38:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+24], rsi
+	push	r14
+; Line 241
+	movsxd	rsi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	mov	rbx, r9
+	mov	r14, r8
+	test	rsi, rsi
+	jle	$LN3@Vectorized
+	mov	QWORD PTR [rsp+16], rdi
+	sub	r14, rbx
+	npad	6
+$LL4@Vectorized:
+; Line 245
+	mov	r10, QWORD PTR [rbx]
+	lea	r9, QWORD PTR [r14+rbx]
+	mov	rdx, QWORD PTR [r9]
+	lea	rcx, QWORD PTR [r10+156]
+	lea	rax, QWORD PTR [rdx+156]
+	cmp	r10, rax
+	ja	SHORT $LN15@Vectorized
+; Line 243
+	cmp	rcx, rdx
+	jb	SHORT $LN15@Vectorized
+	xor	r11d, r11d
+	jmp	SHORT $LN36@Vectorized
+$LN15@Vectorized:
+	mov	edi, 2
+	lea	rcx, QWORD PTR [r10+32]
+	mov	r8, r10
+	neg	r8
+	lea	r11d, QWORD PTR [rdi+30]
+	npad	6
+$LL7@Vectorized:
+; Line 245
+	movups	xmm0, XMMWORD PTR [rcx-32]
+	lea	rax, QWORD PTR [rcx+r8]
+	movups	xmm1, XMMWORD PTR [rax+rdx-32]
+	lea	rax, QWORD PTR [rcx+r8]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rcx-32], xmm1
+	movups	xmm0, XMMWORD PTR [rcx-16]
+	movups	xmm1, XMMWORD PTR [rax+rdx-16]
+	lea	rax, QWORD PTR [r8+rcx]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rcx-16], xmm1
+	movups	xmm0, XMMWORD PTR [rcx]
+	movups	xmm1, XMMWORD PTR [rax+rdx]
+	lea	rax, QWORD PTR [rcx+r8]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rcx], xmm1
+	movups	xmm0, XMMWORD PTR [rcx+16]
+	movups	xmm1, XMMWORD PTR [rax+rdx+16]
+	addps	xmm1, xmm0
+	movups	XMMWORD PTR [rcx+16], xmm1
+	add	rcx, 64					; 00000040H
+	sub	rdi, 1
+	jne	SHORT $LL7@Vectorized
+$LN36@Vectorized:
+	lea	rcx, QWORD PTR [r11+2]
+	mov	r8d, 36					; 00000024H
+	sub	r8, r11
+	lea	rcx, QWORD PTR [r10+rcx*4]
+	mov	r9, r10
+	shr	r8, 2
+	neg	r9
+	inc	r8
+	lea	r11, QWORD PTR [r11+r8*4]
+	npad	7
+$LL24@Vectorized:
+	lea	rax, QWORD PTR [r9+rdx]
+	movss	xmm0, DWORD PTR [rax+rcx-8]
+	addss	xmm0, DWORD PTR [rcx-8]
+	movss	DWORD PTR [rcx-8], xmm0
+	movss	xmm1, DWORD PTR [rax+rcx-4]
+	lea	rax, QWORD PTR [r9+rdx]
+	addss	xmm1, DWORD PTR [rcx-4]
+	movss	DWORD PTR [rcx-4], xmm1
+	movss	xmm0, DWORD PTR [rax+rcx]
+	lea	rax, QWORD PTR [r9+rdx]
+	addss	xmm0, DWORD PTR [rcx]
+	movss	DWORD PTR [rcx], xmm0
+	movss	xmm0, DWORD PTR [rax+rcx+4]
+	addss	xmm0, DWORD PTR [rcx+4]
+	movss	DWORD PTR [rcx+4], xmm0
+	add	rcx, 16
+	sub	r8, 1
+	jne	SHORT $LL24@Vectorized
+; Line 243
+	cmp	r11, 40					; 00000028H
+	jge	SHORT $LN2@Vectorized
+	mov	r8d, 40					; 00000028H
+	lea	rcx, QWORD PTR [r10+r11*4]
+	sub	r8, r11
+$LC31@Vectorized:
+; Line 245
+	mov	rax, rdx
+	sub	rax, r10
+	movss	xmm0, DWORD PTR [rax+rcx]
+	addss	xmm0, DWORD PTR [rcx]
+	movss	DWORD PTR [rcx], xmm0
+	add	rcx, 4
+	sub	r8, 1
+	jne	SHORT $LC31@Vectorized
+$LN2@Vectorized:
+; Line 241
+	add	rbx, 8
+	sub	rsi, 1
+	jne	$LL4@Vectorized
+	mov	rdi, QWORD PTR [rsp+16]
+$LN3@Vectorized:
+; Line 248
+	mov	rbx, QWORD PTR [rsp+24]
+	mov	rsi, QWORD PTR [rsp+32]
+	pop	r14
+	ret	0
+?VectorizedAdd@@YAXHHPEAPEAM0@Z ENDP			; VectorizedAdd
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?NonVectorizedAdd@@YAXHHPEAPEAM0@Z
+_TEXT	SEGMENT
+x_matrix$dead$ = 8
+y_matrix$dead$ = 16
+matrixToAdd$ = 24
+result$ = 32
+?NonVectorizedAdd@@YAXHHPEAPEAM0@Z PROC			; NonVectorizedAdd, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 252
+	movsxd	rdx, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	test	rdx, rdx
+	jle	$LN3@NonVectori
+	sub	r8, r9
+	npad	13
+$LL4@NonVectori:
+; Line 257
+	mov	rcx, QWORD PTR [r9]
+	mov	rax, QWORD PTR [r8+r9]
+	movss	xmm0, DWORD PTR [rax]
+	addss	xmm0, DWORD PTR [rcx]
+	movss	DWORD PTR [rcx], xmm0
+	movss	xmm1, DWORD PTR [rax+4]
+	addss	xmm1, DWORD PTR [rcx+4]
+	movss	DWORD PTR [rcx+4], xmm1
+	movss	xmm0, DWORD PTR [rax+8]
+	addss	xmm0, DWORD PTR [rcx+8]
+	movss	DWORD PTR [rcx+8], xmm0
+	movss	xmm1, DWORD PTR [rax+12]
+	addss	xmm1, DWORD PTR [rcx+12]
+	movss	DWORD PTR [rcx+12], xmm1
+	movss	xmm0, DWORD PTR [rax+16]
+	addss	xmm0, DWORD PTR [rcx+16]
+	movss	DWORD PTR [rcx+16], xmm0
+	movss	xmm1, DWORD PTR [rax+20]
+	addss	xmm1, DWORD PTR [rcx+20]
+	movss	DWORD PTR [rcx+20], xmm1
+	movss	xmm0, DWORD PTR [rax+24]
+	addss	xmm0, DWORD PTR [rcx+24]
+	movss	DWORD PTR [rcx+24], xmm0
+	movss	xmm1, DWORD PTR [rax+28]
+	addss	xmm1, DWORD PTR [rcx+28]
+	movss	DWORD PTR [rcx+28], xmm1
+	movss	xmm0, DWORD PTR [rax+32]
+	addss	xmm0, DWORD PTR [rcx+32]
+	movss	DWORD PTR [rcx+32], xmm0
+	movss	xmm1, DWORD PTR [rax+36]
+	addss	xmm1, DWORD PTR [rcx+36]
+	movss	DWORD PTR [rcx+36], xmm1
+	movss	xmm0, DWORD PTR [rax+40]
+	addss	xmm0, DWORD PTR [rcx+40]
+	movss	DWORD PTR [rcx+40], xmm0
+	movss	xmm1, DWORD PTR [rax+44]
+	addss	xmm1, DWORD PTR [rcx+44]
+	movss	DWORD PTR [rcx+44], xmm1
+	movss	xmm0, DWORD PTR [rax+48]
+	addss	xmm0, DWORD PTR [rcx+48]
+	movss	DWORD PTR [rcx+48], xmm0
+	movss	xmm1, DWORD PTR [rax+52]
+	addss	xmm1, DWORD PTR [rcx+52]
+	movss	DWORD PTR [rcx+52], xmm1
+	movss	xmm0, DWORD PTR [rax+56]
+	addss	xmm0, DWORD PTR [rcx+56]
+	movss	DWORD PTR [rcx+56], xmm0
+	movss	xmm1, DWORD PTR [rax+60]
+	addss	xmm1, DWORD PTR [rcx+60]
+	movss	DWORD PTR [rcx+60], xmm1
+	movss	xmm0, DWORD PTR [rax+64]
+	addss	xmm0, DWORD PTR [rcx+64]
+	movss	DWORD PTR [rcx+64], xmm0
+	movss	xmm1, DWORD PTR [rax+68]
+	addss	xmm1, DWORD PTR [rcx+68]
+	movss	DWORD PTR [rcx+68], xmm1
+	movss	xmm0, DWORD PTR [rax+72]
+	addss	xmm0, DWORD PTR [rcx+72]
+	movss	DWORD PTR [rcx+72], xmm0
+	movss	xmm1, DWORD PTR [rax+76]
+	addss	xmm1, DWORD PTR [rcx+76]
+	movss	DWORD PTR [rcx+76], xmm1
+	movss	xmm0, DWORD PTR [rax+80]
+	addss	xmm0, DWORD PTR [rcx+80]
+	movss	DWORD PTR [rcx+80], xmm0
+	movss	xmm1, DWORD PTR [rax+84]
+	addss	xmm1, DWORD PTR [rcx+84]
+	movss	DWORD PTR [rcx+84], xmm1
+	movss	xmm0, DWORD PTR [rax+88]
+	addss	xmm0, DWORD PTR [rcx+88]
+	movss	DWORD PTR [rcx+88], xmm0
+	movss	xmm1, DWORD PTR [rax+92]
+	addss	xmm1, DWORD PTR [rcx+92]
+	movss	DWORD PTR [rcx+92], xmm1
+	movss	xmm0, DWORD PTR [rax+96]
+	addss	xmm0, DWORD PTR [rcx+96]
+	movss	DWORD PTR [rcx+96], xmm0
+	movss	xmm1, DWORD PTR [rax+100]
+	addss	xmm1, DWORD PTR [rcx+100]
+	movss	DWORD PTR [rcx+100], xmm1
+	movss	xmm0, DWORD PTR [rax+104]
+	addss	xmm0, DWORD PTR [rcx+104]
+	add	r9, 8
+	movss	DWORD PTR [rcx+104], xmm0
+	movss	xmm1, DWORD PTR [rax+108]
+	addss	xmm1, DWORD PTR [rcx+108]
+	movss	DWORD PTR [rcx+108], xmm1
+	movss	xmm0, DWORD PTR [rax+112]
+	addss	xmm0, DWORD PTR [rcx+112]
+	movss	DWORD PTR [rcx+112], xmm0
+	movss	xmm1, DWORD PTR [rax+116]
+	addss	xmm1, DWORD PTR [rcx+116]
+	movss	DWORD PTR [rcx+116], xmm1
+	movss	xmm0, DWORD PTR [rax+120]
+	addss	xmm0, DWORD PTR [rcx+120]
+	movss	DWORD PTR [rcx+120], xmm0
+	movss	xmm1, DWORD PTR [rax+124]
+	addss	xmm1, DWORD PTR [rcx+124]
+	movss	DWORD PTR [rcx+124], xmm1
+	movss	xmm0, DWORD PTR [rax+128]
+	addss	xmm0, DWORD PTR [rcx+128]
+	movss	DWORD PTR [rcx+128], xmm0
+	movss	xmm1, DWORD PTR [rax+132]
+	addss	xmm1, DWORD PTR [rcx+132]
+	movss	DWORD PTR [rcx+132], xmm1
+	movss	xmm0, DWORD PTR [rax+136]
+	addss	xmm0, DWORD PTR [rcx+136]
+	movss	DWORD PTR [rcx+136], xmm0
+	movss	xmm1, DWORD PTR [rax+140]
+	addss	xmm1, DWORD PTR [rcx+140]
+	movss	DWORD PTR [rcx+140], xmm1
+	movss	xmm0, DWORD PTR [rax+144]
+	addss	xmm0, DWORD PTR [rcx+144]
+	movss	DWORD PTR [rcx+144], xmm0
+	movss	xmm1, DWORD PTR [rax+148]
+	addss	xmm1, DWORD PTR [rcx+148]
+	movss	DWORD PTR [rcx+148], xmm1
+	movss	xmm0, DWORD PTR [rax+152]
+	addss	xmm0, DWORD PTR [rcx+152]
+	movss	DWORD PTR [rcx+152], xmm0
+	movss	xmm1, DWORD PTR [rax+156]
+	addss	xmm1, DWORD PTR [rcx+156]
+	movss	DWORD PTR [rcx+156], xmm1
+	sub	rdx, 1
+	jne	$LL4@NonVectori
+$LN3@NonVectori:
+; Line 260
+	ret	0
+?NonVectorizedAdd@@YAXHHPEAPEAM0@Z ENDP			; NonVectorizedAdd
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?Compare@@YA_NPEAPEAPEAPEAM00H@Z
+_TEXT	SEGMENT
+j$1$ = 32
+$T1 = 40
+tv825 = 48
+tv820 = 56
+m1$ = 160
+m2$ = 168
+m3$ = 176
+i$1$ = 184
+x$dead$ = 184
+?Compare@@YA_NPEAPEAPEAPEAM00H@Z PROC			; Compare, COMDAT
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 281
+$LN40:
+	mov	DWORD PTR [rsp+32], r9d
+	mov	QWORD PTR [rsp+24], r8
+	mov	QWORD PTR [rsp+16], rdx
+	mov	QWORD PTR [rsp+8], rcx
+	push	rbx
+	push	rbp
+	push	rsi
+	push	rdi
+	push	r12
+	push	r13
+	push	r14
+	push	r15
+	sub	rsp, 88					; 00000058H
+; Line 286
+	movsxd	rdi, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
+	xor	esi, esi
+	sub	rcx, rdx
+	mov	DWORD PTR i$1$[rsp], esi
+	mov	r15, r8
+	mov	QWORD PTR $T1[rsp], rsi
+	mov	QWORD PTR tv820[rsp], rcx
+	sub	r15, rdx
+	mov	r14, rdx
+	npad	6
+$LL4@Compare:
+; Line 284
+	xor	eax, eax
+	mov	DWORD PTR j$1$[rsp], eax
+	xor	esi, esi
+	npad	8
+$LL7@Compare:
+; Line 286
+	xor	r13d, r13d
+	xor	r12d, r12d
+	test	rdi, rdi
+	jle	$LN5@Compare
+; Line 298
+	mov	rax, QWORD PTR [r14]
+	mov	rbp, QWORD PTR [rsi+rax]
+	mov	rax, QWORD PTR [rcx+r14]
+	mov	r9, rbp
+	mov	rax, QWORD PTR [rsi+rax]
+	sub	rax, rbp
+	mov	QWORD PTR tv825[rsp], rax
+	npad	7
+$LL10@Compare:
+	mov	r11, QWORD PTR [r9]
+	xor	ebx, ebx
+	mov	r10, QWORD PTR [rax+r9]
+	xor	r8d, r8d
+	mov	rdx, r11
+	sub	r10, r11
+$LL13@Compare:
+	movss	xmm1, DWORD PTR [rdx]
+	movss	xmm0, DWORD PTR [r10+rdx]
+	ucomiss	xmm0, xmm1
+	jp	$LN21@Compare
+	jne	$LN21@Compare
+	mov	rax, QWORD PTR [r15+r14]
+	mov	rcx, QWORD PTR [rsi+rax]
+	sub	rcx, rbp
+	mov	rax, QWORD PTR [rcx+r9]
+	sub	rax, r11
+	ucomiss	xmm1, DWORD PTR [rax+rdx]
+	jp	$LN21@Compare
+	jne	$LN21@Compare
+; Line 288
+	inc	ebx
+	inc	r8
+	add	rdx, 4
+	cmp	r8, rdi
+	jl	SHORT $LL13@Compare
+; Line 286
+	mov	rax, QWORD PTR tv825[rsp]
+	inc	r13d
+	inc	r12
+	add	r9, 8
+	cmp	r12, rdi
+	jl	SHORT $LL10@Compare
+	mov	eax, DWORD PTR j$1$[rsp]
+	mov	rcx, QWORD PTR tv820[rsp]
+$LN5@Compare:
+; Line 284
+	inc	eax
+	add	rsi, 8
+	mov	DWORD PTR j$1$[rsp], eax
+	cmp	rsi, 800				; 00000320H
+	jl	$LL7@Compare
+; Line 282
+	mov	rdx, QWORD PTR $T1[rsp]
+	add	r14, 8
+	inc	DWORD PTR i$1$[rsp]
+	inc	rdx
+	mov	QWORD PTR $T1[rsp], rdx
+	cmp	rdx, 100				; 00000064H
+	jl	$LL4@Compare
+; Line 311
+	mov	al, 1
+$LN1@Compare:
+; Line 312
+	add	rsp, 88					; 00000058H
+	pop	r15
+	pop	r14
+	pop	r13
+	pop	r12
+	pop	rdi
+	pop	rsi
+	pop	rbp
+	pop	rbx
+	ret	0
+$LN21@Compare:
+; Line 300
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	lea	rdx, OFFSET FLAT:??_C@_03CEONNMIO@i?3?5@
+	movaps	XMMWORD PTR [rsp+64], xmm6
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movsxd	rsi, DWORD PTR i$1$[rsp]
+	mov	rcx, rax
+	mov	edx, esi
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_04BAPPHEGF@?5j?3?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movsxd	rdi, DWORD PTR j$1$[rsp]
+	mov	rcx, rax
+	mov	edx, edi
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_04KIEDBDAA@?5k?3?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	mov	rcx, rax
+	mov	edx, r13d
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_04IFFCALBF@?5r?3?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	mov	rcx, rax
+	mov	edx, ebx
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 301
+	mov	rax, QWORD PTR m1$[rsp]
+	mov	r14, rsi
+	mov	r15, QWORD PTR m2$[rsp]
+	mov	rbp, rdi
+	movsxd	rsi, r13d
+	movsxd	rdi, ebx
+	mov	rax, QWORD PTR [rax+r14*8]
+	mov	rcx, QWORD PTR [rax+rbp*8]
+	mov	rax, QWORD PTR [r15+r14*8]
+	mov	rdx, QWORD PTR [rcx+rsi*8]
+	mov	rcx, QWORD PTR [rax+rbp*8]
+	movss	xmm6, DWORD PTR [rdx+rdi*4]
+	lea	rdx, OFFSET FLAT:??_C@_04KMJAGADO@m1?3?5@
+	mov	rax, QWORD PTR [rcx+rsi*8]
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	subss	xmm6, DWORD PTR [rax+rdi*4]
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	mov	rcx, rax
+	movaps	xmm1, xmm6
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 302
+	mov	rax, QWORD PTR [r15+r14*8]
+	lea	rdx, OFFSET FLAT:??_C@_04LOCFMPNA@m2?3?5@
+	mov	rcx, QWORD PTR [rax+rbp*8]
+	mov	rbx, QWORD PTR [rcx+rsi*8]
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rbx+rdi*4]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 303
+	mov	rcx, QWORD PTR m3$[rsp]
+	lea	rdx, OFFSET FLAT:??_C@_04GJJKILF@m3?3?5@
+	mov	rax, QWORD PTR [rcx+r14*8]
+	mov	rcx, QWORD PTR [rax+rbp*8]
+	mov	rax, QWORD PTR [r15+r14*8]
+	mov	r8, QWORD PTR [rcx+rsi*8]
+	mov	rcx, QWORD PTR [rax+rbp*8]
+	movss	xmm6, DWORD PTR [r8+rdi*4]
+	mov	rax, QWORD PTR [rcx+rsi*8]
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	subss	xmm6, DWORD PTR [rax+rdi*4]
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	mov	rcx, rax
+	movaps	xmm1, xmm6
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 304
+	movaps	xmm6, XMMWORD PTR [rsp+64]
+	xor	al, al
+	jmp	$LN1@Compare
+?Compare@@YA_NPEAPEAPEAPEAM00H@Z ENDP			; Compare
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
 ;	COMDAT ?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z
 _TEXT	SEGMENT
 matrix$ = 8
 x_matrix_size$ = 16
 y_matrix_size$ = 24
 ?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z PROC			; FillMatrix, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 255
-$LN34:
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 315
+$LN32:
 	mov	QWORD PTR [rsp+8], rbx
-	mov	QWORD PTR [rsp+16], rdi
-	mov	rbx, rcx
-; Line 263
-	movsxd	r10, edx
-	xor	r9d, r9d
-	movsxd	r11, r8d
-	mov	edi, 300				; 0000012cH
-	npad	5
+; Line 323
+	movsd	xmm1, QWORD PTR __real@3fb999999999999a
+	mov	r11, rcx
+	xorps	xmm0, xmm0
+	movsxd	r9, edx
+	movsxd	r10, r8d
+	mov	ebx, 100				; 00000064H
+	npad	2
 $LL4@FillMatrix:
-; Line 259
+; Line 319
 	xor	r8d, r8d
 $LL7@FillMatrix:
-; Line 261
+; Line 321
 	xor	edx, edx
-	test	r11, r11
+	test	r10, r10
 	jle	SHORT $LN5@FillMatrix
 	npad	6
 $LL10@FillMatrix:
-; Line 263
-	test	r10, r10
+; Line 323
+	test	r9, r9
 	jle	SHORT $LN8@FillMatrix
-; Line 265
-	mov	rax, QWORD PTR [rbx]
+; Line 325
+	mov	rax, QWORD PTR [r11]
 	mov	rcx, QWORD PTR [r8+rax]
 	mov	rax, QWORD PTR [rcx+rdx*8]
-	mov	rcx, r10
+	mov	rcx, r9
 	npad	13
-$LL23@FillMatrix:
-; Line 263
-	movd	xmm0, r9d
-	lea	rax, QWORD PTR [rax+4]
-; Line 265
-	cvtdq2ps xmm0, xmm0
-	inc	r9d
-	movss	DWORD PTR [rax-4], xmm0
+$LL13@FillMatrix:
+	movss	DWORD PTR [rax], xmm0
+	add	rax, 4
+; Line 326
+	cvtss2sd xmm0, xmm0
+	addsd	xmm0, xmm1
+	cvtsd2ss xmm0, xmm0
 	sub	rcx, 1
-	jne	SHORT $LL23@FillMatrix
+	jne	SHORT $LL13@FillMatrix
 $LN8@FillMatrix:
-; Line 261
+; Line 321
 	inc	rdx
-	cmp	rdx, r11
+	cmp	rdx, r10
 	jl	SHORT $LL10@FillMatrix
 $LN5@FillMatrix:
-; Line 259
+; Line 319
 	add	r8, 8
-	cmp	r8, 2400				; 00000960H
+	cmp	r8, 800					; 00000320H
 	jl	SHORT $LL7@FillMatrix
-; Line 257
-	add	rbx, 8
-	sub	rdi, 1
+; Line 317
+	add	r11, 8
+	sub	rbx, 1
 	jne	SHORT $LL4@FillMatrix
-; Line 270
+; Line 331
 	mov	rbx, QWORD PTR [rsp+8]
-	mov	rdi, QWORD PTR [rsp+16]
 	ret	0
 ?FillMatrix@@YAXPEAPEAPEAPEAMHH@Z ENDP			; FillMatrix
 _TEXT	ENDS
@@ -1695,8 +2685,8 @@ matrix$ = 64
 x_matrix_size$dead$ = 72
 y_matrix_size$dead$ = 80
 ?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z PROC			; ClearMatrix, COMDAT
-; File C:\Users\Artem\Desktop\AWP1\AWP1.cpp
-; Line 273
+; File C:\Users\Dude\Desktop\AWP1\AWP1.cpp
+; Line 334
 $LN32:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
@@ -1705,47 +2695,45 @@ $LN32:
 	push	r14
 	push	r15
 	sub	rsp, 32					; 00000020H
-	movsxd	rdi, DWORD PTR ?x_result@@3HA		; x_result
+	movsxd	rbp, DWORD PTR ?x_matrix2@@3HA		; x_matrix2
 	mov	r14, rcx
-; Line 278
-	movsxd	rbp, DWORD PTR ?y_result@@3HA		; y_result
-	mov	r15d, 300				; 0000012cH
-	npad	1
+; Line 339
+	mov	r15d, 100				; 00000064H
 $LL4@ClearMatri:
-; Line 276
+; Line 337
 	xor	esi, esi
+	npad	6
 $LL7@ClearMatri:
-; Line 278
+; Line 339
 	xor	ebx, ebx
-	test	rbp, rbp
+	test	ebp, ebp
 	jle	SHORT $LN5@ClearMatri
-	npad	7
 $LL10@ClearMatri:
-; Line 280
-	test	edi, edi
+; Line 341
+	test	ebp, ebp
 	jle	SHORT $LN8@ClearMatri
 	mov	rax, QWORD PTR [r14]
-	mov	r8, rdi
+	mov	r8, rbp
 	shl	r8, 2
 	xor	edx, edx
-	mov	rcx, QWORD PTR [rax+rsi]
+	mov	rcx, QWORD PTR [rsi+rax]
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	memset
 $LN8@ClearMatri:
-; Line 278
+; Line 339
 	inc	rbx
 	cmp	rbx, rbp
 	jl	SHORT $LL10@ClearMatri
 $LN5@ClearMatri:
-; Line 276
+; Line 337
 	add	rsi, 8
-	cmp	rsi, 2400				; 00000960H
+	cmp	rsi, 800				; 00000320H
 	jl	SHORT $LL7@ClearMatri
-; Line 274
+; Line 335
 	add	r14, 8
 	sub	r15, 1
 	jne	SHORT $LL4@ClearMatri
-; Line 287
+; Line 348
 	mov	rbx, QWORD PTR [rsp+64]
 	mov	rbp, QWORD PTR [rsp+72]
 	mov	rsi, QWORD PTR [rsp+80]
@@ -1755,5 +2743,644 @@ $LN5@ClearMatri:
 	pop	rdi
 	ret	0
 ?ClearMatrix@@YAXPEAPEAPEAPEAMHH@Z ENDP			; ClearMatrix
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEAA@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@@Z
+_TEXT	SEGMENT
+this$ = 8
+_Other$ = 16
+??0?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEAA@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@@Z PROC ; std::chrono::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 227
+	mov	rax, QWORD PTR [rdx]
+	mov	QWORD PTR [rcx], rax
+	mov	rax, rcx
+	ret	0
+??0?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEAA@AEBV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@@Z ENDP ; std::chrono::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ
+_TEXT	SEGMENT
+this$ = 8
+??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 124
+	movzx	eax, BYTE PTR [rcx+8]
+; Line 125
+	ret	0
+??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+_TEXT	SEGMENT
+this$ = 48
+??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 108
+$LN13:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; Line 112
+	call	QWORD PTR __imp_?uncaught_exception@std@@YA_NXZ
+; Line 117
+	test	al, al
+	jne	SHORT $LN2@sentry
+; Line 118
+	mov	rcx, QWORD PTR [rbx]
+	call	QWORD PTR __imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+	npad	1
+$LN2@sentry:
+; Line 78
+	mov	rdx, QWORD PTR [rbx]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [rcx+rdx+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 79
+	test	rcx, rcx
+	je	SHORT $LN10@sentry
+; Line 80
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN10@sentry:
+; Line 120
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+_TEXT	SEGMENT
+this$ = 48
+_Ostr$ = 56
+??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 91
+$LN24:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+8], rcx
+	push	rdi
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rdx
+	mov	rdi, rcx
+; Line 70
+	mov	QWORD PTR [rcx], rdx
+; Line 71
+	mov	rax, QWORD PTR [rdx]
+	movsxd	r8, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [r8+rdx+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 72
+	test	rcx, rcx
+	je	SHORT $LN8@sentry
+; Line 73
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+	npad	1
+$LN8@sentry:
+; Line 92
+	mov	rax, QWORD PTR [rbx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 291
+	cmp	DWORD PTR [rcx+rbx+16], 0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 92
+	je	SHORT $LN2@sentry
+; Line 93
+	xor	al, al
+; Line 94
+	jmp	SHORT $LN1@sentry
+$LN2@sentry:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 69
+	mov	rcx, QWORD PTR [rcx+rbx+80]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 98
+	test	rcx, rcx
+	je	SHORT $LN4@sentry
+	cmp	rcx, rbx
+	je	SHORT $LN4@sentry
+; Line 103
+	call	QWORD PTR __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+; Line 104
+	mov	rax, QWORD PTR [rbx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 291
+	cmp	DWORD PTR [rcx+rbx+16], 0
+	sete	al
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 104
+	jmp	SHORT $LN1@sentry
+$LN4@sentry:
+; Line 99
+	mov	al, 1
+$LN1@sentry:
+; Line 105
+	mov	BYTE PTR [rdi+8], al
+	mov	rax, rdi
+	mov	rbx, QWORD PTR [rsp+56]
+	add	rsp, 32					; 00000020H
+	pop	rdi
+	ret	0
+??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+this$ = 48
+_Ostr$ = 56
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA PROC ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+	mov	rcx, QWORD PTR this$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA ENDP ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?eof@?$_Narrow_char_traits@DH@std@@SAHXZ
+_TEXT	SEGMENT
+?eof@?$_Narrow_char_traits@DH@std@@SAHXZ PROC		; std::_Narrow_char_traits<char,int>::eof, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xstring
+; Line 466
+	mov	eax, -1
+; Line 467
+	ret	0
+?eof@?$_Narrow_char_traits@DH@std@@SAHXZ ENDP		; std::_Narrow_char_traits<char,int>::eof
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z
+_TEXT	SEGMENT
+_Left$ = 8
+_Right$ = 16
+?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z PROC ; std::_Narrow_char_traits<char,int>::eq_int_type, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xstring
+; Line 458
+	mov	eax, DWORD PTR [rdx]
+	cmp	DWORD PTR [rcx], eax
+	sete	al
+; Line 459
+	ret	0
+?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z ENDP ; std::_Narrow_char_traits<char,int>::eq_int_type
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z
+_TEXT	SEGMENT
+_First$ = 8
+?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z PROC	; std::_Narrow_char_traits<char,int>::length, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xstring
+; Line 400
+	mov	rax, -1
+$LL3@length:
+	inc	rax
+	cmp	BYTE PTR [rcx+rax], 0
+	jne	SHORT $LL3@length
+; Line 402
+	ret	0
+?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z ENDP	; std::_Narrow_char_traits<char,int>::length
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+_TEXT	SEGMENT
+this$ = 48
+??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ PROC ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 77
+$LN8:
+	sub	rsp, 40					; 00000028H
+; Line 78
+	mov	rdx, QWORD PTR [rcx]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [rcx+rdx+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 79
+	test	rcx, rcx
+	je	SHORT $LN2@Sentry_bas
+; Line 80
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN2@Sentry_bas:
+; Line 82
+	add	rsp, 40					; 00000028H
+	ret	0
+??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+_TEXT	SEGMENT
+this$ = 48
+_Ostr$ = 56
+??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z PROC ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::_Sentry_base, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 70
+$LN8:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	QWORD PTR [rcx], rdx
+	mov	rbx, rcx
+; Line 71
+	mov	rax, QWORD PTR [rdx]
+	movsxd	r8, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [r8+rdx+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 72
+	test	rcx, rcx
+	je	SHORT $LN6@Sentry_bas
+; Line 73
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+$LN6@Sentry_bas:
+; Line 75
+	mov	rax, rbx
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ENDP ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::_Sentry_base
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?GUsteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@V312@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@01@0@Z
+_TEXT	SEGMENT
+__$ReturnUdt$ = 8
+_Left$ = 16
+_Right$ = 24
+??$?GUsteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@V312@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@01@0@Z PROC ; std::chrono::operator-<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> >,std::chrono::duration<__int64,std::ratio<1,1000000000> > >, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 235
+	mov	rax, QWORD PTR [rdx]
+	sub	rax, QWORD PTR [r8]
+; Line 121
+	mov	QWORD PTR [rcx], rax
+; Line 571
+	mov	rax, rcx
+; Line 572
+	ret	0
+??$?GUsteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@12@V312@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@01@0@Z ENDP ; std::chrono::operator-<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> >,std::chrono::duration<__int64,std::ratio<1,1000000000> > >
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+_TEXT	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z PROC ; std::operator<<<std::char_traits<char> >, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 731
+$LN99:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+8], rcx
+	push	rsi
+	push	rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 48					; 00000030H
+	mov	r12, rdx
+	mov	rsi, rcx
+; Line 735
+	xor	ebx, ebx
+	mov	DWORD PTR _State$[rsp], ebx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xstring
+; Line 400
+	mov	r14, -1
+	npad	7
+$LL91@operator:
+	inc	r14
+	cmp	BYTE PTR [rdx+r14], bl
+	jne	SHORT $LL91@operator
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 737
+	mov	rax, QWORD PTR [rcx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 359
+	mov	rdi, QWORD PTR [rcx+rsi+40]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 737
+	test	rdi, rdi
+	jle	SHORT $LN17@operator
+	cmp	rdi, r14
+	jle	SHORT $LN17@operator
+	sub	rdi, r14
+	jmp	SHORT $LN18@operator
+$LN17@operator:
+	xor	edi, edi
+$LN18@operator:
+; Line 70
+	mov	r15, rsi
+	mov	QWORD PTR _Ok$[rsp], rsi
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 72
+	test	rcx, rcx
+	je	SHORT $LN39@operator
+; Line 73
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+	npad	1
+$LN39@operator:
+; Line 92
+	mov	rcx, QWORD PTR [rsi]
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 291
+	cmp	DWORD PTR [rax+rsi+16], 0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 92
+	je	SHORT $LN33@operator
+; Line 93
+	xor	al, al
+; Line 94
+	jmp	SHORT $LN94@operator
+$LN33@operator:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 69
+	mov	rax, QWORD PTR [rax+rsi+80]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 98
+	test	rax, rax
+	je	SHORT $LN35@operator
+	cmp	rax, rsi
+	je	SHORT $LN35@operator
+; Line 103
+	mov	rcx, rax
+	call	QWORD PTR __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+; Line 104
+	mov	rcx, QWORD PTR [rsi]
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 291
+	cmp	DWORD PTR [rax+rsi+16], 0
+	sete	al
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 104
+	jmp	SHORT $LN94@operator
+$LN35@operator:
+; Line 99
+	mov	al, 1
+$LN94@operator:
+; Line 105
+	mov	BYTE PTR _Ok$[rsp+8], al
+; Line 740
+	test	al, al
+	jne	SHORT $LN8@operator
+; Line 741
+	mov	ebx, 4
+; Line 742
+	jmp	$LN22@operator
+$LN8@operator:
+; Line 744
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 322
+	mov	ecx, DWORD PTR [rax+rsi+24]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 744
+	and	ecx, 448				; 000001c0H
+	cmp	ecx, 64					; 00000040H
+	je	SHORT $LN88@operator
+$LL4@operator:
+; Line 745
+	test	rdi, rdi
+	jle	SHORT $LN88@operator
+; Line 746
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	movzx	edx, BYTE PTR [rcx+rsi+88]
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+	call	QWORD PTR __imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+	cmp	eax, -1
+	jne	SHORT $LN2@operator
+; Line 747
+	lea	ebx, QWORD PTR [rax+5]
+; Line 748
+	jmp	SHORT $LN96@operator
+$LN2@operator:
+; Line 745
+	dec	rdi
+	jmp	SHORT $LL4@operator
+$LN88@operator:
+; Line 753
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	mov	r8, r14
+	mov	rdx, r12
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+	call	QWORD PTR __imp_?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+	cmp	rax, r14
+	jne	SHORT $LN95@operator
+	npad	7
+$LL92@operator:
+; Line 758
+	test	rdi, rdi
+	jle	SHORT $LN6@operator
+; Line 759
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	movzx	edx, BYTE PTR [rcx+rsi+88]
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+	call	QWORD PTR __imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+	cmp	eax, -1
+	je	SHORT $LN95@operator
+; Line 758
+	dec	rdi
+	jmp	SHORT $LL92@operator
+$LN95@operator:
+; Line 766
+	or	ebx, 4
+$LN96@operator:
+	mov	DWORD PTR _State$[rsp], ebx
+$LN6@operator:
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xiosbase
+; Line 364
+	mov	QWORD PTR [rcx+rsi+40], 0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+	jmp	SHORT $LN22@operator
+$LN23@operator:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+	mov	rsi, QWORD PTR _Ostr$[rsp]
+	mov	ebx, DWORD PTR _State$[rsp]
+	mov	r15, QWORD PTR _Ok$[rsp]
+$LN22@operator:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 770
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rsi
+	xor	r8d, r8d
+	mov	edx, ebx
+	call	QWORD PTR __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+	npad	1
+; Line 112
+	call	QWORD PTR __imp_?uncaught_exception@std@@YA_NXZ
+; Line 117
+	test	al, al
+	jne	SHORT $LN72@operator
+; Line 118
+	mov	rcx, r15
+	call	QWORD PTR __imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+	npad	1
+$LN72@operator:
+; Line 78
+	mov	rax, QWORD PTR [r15]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ios
+; Line 79
+	mov	rcx, QWORD PTR [rcx+r15+72]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 79
+	test	rcx, rcx
+	je	SHORT $LN76@operator
+; Line 80
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN76@operator:
+; Line 771
+	mov	rax, rsi
+; Line 772
+	mov	rbx, QWORD PTR [rsp+104]
+	add	rsp, 48					; 00000030H
+	pop	r15
+	pop	r14
+	pop	r12
+	pop	rdi
+	pop	rsi
+	ret	0
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ENDP ; std::operator<<<std::char_traits<char> >
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+; Line 767
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z$0:
+	mov	rdx, QWORD PTR _Ostr$[rbp]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rdx
+	mov	r8b, 1
+	mov	edx, 4
+	call	QWORD PTR __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+	npad	1
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z
+_TEXT	SEGMENT
+_Ostr$ = 48
+??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z PROC ; std::endl<char,std::char_traits<char> >, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\ostream
+; Line 974
+$LN4:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+; Line 975
+	mov	rax, QWORD PTR [rcx]
+	mov	rbx, rcx
+	mov	dl, 10
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rbx
+	call	QWORD PTR __imp_?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADD@Z
+	movzx	edx, al
+	mov	rcx, rbx
+	call	QWORD PTR __imp_?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@D@Z
+; Line 976
+	mov	rcx, rbx
+	call	QWORD PTR __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+; Line 977
+	mov	rax, rbx
+; Line 978
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ENDP ; std::endl<char,std::char_traits<char> >
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?time_since_epoch@?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEBA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@XZ
+_TEXT	SEGMENT
+this$ = 8
+__$ReturnUdt$ = 16
+?time_since_epoch@?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEBA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@XZ PROC ; std::chrono::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >::time_since_epoch, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 235
+	mov	rax, QWORD PTR [rcx]
+	mov	QWORD PTR [rdx], rax
+	mov	rax, rdx
+; Line 236
+	ret	0
+?time_since_epoch@?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@QEBA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@XZ ENDP ; std::chrono::time_point<std::chrono::steady_clock,std::chrono::duration<__int64,std::ratio<1,1000000000> > >::time_since_epoch
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?G_JU?$ratio@$00$0DLJKMKAA@@std@@_JU01@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV201@0@Z
+_TEXT	SEGMENT
+__$ReturnUdt$ = 8
+_Left$ = 16
+_Right$ = 24
+??$?G_JU?$ratio@$00$0DLJKMKAA@@std@@_JU01@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV201@0@Z PROC ; std::chrono::operator-<__int64,std::ratio<1,1000000000>,__int64,std::ratio<1,1000000000> >, COMDAT
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\chrono
+; Line 315
+	mov	rax, QWORD PTR [rdx]
+	sub	rax, QWORD PTR [r8]
+; Line 121
+	mov	QWORD PTR [rcx], rax
+; Line 315
+	mov	rax, rcx
+; Line 316
+	ret	0
+??$?G_JU?$ratio@$00$0DLJKMKAA@@std@@_JU01@@chrono@std@@YA?AV?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@01@AEBV201@0@Z ENDP ; std::chrono::operator-<__int64,std::ratio<1,1000000000>,__int64,std::ratio<1,1000000000> >
 _TEXT	ENDS
 END

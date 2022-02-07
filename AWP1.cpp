@@ -3,6 +3,9 @@
 #include <ratio>
 #include <chrono>
 #include <immintrin.h>
+#include <cmath>
+
+bool Compare(float**** m1, float**** m2, float**** m3, int x);
 
 void VectorizedAdd(int x_matrix_size, int y_matrix_size, float** matrixToAdd, float** result);
 void NonVectorizedAdd(int x_matrix_size, int y_matrix_size, float** matrixToAdd, float** result);
@@ -17,10 +20,10 @@ void ManuallyVectorizedMultiplication(int y_matrix1_size, int x_matrix2_size, in
 
 void ClearMatrix(float**** matrix, int x_matrix_size, int y_matrix_size);
 
-const int size = 300;
+const int size = 100;
 
-int x_matrix1 = 1;
-int y_matrix1 = 4;
+int x_matrix1 = 10;
+int y_matrix1 = 40;
 int x_matrix2 = y_matrix1;
 int y_matrix2 = x_matrix1;
 int x_result = y_matrix1;
@@ -31,18 +34,24 @@ int main()
 	using namespace std::chrono;
 	float**** matrix1;
 	float**** matrix2;
-	float**** result;
+	float**** result3;
+	float**** result1;
+	float**** result2;
 
 	matrix1 = new float***[size];
 	matrix2 = new float*** [size];
-	result = new float*** [size];
+	result3 = new float*** [size];
+	result1 = new float*** [size];
+	result2 = new float*** [size];
 	float** temp;
 
 	for (int i = 0; i < size; i++)
 	{
 		matrix1[i] = new float** [size];
 		matrix2[i] = new float** [size];
-		result[i] = new float** [size];
+		result3[i] = new float** [size];
+		result1[i] = new float** [size];
+		result2[i] = new float** [size];
 	}
 	
 
@@ -52,7 +61,9 @@ int main()
 		{
 			matrix1[i][j] = new float* [y_matrix1];
 			matrix2[i][j] = new float* [y_matrix2];
-			result[i][j] = new float* [y_result];
+			result3[i][j] = new float* [y_result];
+			result1[i][j] = new float* [y_result];
+			result2[i][j] = new float* [y_result];
 		}
 	}
 
@@ -84,7 +95,9 @@ int main()
 		{
 			for (int k = 0; k < y_result; k++)
 			{
-				result[i][j][k] = new float[x_result];
+				result3[i][j][k] = new float[x_result];
+				result1[i][j][k] = new float[x_result];
+				result2[i][j][k] = new float[x_result];
 			}
 		}
 	}
@@ -99,7 +112,9 @@ int main()
 
 	FillMatrix(matrix1, x_matrix1, y_matrix1);
 	FillMatrix(matrix2, x_matrix2, y_matrix2);
-
+	ClearMatrix(result1, x_matrix2, x_matrix2);
+	ClearMatrix(result2, x_matrix2, x_matrix2);
+	ClearMatrix(result3, x_matrix2, x_matrix2);
 	high_resolution_clock::time_point t1 = high_resolution_clock::now();
 	for (int i = 0; i < size; i++)
 	{
@@ -108,15 +123,16 @@ int main()
 			for (int r = 0; r < size; r++)
 			{
 				MultiplicationWithVectorization(y_matrix1, x_matrix2, x_matrix1, matrix1[i][r], matrix2[r][j], temp);
-				VectorizedAdd(y_matrix1, x_matrix2, temp, result[i][j]);
+				VectorizedAdd(y_matrix1, x_matrix2, temp, result1[i][j]);
 			}
 		}
 	}
 	high_resolution_clock::time_point t2 = high_resolution_clock::now();
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	//DisplayMatrix(result, x_result, y_result);
-	ClearMatrix(result, x_result, y_result);
+	//DisplayMatrix(result1, x_result, y_result);
+
+	//ClearMatrix(result1, x_result, y_result);
 
 	t1 = high_resolution_clock::now();
 	for (int i = 0; i < size; i++)
@@ -126,15 +142,15 @@ int main()
 			for (int r = 0; r < size; r++)
 			{
 				MultiplicationWithoutVectorization(y_matrix1, x_matrix2, x_matrix1, matrix1[i][r], matrix2[r][j], temp);
-				NonVectorizedAdd(y_matrix1, x_matrix2, temp, result[i][j]);
+				NonVectorizedAdd(y_matrix1, x_matrix2, temp, result2[i][j]);
 			}
 		}
 	}
 	t2 = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Not vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	//DisplayMatrix(result, x_result, y_result);
-	ClearMatrix(result, x_result, y_result);
+	//DisplayMatrix(result2, x_result, y_result);
+	//ClearMatrix(result, x_result, y_result);
 
 	t1 = high_resolution_clock::now();
 	for (int i = 0; i < size; i++)
@@ -144,15 +160,22 @@ int main()
 			for (int r = 0; r < size; r++)
 			{
 				ManuallyVectorizedMultiplication(y_matrix1, x_matrix2, x_matrix1, matrix1[i][r], matrix2[r][j], temp);
-				NonVectorizedAdd(y_matrix1, x_matrix2, temp, result[i][j]);
+				NonVectorizedAdd(y_matrix1, x_matrix2, temp, result3[i][j]);
 			}
 		}
 	}
 	t2 = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>(t2 - t1);
 	std::cout << "Manually vectorized method time: " << time_span.count() << " seconds." << std::endl;
-	//DisplayMatrix(result, x_result, y_result);
-	ClearMatrix(result, x_result, y_result);
+	//DisplayMatrix(result3, x_matrix2, x_matrix2);
+	if (Compare(result1, result2, result3, x_matrix2))
+	{
+		std::cout << "Matrices are equal." << std::endl;;
+	}
+	else
+	{
+		std::cout << "Matrices aren't equal." << std::endl;;
+	}
 }
 
 void MultiplicationWithVectorization(int y_matrix1_size, int x_matrix2_size, int x_matrix1_size, float**  A, float**  B, float**  C)
@@ -203,8 +226,11 @@ void ManuallyVectorizedMultiplication(int y_matrix1_size, int x_matrix2_size, in
 			__m256 a = _mm256_set1_ps(A[i][k]);
 			for (int j = 0; j < x_matrix2_size; j += 8)
 			{
-				_mm256_storeu_ps(c + j + 0, _mm256_fmadd_ps(a,
-					_mm256_loadu_ps(b + j + 0), _mm256_loadu_ps(c + j + 0)));
+				/*_mm256_store_ps(c + j + 0, _mm256_fmadd_ps(a,
+					_mm256_load_ps(b + j + 0), _mm256_load_ps(c + j + 0)));*/
+				//////////////////////////
+				__m256 temp = _mm256_mul_ps(a, _mm256_load_ps(b + j + 0));
+				_mm256_store_ps(c + j + 0, _mm256_add_ps(temp, _mm256_load_ps(c + j + 0)));
 			}
 		}
 	}
@@ -251,9 +277,43 @@ void DisplayMatrix(float**** matrix, int x_matrix_size, int y_matrix)
 	std::cout << std::endl;
 }
 
+bool Compare(float**** m1, float**** m2, float**** m3, int x)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			for (int k = 0; k < x; k++)
+			{
+				for (int r = 0; r < x; r++)
+				{
+					float epsilon = 1;
+					/*if (abs(m1[i][j][k][r] - m2[i][j][k][r]) >= epsilon || abs(m2[i][j][k][r] - m3[i][j][k][r]) >= epsilon)
+					{
+						std::cout << "m1: " << m1[i][j][k][r] << std::endl;
+						std::cout << "m2: " << m2[i][j][k][r] << std::endl;
+						std::cout << "m3: " << m3[i][j][k][r] - m2[i][j][k][r] << std::endl;
+						return false;
+					}*/
+					if ((m1[i][j][k][r] != m2[i][j][k][r]) || (m2[i][j][k][r] != m3[i][j][k][r]))
+					{
+						std::cout << "i: "<< i << " j: " << j << " k: " <<k << " r: " << r << std::endl;
+						std::cout << "m1: " << m1[i][j][k][r] - m2[i][j][k][r] << std::endl;
+						std::cout << "m2: " << m2[i][j][k][r] << std::endl;
+						std::cout << "m3: " << m3[i][j][k][r] - m2[i][j][k][r] << std::endl;
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
 void FillMatrix(float**** matrix, int x_matrix_size, int y_matrix_size)
 {
-	int counter = 0;
+	float counter = 0;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -262,7 +322,8 @@ void FillMatrix(float**** matrix, int x_matrix_size, int y_matrix_size)
 			{
 				for (int k = 0; k < x_matrix_size; k++)
 				{
-					matrix[i][j][r][k] = counter++;
+					matrix[i][j][r][k] = counter;
+					counter += 0.1;
 				}
 			}
 		}
